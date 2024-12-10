@@ -1,9 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplyLifestyleApi", "SimplyLifestyleApi.csproj", "{6B9514CD-4CFD-4DDF-A0B9-E6115603D9AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplyLifestyle.Api", "SimplyLifestyle.Api\SimplyLifestyle.Api.csproj", "{6B9514CD-4CFD-4DDF-A0B9-E6115603D9AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplyLifestyle.Infrastructure", "SimplyLifestyle.Infrastructure\SimplyLifestyle.Infrastructure.csproj", "{38031802-93C0-4158-8B3C-44FF85ADF896}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplyLifestyle.Domain", "SimplyLifestyle.Domain\SimplyLifestyle.Domain.csproj", "{25745F89-6244-43E4-B3AC-3B54BF388A85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplyLifestyle.Utils", "SimplyLifestyle.Utils\SimplyLifestyle.Utils.csproj", "{95EBEFD1-FD41-4491-B563-61CE4997CB92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplyLifestyle.Application", "SimplyLifestyle.Application\SimplyLifestyle.Application.csproj", "{94C58BF3-AFB0-4EAA-ACBB-B57741019DE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{6B9514CD-4CFD-4DDF-A0B9-E6115603D9AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B9514CD-4CFD-4DDF-A0B9-E6115603D9AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B9514CD-4CFD-4DDF-A0B9-E6115603D9AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38031802-93C0-4158-8B3C-44FF85ADF896}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38031802-93C0-4158-8B3C-44FF85ADF896}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38031802-93C0-4158-8B3C-44FF85ADF896}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38031802-93C0-4158-8B3C-44FF85ADF896}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25745F89-6244-43E4-B3AC-3B54BF388A85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25745F89-6244-43E4-B3AC-3B54BF388A85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25745F89-6244-43E4-B3AC-3B54BF388A85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25745F89-6244-43E4-B3AC-3B54BF388A85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95EBEFD1-FD41-4491-B563-61CE4997CB92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95EBEFD1-FD41-4491-B563-61CE4997CB92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95EBEFD1-FD41-4491-B563-61CE4997CB92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95EBEFD1-FD41-4491-B563-61CE4997CB92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94C58BF3-AFB0-4EAA-ACBB-B57741019DE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94C58BF3-AFB0-4EAA-ACBB-B57741019DE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94C58BF3-AFB0-4EAA-ACBB-B57741019DE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94C58BF3-AFB0-4EAA-ACBB-B57741019DE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
