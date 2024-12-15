@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "simply_lifestyle_app",
+            "cwd": "simply_lifestyle_app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "simply_lifestyle_app (profile mode)",
+            "cwd": "simply_lifestyle_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "simply_lifestyle_app (release mode)",
+            "cwd": "simply_lifestyle_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
