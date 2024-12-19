@@ -10,7 +10,7 @@ class ProductsPage extends StatefulWidget {
 }
 
 class _ProductsPageState extends State<ProductsPage> {
-  final List<String> items = List<String>.generate(10000, (i) => 'Item $i');
+  final List<String> items = List<String>.generate(100, (i) => 'Item $i');
 
   @override
   Widget build(BuildContext context) {

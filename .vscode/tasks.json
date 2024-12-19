@@ -9,7 +9,7 @@
                 "-d",
                 "Windows",
             ],
-            "problemMatcher":[],
+            "problemMatcher": [],
             "label": "flutter: run -d Windows",
             "options": {
                 "cwd": "simply_lifestyle_app"
@@ -41,5 +41,13 @@
                 "cwd": "simply_lifestyle_app"
             }
         },
+        { // dotnet run
+            "type": "shell",
+            "label": "dotnet run",
+            "command": "dotnet run SimplyLifestyleApi",
+            "options": {
+                "cwd": "SimplyLifestyleApi/SimplyLifestyle.Api"
+            }
+        }
     ]
 }
