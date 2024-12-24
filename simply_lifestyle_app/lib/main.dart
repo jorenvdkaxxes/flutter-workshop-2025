@@ -43,8 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _widgetOptions = <Widget>[
-      ProductsPage(controller: _controller),
-      const OrdersPage()
+      ProductsPage(),
+      OrdersPage(controller: _controller)
     ];
   }
 
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget? _getWidget() {
-    if (_selectedIndex != 0) return null;
+    if (_selectedIndex != 1) return null;
 
     return FloatingActionButton(
       onPressed: () => _controller.addItem!(),
