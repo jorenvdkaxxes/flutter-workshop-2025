@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:simply_lifestyle_app/pages/products_page/products_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,16 +30,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    ProductsPage(title: "Products")
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  final List<String> items = List<String>.generate(100, (i) => 'Item $i');
 
   @override
   Widget build(BuildContext context) {
@@ -48,41 +38,19 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
-        leading: Builder(
-          builder: (context) {
-            return IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            );
-          },
-        ),
       ),
       body: Center(
-        child: _widgetOptions[_selectedIndex],
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.greenAccent,
-              ),
-              child: Text('Simply Lifestyle'),
-            ),
-            ListTile(
-              title: const Text('Products'),
-              selected: _selectedIndex == 0,
-              onTap: () {
-                _onItemTapped(0);
-                Navigator.pop(context);
-              },
-            ),
-          ],
+          child: ListView.builder(
+        itemCount: items.length,
+        prototypeItem: ListTile(
+          title: Text(items.first),
         ),
-      ),
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(items[index]),
+          );
+        },
+      ))
     );
   }
 }
