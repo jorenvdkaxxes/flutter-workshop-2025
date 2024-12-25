@@ -66,18 +66,38 @@ public static class InfrastructureConfiguration
         this IServiceCollection services,
         IConfiguration configuration)
         where TDbContext : DbContext
-        => services
-            .AddScoped<DbContext, TDbContext>()
-            .AddDbContext<TDbContext>(options => options
-                .UseSqlServer(
-                    configuration.GetDefaultConnectionString(),
-                    sqlOptions => sqlOptions
-                        .EnableRetryOnFailure(
-                            maxRetryCount: 10,
-                            maxRetryDelay: TimeSpan.FromSeconds(30),
-                            errorNumbersToAdd: null)
-                        .MigrationsAssembly(
-                            typeof(TDbContext).Assembly.FullName)));
+    {
+        var useSqlServer = configuration.GetUseSqlServerOption();
+
+        if (useSqlServer)
+        {
+            services
+                .AddScoped<DbContext, TDbContext>()
+                .AddDbContext<TDbContext>(options => options
+                    .UseSqlServer(
+                        configuration.GetSqlServerConnectionString(),
+                        sqlOptions => sqlOptions
+                            .EnableRetryOnFailure(
+                                maxRetryCount: 10,
+                                maxRetryDelay: TimeSpan.FromSeconds(30),
+                                errorNumbersToAdd: null)
+                            .MigrationsAssembly(
+                                typeof(TDbContext).Assembly.FullName)));
+        }
+        else
+        {
+            services
+                .AddScoped<DbContext, TDbContext>()
+                .AddDbContext<TDbContext>(options => options
+                    .UseSqlite(
+                        configuration.GetSqliteConnectionString(),
+                        sqlOptions => sqlOptions
+                            .MigrationsAssembly(
+                                typeof(TDbContext).Assembly.FullName)));
+        }
+
+        return services;
+    }
 
     internal static IServiceCollection AddRepositories(
         this IServiceCollection services,

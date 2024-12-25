@@ -7,17 +7,17 @@ public class ProductData : IInitialData
         var product1 = new Product(
             name: "Product 1",
             description: "Description of Product 1",
-            productType: ProductType.Electronics,
+            productType: ProductType.KaliSeats,
             weight: new Weight(2.5m, "kg"),
-            price: new Price(499.99m, "USD")
+            price: new Price(2199.99m, "EUR")
         );
 
         var product2 = new Product(
             name: "Product 2",
             description: "Description of Product 2",
-            productType: ProductType.Clothing,
+            productType: ProductType.FabricSeats,
             weight: new Weight(0.5m, "kg"),
-            price: new Price(29.99m, "USD")
+            price: new Price(1099.99m, "EUR")
         );
 
         return new List<Product> { product1, product2 };
