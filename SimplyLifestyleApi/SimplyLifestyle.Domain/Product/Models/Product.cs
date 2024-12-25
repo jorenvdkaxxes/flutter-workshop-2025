@@ -1,6 +1,6 @@
 ﻿namespace SimplyLifestyle.Domain;
 
-public class Product: Entity<ProductId>
+public class Product: AggregateRoot<ProductId>
 {
     public Product(ProductId id,
         string name,

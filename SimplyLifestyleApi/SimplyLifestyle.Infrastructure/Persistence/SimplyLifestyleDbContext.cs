@@ -22,12 +22,15 @@ public class SimplyLifestyleDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseAsyncSeeding(async (context, _, cancellationToken) =>
         {
-            var products = context.Set<Product>();
-            if (!products.Any())
+            var productCategories = context.Set<ProductCategory>();
+            if (!productCategories.Any())
             {
-                var product = new Product(new ProductId(Guid.NewGuid()), "Nathan", 2199.99f, 5, false, "nathan-1", "nathan-2");
-
-                context.Set<Product>().Add(product);
+                var products = new List<Product>
+                {
+                    new Product(new ProductId(Guid.NewGuid()), "Nathan", 2199.99f, 5, false, "nathan-1", "nathan-2")
+                };
+                var productCategory = new ProductCategory(new ProductCategoryId(Guid.NewGuid()), "Stoffen zetels", products);
+                context.Set<ProductCategory>().Add(productCategory);
                 await context.SaveChangesAsync(cancellationToken);
             }
         });

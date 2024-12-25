@@ -2,7 +2,28 @@
 
 public class ProductCategory: AggregateRoot<ProductCategoryId>
 {
-    public ProductCategory(ProductCategoryId id,
+    public ProductCategory(
+        ProductCategoryId id,
+        string name,
+        params Product[] products)
+    {
+        Id = id;
+        Name = name;
+        Products = products;
+    }
+
+    public ProductCategory(
+        ProductCategoryId id,
+        string name,
+        IEnumerable<Product> products)
+    {
+        Id = id;
+        Name = name;
+        Products = products;
+    }
+
+    public ProductCategory(
+        ProductCategoryId id,
         string name)
     {
         Id = id;
