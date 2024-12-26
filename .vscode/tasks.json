@@ -1,0 +1,53 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "flutter",
+            "command": "flutter",
+            "args": [
+                "run",
+                "-d",
+                "Windows",
+            ],
+            "problemMatcher": [],
+            "label": "flutter: run -d Windows",
+            "options": {
+                "cwd": "simply_lifestyle_app"
+            }
+        },
+        { // get flutter(dart) packages
+            "type": "flutter",
+            "command": "flutter",
+            "args": [
+                "pub",
+                "get"
+            ],
+            "problemMatcher": [],
+            "label": "flutter: flutter pub get",
+            "options": {
+                "cwd": "simply_lifestyle_app"
+            }
+        },
+        { // upgrade flutter packages
+            "type": "flutter",
+            "command": "flutter",
+            "args": [
+                "pub",
+                "upgrade"
+            ],
+            "problemMatcher": [],
+            "label": "flutter: flutter pub upgrade",
+            "options": {
+                "cwd": "simply_lifestyle_app"
+            }
+        },
+        { // dotnet run
+            "type": "shell",
+            "label": "dotnet run",
+            "command": "dotnet run SimplyLifestyleApi",
+            "options": {
+                "cwd": "SimplyLifestyleApi/SimplyLifestyle.Api"
+            }
+        }
+    ]
+}
