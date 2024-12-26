@@ -107,7 +107,7 @@ public static class InfrastructureConfiguration
                 .FromAssemblies(assembly)
                 .AddClasses(classes => classes
                     .AssignableTo(typeof(IDomainRepository<>))
-                    .AssignableTo(typeof(IQueryRepository<>)))
+                    .AssignableTo(typeof(IQueryRepository<>)), publicOnly: false)
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
 }
