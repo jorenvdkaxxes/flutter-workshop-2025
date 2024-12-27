@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:simply_lifestyle_app/models/product.dart';
+import 'package:simply_lifestyle_app/models/product/product.dart';
 
 class ProductsPage extends StatefulWidget {
   const ProductsPage({super.key});
@@ -43,7 +43,7 @@ class _ProductsPageState extends State<ProductsPage> {
         future: futureProducts,
         builder: (context, products) {
           if (!products.hasData) {
-            return Container();
+            return CircularProgressIndicator();
           }
           return ListView.builder(
             itemCount: products.data!.length,
