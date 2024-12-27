@@ -10,6 +10,7 @@ public abstract class ApiController : ControllerBase
 {
     protected const string Id = "{id}";
     protected const string PathSeparator = "/";
+    protected const string GetAll = "all";
 
     private IMediator? mediator;
 
