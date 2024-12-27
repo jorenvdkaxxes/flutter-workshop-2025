@@ -7,15 +7,15 @@ public abstract class Enumeration : IComparable
 
     protected Enumeration(int value, string name)
     {
-        this.Value = value;
-        this.Name = name;
+        Value = value;
+        Name = name;
     }
 
     public int Value { get; }
 
     public string Name { get; }
 
-    public int CompareTo(object? other) => this.Value.CompareTo(((Enumeration)other!).Value);
+    public int CompareTo(object? other) => Value.CompareTo(((Enumeration)other!).Value);
 
     public static IEnumerable<T> GetAll<T>() where T : Enumeration
     {
@@ -57,15 +57,15 @@ public abstract class Enumeration : IComparable
             return false;
         }
 
-        var typeMatches = this.GetType() == obj.GetType();
-        var valueMatches = this.Value.Equals(otherValue.Value);
+        var typeMatches = GetType() == obj.GetType();
+        var valueMatches = Value.Equals(otherValue.Value);
 
         return typeMatches && valueMatches;
     }
 
-    public override string ToString() => this.Name;
+    public override string ToString() => Name;
 
-    public override int GetHashCode() => (this.GetType().ToString() + this.Value).GetHashCode();
+    public override int GetHashCode() => (GetType().ToString() + Value).GetHashCode();
 
     public static bool operator ==(Enumeration? first, Enumeration? second)
     {
