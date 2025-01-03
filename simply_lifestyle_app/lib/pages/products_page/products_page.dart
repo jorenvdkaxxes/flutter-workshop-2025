@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:simply_lifestyle_app/models/product/product.dart';
+import 'package:simply_lifestyle_app/pages/products_page/product_details_page/product_details_page.dart';
 
 class ProductsPage extends StatefulWidget {
   const ProductsPage({super.key});
@@ -26,14 +27,10 @@ class _ProductsPageState extends State<ProductsPage> {
         await http.get(Uri.parse('https://localhost:7190/api/Products/Get'));
 
     if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
       Iterable l = json.decode(response.body);
       return List<Product>.from(l.map((model) => Product.fromJson(model)));
     } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      throw Exception('Failed to load album');
+      throw Exception('Failed to products album');
     }
   }
 
@@ -42,8 +39,22 @@ class _ProductsPageState extends State<ProductsPage> {
     return FutureBuilder<List<Product>>(
         future: futureProducts,
         builder: (context, products) {
-          if (!products.hasData) {
+          if (!products.hasData && products.error == null) {
             return CircularProgressIndicator();
+          } else if (!products.hasData && products.error != null) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Something went wrong.",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Text("Could not get the products.",
+                      style: TextStyle(fontSize: 20)),
+                ],
+              ),
+            );
           }
           return ListView.builder(
             itemCount: products.data!.length,
@@ -53,7 +64,18 @@ class _ProductsPageState extends State<ProductsPage> {
             itemBuilder: (context, index) {
               return ListTile(
                 title: Text(products.data![index].name),
-                subtitle: Text(products.data![index].description),
+                subtitle: Text('Stock: ${products.data![index].stock}'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProductDetailsPage(),
+                      settings: RouteSettings(
+                        arguments: products.data![index],
+                      ),
+                    ),
+                  );
+                },
               );
             },
           );

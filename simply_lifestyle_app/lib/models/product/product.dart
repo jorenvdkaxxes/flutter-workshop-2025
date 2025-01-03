@@ -8,14 +8,15 @@ class Product {
   final ProductType productType;
   final Weight weight;
   final Price price;
+  final int stock;
 
-  const Product({
-    required this.name,
-    required this.description,
-    required this.productType,
-    required this.weight,
-    required this.price
-  });
+  const Product(
+      {required this.name,
+      required this.description,
+      required this.productType,
+      required this.weight,
+      required this.price,
+      required this.stock});
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return switch (json) {
@@ -24,15 +25,16 @@ class Product {
         'description': String description,
         'productType': int productType,
         'weight': Map<String, dynamic> weightJson,
-        'price': Map<String, dynamic> priceJson
+        'price': Map<String, dynamic> priceJson,
+        'stock': int stock
       } =>
         Product(
-          name: name,
-          description: description,
-          productType: ProductType.values[productType],
-          weight: Weight.fromJson(weightJson),
-          price: Price.fromJson(priceJson)
-        ),
+            name: name,
+            description: description,
+            productType: ProductType.values[productType],
+            weight: Weight.fromJson(weightJson),
+            price: Price.fromJson(priceJson),
+            stock: stock),
       _ => throw const FormatException('Failed to load product.'),
     };
   }
