@@ -7,7 +7,7 @@ internal class ProductConfiguration : IEntityTypeConfiguration<Product>
     {
         builder
             .HasKey(p => p.Id);
-        
+
         builder.Property(p => p.Id)
             .ValueGeneratedOnAdd();
 
@@ -20,7 +20,11 @@ internal class ProductConfiguration : IEntityTypeConfiguration<Product>
             .Property(p => p.Description)
             .IsRequired()
             .HasMaxLength(ProductModelConstants.Product.MaxDescriptionLength);
-        
+
+        builder
+            .Property(p => p.Stock)
+            .IsRequired();
+
         builder
             .OwnsOne(b => b.ProductType, p =>
             {
@@ -32,7 +36,7 @@ internal class ProductConfiguration : IEntityTypeConfiguration<Product>
             .OwnsOne(p => p.Weight, w =>
             {
                 w.WithOwner();
-                
+
                 w.Property(wt => wt.Value)
                     .IsRequired()
                     .HasPrecision(38, 15)
@@ -48,7 +52,7 @@ internal class ProductConfiguration : IEntityTypeConfiguration<Product>
             .OwnsOne(p => p.Price, p =>
             {
                 p.WithOwner();
-                
+
                 p.Property(pr => pr.Amount)
                     .IsRequired()
                     .HasPrecision(38, 15)

@@ -11,6 +11,7 @@ public class ProductModel : IMapFrom<Product>
     public int ProductType { get; set; }
     public PriceRequest Price { get; set; }
     public WeightRequest Weight { get; set; }
+    public int Stock { get; set; }
 
     public virtual void Mapping(Profile mapper)
     {

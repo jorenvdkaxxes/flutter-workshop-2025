@@ -7,7 +7,8 @@ public class Product : Entity, IAggregateRoot
         string description,
         ProductType productType,
         Weight weight,
-        Price price)
+        Price price,
+        int stock = 0)
     {
         Validate(name, description);
         Name = name;
@@ -15,6 +16,7 @@ public class Product : Entity, IAggregateRoot
         ProductType = productType;
         Weight = weight;
         Price = price;
+        Stock = stock;
 
         Suppliers = new HashSet<Supplier>();
         
@@ -31,6 +33,7 @@ public class Product : Entity, IAggregateRoot
         ProductType = default!;
         Weight = default!;
         Price = default!;
+        Stock = default;
 
         Suppliers = default!;
     }
@@ -40,6 +43,7 @@ public class Product : Entity, IAggregateRoot
     public ProductType ProductType { get; private set; }
     public Weight Weight { get; private set; }
     public Price Price { get; private set; }
+    public int Stock { get; private set; }
 
     public Product UpdateName(string name)
     {
@@ -70,6 +74,12 @@ public class Product : Entity, IAggregateRoot
     public Product UpdatePrice(decimal amount, string currency)
     {
         Price = new Price(amount, currency);
+        return this;
+    }
+
+    public Product UpdateStock(int stock)
+    {
+        Stock = stock;
         return this;
     }
 

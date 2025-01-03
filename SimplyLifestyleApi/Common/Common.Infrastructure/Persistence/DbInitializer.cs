@@ -24,14 +24,13 @@ public abstract class DbInitializer : IDbInitializer
 
         foreach (var initialDataProvider in initialDataProviders)
         {
-            if (DataSetIsEmpty(initialDataProvider.EntityType))
-            {
-                var data = initialDataProvider.GetData();
+            if (!DataSetIsEmpty(initialDataProvider.EntityType)) continue;
+
+            var data = initialDataProvider.GetData();
             
-                foreach (var entity in data)
-                {
-                    db.Add(entity);
-                }
+            foreach (var entity in data)
+            {
+                db.Add(entity);
             }
         }
 

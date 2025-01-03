@@ -22,7 +22,8 @@ namespace Products.Infrastructure.Migrations
                     WeightValue = table.Column<decimal>(type: "decimal(38,15)", precision: 38, scale: 15, nullable: false),
                     WeightUnit = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     PriceAmount = table.Column<decimal>(type: "decimal(38,15)", precision: 38, scale: 15, nullable: false),
-                    PriceCurrency = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false)
+                    PriceCurrency = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    Stock = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
