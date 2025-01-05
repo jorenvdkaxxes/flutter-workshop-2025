@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:simply_lifestyle_app/constants/routes.dart';
 import 'package:simply_lifestyle_app/models/product/product.dart';
 import 'package:simply_lifestyle_app/pages/products_page/product_details_page/product_details_page.dart';
 
@@ -24,7 +25,7 @@ class _ProductsPageState extends State<ProductsPage> {
 
   Future<List<Product>> fetchProducts() async {
     final response =
-        await http.get(Uri.parse('https://localhost:7190/api/Products/Get'));
+        await http.get(Uri.parse(Routes.getAllProducts));
 
     if (response.statusCode == 200) {
       Iterable l = json.decode(response.body);

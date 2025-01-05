@@ -1,4 +1,4 @@
-class Price{
+class Price {
   final double amount;
   final String currency;
 
@@ -13,10 +13,7 @@ class Price{
         'amount': double amount,
         'currency': String currency,
       } =>
-        Price(
-          amount: amount,
-          currency: currency
-        ),
+        Price(amount: amount, currency: currency),
       _ => throw const FormatException('Failed to load price.'),
     };
   }
