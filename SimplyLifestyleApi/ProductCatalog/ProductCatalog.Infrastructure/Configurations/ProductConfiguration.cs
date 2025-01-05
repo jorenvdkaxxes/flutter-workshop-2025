@@ -33,22 +33,6 @@ internal class ProductConfiguration : IEntityTypeConfiguration<Product>
             });
 
         builder
-            .OwnsOne(p => p.Weight, w =>
-            {
-                w.WithOwner();
-
-                w.Property(wt => wt.Value)
-                    .IsRequired()
-                    .HasPrecision(38, 15)
-                    .HasColumnName("WeightValue");
-
-                w.Property(wt => wt.Unit)
-                    .IsRequired()
-                    .HasMaxLength(ProductModelConstants.Weight.MaxUnitLength)
-                    .HasColumnName("WeightUnit");
-            });
-
-        builder
             .OwnsOne(p => p.Price, p =>
             {
                 p.WithOwner();
