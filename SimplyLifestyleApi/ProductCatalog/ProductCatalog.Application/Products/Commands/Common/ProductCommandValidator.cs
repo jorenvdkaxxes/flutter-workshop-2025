@@ -24,16 +24,5 @@ public class ProductCommandValidator : AbstractValidator<ProductCommand>
             .NotEmpty().WithMessage("Price currency is required.")
             .MaximumLength(ProductModelConstants.Price.MaxCurrencyLength)
             .WithMessage($"Price currency must have at most {ProductModelConstants.Price.MaxCurrencyLength} characters.");
-
-        RuleFor(b => b.Weight.Value)
-            .NotEmpty().WithMessage("Weight value is required.")
-            .GreaterThan(CommonModelConstants.Common.Zero).WithMessage("Weight value must be greater than zero.")
-            .ScalePrecision(2, ProductModelConstants.Weight.MaxValueDigits)
-            .WithMessage($"Weight value must have at most {ProductModelConstants.Weight.MaxValueDigits} digits.");
-
-        RuleFor(b => b.Weight.Unit)
-            .NotEmpty().WithMessage("Weight unit is required.")
-            .MaximumLength(ProductModelConstants.Weight.MaxUnitLength)
-            .WithMessage($"Weight unit must have at most {ProductModelConstants.Weight.MaxUnitLength} characters.");
     }
 }

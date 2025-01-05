@@ -4,13 +4,11 @@ internal class ProductFactory : IProductFactory
     private string productDescription = default!;
     private ProductType productType = default!;
     private Price productPrice = default!;
-    private Weight productWeight = default!;
 
-    private bool isNameSet = false;
-    private bool isDescriptionSet = false;
-    private bool isProductTypeSet = false;
-    private bool isPriceSet = false;
-    private bool isWeightSet = false;
+    private bool isNameSet;
+    private bool isDescriptionSet;
+    private bool isProductTypeSet;
+    private bool isPriceSet;
 
     public IProductFactory WithName(string name)
     {
@@ -44,24 +42,15 @@ internal class ProductFactory : IProductFactory
         return this;
     }
 
-    public IProductFactory WithWeight(decimal weight, string unit)
-    {
-        productWeight = new Weight(weight, unit);
-        isWeightSet = true;
-
-        return this;
-    }
-
     public Product Build()
     {
-        if (!isNameSet || !isDescriptionSet || !isProductTypeSet || !isPriceSet || !isWeightSet)
+        if (!isNameSet || !isDescriptionSet || !isProductTypeSet || !isPriceSet)
             throw new InvalidOperationException("Name, description, product type, price, and weight must have a value.");
 
         return new Product(
             productName,
             productDescription,
             productType,
-            productWeight,
             productPrice);
     }
 }

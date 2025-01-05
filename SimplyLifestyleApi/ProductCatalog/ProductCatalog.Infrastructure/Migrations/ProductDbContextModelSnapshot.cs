@@ -16,7 +16,7 @@ namespace Products.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -36,6 +36,9 @@ namespace Products.Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -125,37 +128,10 @@ namespace Products.Infrastructure.Migrations
                                 .HasForeignKey("ProductId");
                         });
 
-                    b.OwnsOne("Weight", "Weight", b1 =>
-                        {
-                            b1.Property<Guid>("ProductId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<string>("Unit")
-                                .IsRequired()
-                                .HasMaxLength(10)
-                                .HasColumnType("nvarchar(10)")
-                                .HasColumnName("WeightUnit");
-
-                            b1.Property<decimal>("Value")
-                                .HasPrecision(38, 15)
-                                .HasColumnType("decimal(38,15)")
-                                .HasColumnName("WeightValue");
-
-                            b1.HasKey("ProductId");
-
-                            b1.ToTable("Products");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ProductId");
-                        });
-
                     b.Navigation("Price")
                         .IsRequired();
 
                     b.Navigation("ProductType")
-                        .IsRequired();
-
-                    b.Navigation("Weight")
                         .IsRequired();
                 });
 
