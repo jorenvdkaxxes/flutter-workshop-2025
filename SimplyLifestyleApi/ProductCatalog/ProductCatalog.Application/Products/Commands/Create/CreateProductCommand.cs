@@ -24,7 +24,6 @@ public class CreateProductCommand : ProductCommand, IRequest<CreateProductRespon
                 .WithDescription(request.Description)
                 .WithProductType(Enumeration.FromValue<ProductType>(request.ProductType))
                 .WithPrice(request.Price.Amount, request.Price.Currency)
-                .WithWeight(request.Weight.Value, request.Weight.Unit)
                 .Build();
 
             await productRepository.Save(product, cancellationToken);

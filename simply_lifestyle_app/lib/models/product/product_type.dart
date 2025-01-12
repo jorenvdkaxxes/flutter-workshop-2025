@@ -1,6 +1,6 @@
 // enum ProductType { kaliSeats, fabricSeats }
 
-enum ProductType{
+enum ProductType {
   kaliSeats(name: 'Kali Seats'),
   fabricSeats(name: 'Fabric Seats');
 
