@@ -7,7 +7,7 @@
             "args": [
                 "run",
                 "-d",
-                "Windows",
+                "Windows"
             ],
             "problemMatcher": [],
             "label": "flutter: run -d Windows",
@@ -15,7 +15,7 @@
                 "cwd": "simply_lifestyle_app"
             }
         },
-        { // get flutter(dart) packages
+        {
             "type": "flutter",
             "command": "flutter",
             "args": [
@@ -28,7 +28,7 @@
                 "cwd": "simply_lifestyle_app"
             }
         },
-        { // upgrade flutter packages
+        {
             "type": "flutter",
             "command": "flutter",
             "args": [
@@ -41,13 +41,14 @@
                 "cwd": "simply_lifestyle_app"
             }
         },
-        { // dotnet run
+        {
             "type": "shell",
             "label": "dotnet run",
             "command": "dotnet run SimplyLifestyleApi",
             "options": {
                 "cwd": "SimplyLifestyleApi/ProjectStartup"
-            }
+            },
+            "problemMatcher": []
         }
     ]
 }
