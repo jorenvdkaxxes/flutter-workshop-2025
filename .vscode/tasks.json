@@ -46,7 +46,7 @@
             "label": "dotnet run",
             "command": "dotnet run SimplyLifestyleApi",
             "options": {
-                "cwd": "SimplyLifestyleApi/SimplyLifestyle.Api"
+                "cwd": "SimplyLifestyleApi/ProjectStartup"
             }
         }
     ]
