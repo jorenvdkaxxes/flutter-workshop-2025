@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:simply_lifestyle_app/constants/routes.dart';
-import 'package:simply_lifestyle_app/models/product/product.dart';
-import 'package:simply_lifestyle_app/pages/products_page/product_details_page/product_details_page.dart';
+import 'package:simply_lifestyle_app/domain/models/product/product.dart';
+import 'package:simply_lifestyle_app/ui/products/widgets/product_details_page.dart';
 
 class ProductsPage extends StatefulWidget {
   const ProductsPage({super.key});

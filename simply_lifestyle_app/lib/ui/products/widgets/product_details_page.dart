@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:simply_lifestyle_app/models/product/product.dart';
-import 'package:simply_lifestyle_app/pages/products_page/product_details_page/product_details_row.dart';
+import 'package:simply_lifestyle_app/domain/models/product/product.dart';
+import 'package:simply_lifestyle_app/ui/products/widgets/product_details_row.dart';
 
 class ProductDetailsPage extends StatelessWidget {
   const ProductDetailsPage({super.key});

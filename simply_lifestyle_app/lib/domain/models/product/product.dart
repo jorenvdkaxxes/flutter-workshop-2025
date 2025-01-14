@@ -1,5 +1,5 @@
-import 'package:simply_lifestyle_app/models/product/price.dart';
-import 'package:simply_lifestyle_app/models/product/product_type.dart';
+import 'package:simply_lifestyle_app/domain/models/product/price.dart';
+import 'package:simply_lifestyle_app/domain/models/product/product_type.dart';
 
 class Product {
   final String name;
