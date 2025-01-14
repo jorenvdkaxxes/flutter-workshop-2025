@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:simply_lifestyle_app/controller.dart';
 
-class OrdersPage extends StatefulWidget {
-  const OrdersPage({super.key, required this.controller});
+class OrdersScreen extends StatefulWidget {
+  const OrdersScreen({super.key, required this.controller});
 
   final Controller controller;
 
   @override
-  State<OrdersPage> createState() => _OrdersPageState();
+  State<OrdersScreen> createState() => _OrdersScreenState();
 }
 
-class _OrdersPageState extends State<OrdersPage> {
+class _OrdersScreenState extends State<OrdersScreen> {
   final List<String> items = List<String>.generate(5, (i) => 'Order $i');
 
   late int index;
