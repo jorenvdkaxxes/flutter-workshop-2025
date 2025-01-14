@@ -1,4 +1,6 @@
+import 'package:simply_lifestyle_app/environment.dart';
+
 class Routes {
   // Products
-  static const String getAllProducts = 'https://localhost:7190/api/Products/Get';
+  static const String getAllProducts = '${Environment.restApiUrl}api/Products/Get';
 }

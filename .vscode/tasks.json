@@ -44,7 +44,7 @@
         {
             "type": "shell",
             "label": "dotnet run",
-            "command": "dotnet run SimplyLifestyleApi",
+            "command": "dotnet run --launch-profile https",
             "options": {
                 "cwd": "SimplyLifestyleApi/ProjectStartup"
             },

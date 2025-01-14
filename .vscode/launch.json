@@ -20,6 +20,17 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
-        }
+        },
+        {
+            "name": "simply_lifestyle_app (development)",
+            "cwd": "simply_lifestyle_app",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define-from-file",
+                ".env/development.env"
+            ]
+        },
     ]
 }
