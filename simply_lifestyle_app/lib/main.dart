@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simply_lifestyle_app/controller.dart';
-import 'package:simply_lifestyle_app/pages/orders_page/orders_page.dart';
-import 'package:simply_lifestyle_app/pages/products_page/products_page.dart';
+import 'package:simply_lifestyle_app/ui/orders/screens/orders_screen.dart';
+import 'package:simply_lifestyle_app/ui/products/screens/products_screen.dart';
 
 void main() {
   runApp(const MyApp());
