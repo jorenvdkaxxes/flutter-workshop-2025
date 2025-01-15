@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
-import 'package:simply_lifestyle_app/config/dependencies.dart';
 
+import 'main_staging.dart' as staging;
 import 'package:simply_lifestyle_app/controller.dart';
 import 'package:simply_lifestyle_app/ui/orders/widgets/orders_screen.dart';
 import 'package:simply_lifestyle_app/ui/products/view_model/products_view_model.dart';
 import 'package:simply_lifestyle_app/ui/products/widgets/products_screen.dart';
 
 void main() {
-  Logger.root.level = Level.ALL;
-
-  runApp(
-    MultiProvider(
-      providers: providersRemote,
-      child: const MyApp(),
-    ),
-  );
+  staging.main();
 }
 
 class MyApp extends StatelessWidget {

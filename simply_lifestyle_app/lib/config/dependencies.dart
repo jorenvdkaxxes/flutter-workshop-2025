@@ -1,11 +1,10 @@
-// Copyright 2024 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
 
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:simply_lifestyle_app/data/repositories/products_repository.dart';
+import 'package:simply_lifestyle_app/data/repositories/products_repository_local.dart';
 import 'package:simply_lifestyle_app/data/repositories/products_repository_remote.dart';
+import 'package:simply_lifestyle_app/data/services/local/local_data_service.dart';
 
 import '../data/services/api/api_client.dart';
 
@@ -29,5 +28,13 @@ List<SingleChildWidget> get providersRemote {
 /// The user is always logged in.
 List<SingleChildWidget> get providersLocal {
   return [
+    Provider.value(
+      value: LocalDataService(),
+    ),
+    Provider(
+      create: (context) => ProductsRepositoryLocal(
+        localDataService: context.read(),
+      ) as ProductsRepository,
+    ),
   ];
 }
