@@ -27,7 +27,7 @@ class ProductsViewModel extends ChangeNotifier {
       switch (result) {
         case Ok<List<Product>>():
           _products = result.value;
-          _log.fine('Loaded bookings');
+          _log.fine('Loaded products');
         case Error<List<Product>>():
           _log.warning('Failed to load products', result.error);
       }
