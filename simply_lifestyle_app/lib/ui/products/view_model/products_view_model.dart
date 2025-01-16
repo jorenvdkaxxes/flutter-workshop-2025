@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
-import 'package:simply_lifestyle_app/data/repositories/products_repository.dart';
+import 'package:simply_lifestyle_app/data/repositories/products/products_repository.dart';
 import 'package:simply_lifestyle_app/domain/models/product/product.dart';
 import 'package:simply_lifestyle_app/utils/command.dart';
 import 'package:simply_lifestyle_app/utils/result.dart';

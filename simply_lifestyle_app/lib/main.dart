@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:simply_lifestyle_app/ui/orders/view_model/orders_view_model.dart';
 
 import 'main_staging.dart' as staging;
-import 'package:simply_lifestyle_app/controller.dart';
 import 'package:simply_lifestyle_app/ui/orders/widgets/orders_screen.dart';
 import 'package:simply_lifestyle_app/ui/products/view_model/products_view_model.dart';
 import 'package:simply_lifestyle_app/ui/products/widgets/products_screen.dart';
@@ -35,8 +35,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final Controller _controller = Controller();
-
   int _selectedIndex = 0;
 
   final List<String> titles = ['Products', 'Orders'];
@@ -46,10 +44,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    final viewModel = ProductsViewModel(productsRepository: context.read());
+    final productsViewModel = ProductsViewModel(productsRepository: context.read());
+    final ordersViewModel = OrdersViewModel();
     _widgetOptions = <Widget>[
-      ProductsScreen(viewModel: viewModel),
-      OrdersScreen(controller: _controller)
+      ProductsScreen(viewModel: productsViewModel),
+      OrdersScreen(viewModel: ordersViewModel)
     ];
   }
 
@@ -63,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (_selectedIndex != 1) return null;
 
     return FloatingActionButton(
-      onPressed: () => _controller.addItem!(),
+      onPressed: () => {},
       tooltip: 'Add',
       child: const Icon(Icons.add),
     );

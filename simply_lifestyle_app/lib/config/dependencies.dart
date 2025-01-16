@@ -1,9 +1,9 @@
 
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-import 'package:simply_lifestyle_app/data/repositories/products_repository.dart';
-import 'package:simply_lifestyle_app/data/repositories/products_repository_local.dart';
-import 'package:simply_lifestyle_app/data/repositories/products_repository_remote.dart';
+import 'package:simply_lifestyle_app/data/repositories/products/products_repository.dart';
+import 'package:simply_lifestyle_app/data/repositories/products/products_repository_local.dart';
+import 'package:simply_lifestyle_app/data/repositories/products/products_repository_remote.dart';
 import 'package:simply_lifestyle_app/data/services/local/local_data_service.dart';
 
 import '../data/services/api/api_client.dart';

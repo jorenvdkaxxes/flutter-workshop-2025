@@ -1,15 +1,17 @@
+import 'package:simply_lifestyle_app/domain/models/entity.dart';
 import 'package:simply_lifestyle_app/domain/models/product/price.dart';
 import 'package:simply_lifestyle_app/domain/models/product/product_type.dart';
 
-class Product {
+class Product extends Entity {
   final String name;
   final String description;
   final ProductType productType;
   final Price price;
   final int stock;
 
-  const Product(
-      {required this.name,
+  Product(
+      {required super.id,
+      required this.name,
       required this.description,
       required this.productType,
       required this.price,
@@ -18,6 +20,7 @@ class Product {
   factory Product.fromJson(Map<String, dynamic> json) {
     return switch (json) {
       {
+        'id': String id,
         'name': String name,
         'description': String description,
         'productType': int productType,
@@ -25,6 +28,7 @@ class Product {
         'stock': int stock
       } =>
         Product(
+            id: id,
             name: name,
             description: description,
             productType: ProductType.values[productType],

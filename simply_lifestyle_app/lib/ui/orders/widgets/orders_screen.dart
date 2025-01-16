@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:simply_lifestyle_app/controller.dart';
+import 'package:simply_lifestyle_app/ui/orders/view_model/orders_view_model.dart';
 
 class OrdersScreen extends StatefulWidget {
-  const OrdersScreen({super.key, required this.controller});
+  const OrdersScreen({super.key, required this.viewModel});
 
-  final Controller controller;
+  final OrdersViewModel viewModel;
 
   @override
   State<OrdersScreen> createState() => _OrdersScreenState();
@@ -15,24 +15,15 @@ class _OrdersScreenState extends State<OrdersScreen> {
 
   late int index;
 
-  void addItem() {
-    setState(() {
-      items.add('Order $index');
-      index++;
-    });
-  }
-
   @override
   void initState() {
     super.initState();
     index = items.length;
-    widget.controller.addItem = addItem;
   }
 
   @override
   void dispose() {
     super.dispose();
-    widget.controller.addItem = null;
   }
 
   @override
