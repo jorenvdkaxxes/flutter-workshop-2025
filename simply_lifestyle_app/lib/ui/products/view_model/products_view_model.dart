@@ -16,7 +16,7 @@ class ProductsViewModel extends ChangeNotifier {
   final ProductsRepository _productsRepository;
 
   late Command0 load;
-  final _log = Logger('HomeViewModel');
+  final _log = Logger('ProductsViewModel');
 
   List<Product> _products = [];
   List<Product> get products => _products;
