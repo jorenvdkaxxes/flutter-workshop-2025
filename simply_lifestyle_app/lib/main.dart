@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     final productsViewModel = ProductsViewModel(productsRepository: context.read());
-    final ordersViewModel = OrdersViewModel();
+    final ordersViewModel = OrdersViewModel(ordersRepository: context.read());
     _widgetOptions = <Widget>[
       ProductsScreen(viewModel: productsViewModel),
       OrdersScreen(viewModel: ordersViewModel)
