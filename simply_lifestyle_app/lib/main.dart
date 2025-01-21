@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:simply_lifestyle_app/routing/router.dart';
+import 'package:simply_lifestyle_app/routing/routes.dart';
 import 'package:simply_lifestyle_app/ui/orders/view_model/orders_view_model.dart';
 
 import 'main_staging.dart' as staging;
@@ -16,13 +19,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Simply Lifestyle App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      routerConfig: router(),
     );
   }
 }
@@ -44,7 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    final productsViewModel = ProductsViewModel(productsRepository: context.read());
+    final productsViewModel =
+        ProductsViewModel(productsRepository: context.read());
     final ordersViewModel = OrdersViewModel(ordersRepository: context.read());
     _widgetOptions = <Widget>[
       ProductsScreen(viewModel: productsViewModel),
@@ -62,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (_selectedIndex != 1) return null;
 
     return FloatingActionButton(
-      onPressed: () => {},
+      onPressed: () => context.go(Routes.newOrder),
       tooltip: 'Add',
       child: const Icon(Icons.add),
     );

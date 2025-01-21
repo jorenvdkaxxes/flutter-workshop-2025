@@ -1,6 +1,8 @@
 
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:simply_lifestyle_app/data/repositories/orders/orders_repository.dart';
+import 'package:simply_lifestyle_app/data/repositories/orders/orders_repository_remote.dart';
 import 'package:simply_lifestyle_app/data/repositories/products/products_repository.dart';
 import 'package:simply_lifestyle_app/data/repositories/products/products_repository_local.dart';
 import 'package:simply_lifestyle_app/data/repositories/products/products_repository_remote.dart';
@@ -19,6 +21,11 @@ List<SingleChildWidget> get providersRemote {
       create: (context) => ProductsRepositoryRemote(
         apiClient: context.read(),
       ) as ProductsRepository,
+    ),
+     Provider(
+      create: (context) => OrdersRepositoryRemote(
+        apiClient: context.read(),
+      ) as OrdersRepository,
     )
   ];
 }
