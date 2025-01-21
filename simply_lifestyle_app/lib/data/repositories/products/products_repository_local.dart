@@ -18,4 +18,10 @@ class ProductsRepositoryLocal implements ProductsRepository {
 
     return Result.ok(products);
   }
+  
+  @override
+  Future<Result<Product>> getProductById(String id) {
+    // TODO: implement getProductById
+    throw UnimplementedError();
+  }
 }

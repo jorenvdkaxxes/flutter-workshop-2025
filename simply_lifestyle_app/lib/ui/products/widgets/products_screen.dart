@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:simply_lifestyle_app/ui/core/ui/error_indicator.dart';
 import 'package:simply_lifestyle_app/ui/products/view_model/products_view_model.dart';
 import 'package:simply_lifestyle_app/ui/products/widgets/product_details_page.dart';
@@ -38,7 +39,7 @@ class ProductsScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const ProductDetailsPage(),
+                          builder: (context) => ProductDetailsPage(viewModel: context.read(),),
                           settings: RouteSettings(
                             arguments: viewModel.products[index],
                           ),

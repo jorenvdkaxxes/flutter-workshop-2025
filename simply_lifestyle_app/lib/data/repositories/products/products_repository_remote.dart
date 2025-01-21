@@ -27,4 +27,10 @@ class ProductsRepositoryRemote implements ProductsRepository {
       return Result.ok(_cachedData!);
     }
   }
+  
+  @override
+  Future<Result<Product>> getProductById(String id) {
+    // TODO: implement getProductById
+    throw UnimplementedError();
+  }
 }
