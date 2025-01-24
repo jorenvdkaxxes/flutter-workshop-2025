@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Common.Web;
+using Microsoft.AspNetCore.Mvc;
+using ProductCatalog.Application;
+
+namespace ProductCatalog.Web;
 
 public class ProductsController : ApiController
 {

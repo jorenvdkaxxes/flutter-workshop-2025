@@ -1,4 +1,9 @@
+using Common.Application;
+using Common.Domain;
 using MediatR;
+using ProductCatalog.Domain;
+
+namespace ProductCatalog.Application;
 
 public class UpdateProductCommand : ProductCommand, IRequest<Result>
 {

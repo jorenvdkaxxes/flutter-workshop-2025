@@ -1,10 +1,14 @@
 ﻿using System.Reflection;
 using System.Text;
+using Common.Application;
+using Common.Domain;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+
+namespace Common.Infrastructure;
 
 public static class InfrastructureConfiguration
 {

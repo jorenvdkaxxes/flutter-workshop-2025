@@ -1,8 +1,11 @@
+using Common.Application;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Net.Http.Headers;
+
+namespace Common.Web;
 
 [ApiController]
 [Route("api/[controller]/[action]")]

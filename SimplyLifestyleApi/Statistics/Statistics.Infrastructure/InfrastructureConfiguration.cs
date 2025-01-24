@@ -1,6 +1,9 @@
 ﻿using System.Reflection;
+using Common.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+namespace Statistics.Infrastructure;
 
 public static class InfrastructureConfiguration
 {

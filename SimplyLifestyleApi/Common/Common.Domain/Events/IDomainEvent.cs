@@ -1,3 +1,5 @@
-﻿public interface IDomainEvent
+﻿namespace Common.Domain;
+
+public interface IDomainEvent
 {
 }

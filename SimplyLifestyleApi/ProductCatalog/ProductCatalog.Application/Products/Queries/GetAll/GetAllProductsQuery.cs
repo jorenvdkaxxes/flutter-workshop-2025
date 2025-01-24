@@ -1,4 +1,7 @@
-﻿using MediatR;
+﻿using Common.Application;
+using MediatR;
+
+namespace ProductCatalog.Application;
 
 public class GetAllProductsQuery : EntityCommand, IRequest<IEnumerable<ProductResponse>>
 {

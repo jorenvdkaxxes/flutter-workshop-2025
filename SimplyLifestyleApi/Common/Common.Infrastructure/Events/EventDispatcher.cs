@@ -1,6 +1,10 @@
 ﻿using System.Collections.Concurrent;
 using System.Reflection;
+using Common.Application;
+using Common.Domain;
 using Microsoft.Extensions.DependencyInjection;
+
+namespace Common.Infrastructure;
 
 internal class EventDispatcher : IEventDispatcher
     {

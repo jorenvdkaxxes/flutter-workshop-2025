@@ -1,4 +1,10 @@
-﻿internal class StatisticsDbInitializer : DbInitializer
+﻿using Common.Domain;
+using Common.Infrastructure;
+using Statistics.Domain;
+
+namespace Statistics.Infrastructure;
+
+internal class StatisticsDbInitializer : DbInitializer
 {
     public StatisticsDbInitializer(
         StatisticsDbContext db)

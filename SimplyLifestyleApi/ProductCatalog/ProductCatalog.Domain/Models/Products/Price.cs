@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace ProductCatalog.Domain;
+
 public class Price : ValueObject
 {
     public decimal Amount { get; }

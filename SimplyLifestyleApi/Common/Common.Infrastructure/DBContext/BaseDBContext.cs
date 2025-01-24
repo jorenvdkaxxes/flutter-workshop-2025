@@ -1,4 +1,7 @@
+using Common.Domain;
 using Microsoft.EntityFrameworkCore;
+
+namespace Common.Infrastructure;
 
 public abstract class BaseDbContext<TContext> : DbContext where TContext : DbContext
 {

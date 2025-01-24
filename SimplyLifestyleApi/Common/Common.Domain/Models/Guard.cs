@@ -1,4 +1,6 @@
-﻿public static class Guard
+﻿namespace Common.Domain;
+
+public static class Guard
 {
     public static void AgainstEmptyString(string value, string name = "Value")
     {

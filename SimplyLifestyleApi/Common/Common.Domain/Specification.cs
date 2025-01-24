@@ -1,6 +1,8 @@
 ﻿using System.Collections.Concurrent;
 using System.Linq.Expressions;
 
+namespace Common.Domain;
+
 public abstract class Specification<T>
 {
     private static readonly ConcurrentDictionary<string, Func<T, bool>> DelegateCache = new();

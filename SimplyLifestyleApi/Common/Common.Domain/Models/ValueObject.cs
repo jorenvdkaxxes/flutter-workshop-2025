@@ -1,4 +1,6 @@
-﻿/// <summary>
+﻿namespace Common.Domain;
+
+/// <summary>
 /// For this class implementation, reference:
 /// See: https://enterprisecraftsmanship.com/posts/value-object-better-implementation/
 /// </summary>

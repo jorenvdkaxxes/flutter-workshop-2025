@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace ProductCatalog.Domain;
+
 public class ProductData : IInitialData
 {
     public Type EntityType => typeof(Product);
