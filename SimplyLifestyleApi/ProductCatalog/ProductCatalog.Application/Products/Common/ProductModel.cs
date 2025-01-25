@@ -1,4 +1,8 @@
 using AutoMapper;
+using Common.Application;
+using ProductCatalog.Domain;
+
+namespace ProductCatalog.Application;
 
 public record PriceRequest(decimal Amount, string Currency);
 

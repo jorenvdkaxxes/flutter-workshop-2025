@@ -1,4 +1,6 @@
-﻿public class ApplicationSettings
+﻿namespace Common.Application;
+
+public class ApplicationSettings
 {
     public ApplicationSettings() => Secret = default!;
 

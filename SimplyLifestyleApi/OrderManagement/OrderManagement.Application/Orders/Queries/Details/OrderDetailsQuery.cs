@@ -1,4 +1,7 @@
-﻿using MediatR;
+﻿using Common.Application;
+using MediatR;
+
+namespace OrderManagement.Application;
 
 public class OrderDetailsQuery : EntityCommand, IRequest<OrderResponse>
 {

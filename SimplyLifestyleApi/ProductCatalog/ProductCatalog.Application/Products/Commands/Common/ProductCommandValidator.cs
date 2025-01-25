@@ -1,4 +1,8 @@
+using Common.Domain;
 using FluentValidation;
+using ProductCatalog.Domain;
+
+namespace ProductCatalog.Application;
 
 public class ProductCommandValidator : AbstractValidator<ProductCommand>
 {

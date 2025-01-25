@@ -1,3 +1,5 @@
-﻿public class OrderAddedEvent : IDomainEvent
+﻿namespace Common.Domain;
+
+public class OrderAddedEvent : IDomainEvent
 {
 }

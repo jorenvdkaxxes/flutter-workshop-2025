@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace ProductCatalog.Domain;
+
 public class Address : ValueObject
 {
     internal Address(string addressLine1, string? addressLine2, string? country, string? postalCode)

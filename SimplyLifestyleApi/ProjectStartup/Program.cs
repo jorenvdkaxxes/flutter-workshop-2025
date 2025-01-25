@@ -1,3 +1,23 @@
+using ProductCatalog.Domain;
+using ProductCatalog.Application;
+using ProductCatalog.Infrastructure;
+using ProductCatalog.Web;
+using OrderManagement.Domain;
+using OrderManagement.Application;
+using OrderManagement.Infrastructure;
+using OrderManagement.Web;
+using Statistics.Domain;
+using Statistics.Application;
+using Statistics.Infrastructure;
+using Statistics.Web;
+using Identity.Application;
+using Identity.Infrastructure;
+using Identity.Web;
+using Common.Infrastructure;
+using Common.Web;
+using ProjectStartup;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder

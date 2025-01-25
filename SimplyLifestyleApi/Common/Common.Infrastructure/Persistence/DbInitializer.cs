@@ -1,5 +1,8 @@
 ﻿using System.Reflection;
+using Common.Domain;
 using Microsoft.EntityFrameworkCore;
+
+namespace Common.Infrastructure;
 
 public abstract class DbInitializer : IDbInitializer
 {

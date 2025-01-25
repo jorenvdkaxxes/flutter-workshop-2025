@@ -1,4 +1,6 @@
-﻿public abstract class BaseDomainException : Exception
+﻿namespace Common.Domain;
+
+public abstract class BaseDomainException : Exception
 {
     private string? error;
 

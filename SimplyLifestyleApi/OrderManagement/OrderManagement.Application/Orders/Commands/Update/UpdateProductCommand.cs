@@ -1,4 +1,9 @@
+using Common.Application;
+using Common.Domain;
 using MediatR;
+using OrderManagement.Domain;
+
+namespace OrderManagement.Application;
 
 public class UpdateOrderCommand : OrderCommand, IRequest<Result>
 {

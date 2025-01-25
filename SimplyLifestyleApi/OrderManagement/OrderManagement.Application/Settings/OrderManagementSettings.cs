@@ -1,4 +1,6 @@
-﻿public class ProductCatalogAPIClientSettings(string baseUrl)
+﻿namespace OrderManagement.Application;
+
+public class ProductCatalogAPIClientSettings(string baseUrl)
 {
     public string BaseUrl { get; set; } = baseUrl;
 }

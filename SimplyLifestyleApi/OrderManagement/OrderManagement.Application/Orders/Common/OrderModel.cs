@@ -1,4 +1,8 @@
 using AutoMapper;
+using Common.Application;
+using OrderManagement.Domain;
+
+namespace OrderManagement.Application;
 
 public class OrderModel : IMapFrom<Order>
 {

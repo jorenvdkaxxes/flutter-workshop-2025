@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 
+namespace Common.Domain;
+
 public static class DomainConfiguration
 {
     public static IServiceCollection AddCommonDomain(

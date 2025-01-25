@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace ProductCatalog.Domain;
+
 public class Supplier : Entity, IAggregateRoot
 {
     internal Supplier(

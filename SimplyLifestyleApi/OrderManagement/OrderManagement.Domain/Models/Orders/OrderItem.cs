@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace OrderManagement.Domain;
+
 public class OrderItem : Entity
 {
     internal OrderItem(Guid orderId, Guid productId, int quantity)

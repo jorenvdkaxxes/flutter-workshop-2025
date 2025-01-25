@@ -1,5 +1,9 @@
 ﻿using System.Reflection;
+using Common.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using ProductCatalog.Domain;
+
+namespace ProductCatalog.Infrastructure;
 
 internal class ProductDbContext : BaseDbContext<ProductDbContext>
 {

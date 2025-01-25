@@ -1,4 +1,6 @@
-﻿public class ImageResponseModel
+﻿namespace Common.Application;
+
+public class ImageResponseModel
 {
     public ImageResponseModel(
         byte[] originalContent,

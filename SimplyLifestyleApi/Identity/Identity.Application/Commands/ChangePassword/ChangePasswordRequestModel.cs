@@ -1,4 +1,6 @@
-﻿public class ChangePasswordRequestModel
+﻿namespace Identity.Application;
+
+public class ChangePasswordRequestModel
 {
     public ChangePasswordRequestModel(
         string userId,

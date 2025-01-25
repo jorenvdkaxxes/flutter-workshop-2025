@@ -1,3 +1,5 @@
+namespace OrderManagement.Domain;
+
 public class OrderModelConstants
 {
     public class Order

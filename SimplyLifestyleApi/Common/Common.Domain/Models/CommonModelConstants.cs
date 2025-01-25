@@ -1,3 +1,5 @@
+namespace Common.Domain;
+
 public class CommonModelConstants
 {
     public class Common

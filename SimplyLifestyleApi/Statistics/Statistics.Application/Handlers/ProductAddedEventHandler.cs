@@ -1,4 +1,10 @@
-﻿public class ProductAddedEventHandler : IEventHandler<ProductAddedEvent>
+﻿using Common.Application;
+using Common.Domain;
+using Statistics.Domain;
+
+namespace Statistics.Application;
+
+public class ProductAddedEventHandler : IEventHandler<ProductAddedEvent>
 {
     private readonly IStatisticsDomainRepository statisticsRepository;
 

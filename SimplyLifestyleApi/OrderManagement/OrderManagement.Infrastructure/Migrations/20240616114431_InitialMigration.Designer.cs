@@ -5,10 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using OrderManagement.Infrastructure;
 
 #nullable disable
 
-namespace Orders.Infrastructure.Migrations
+namespace Orders.Infrastructure
 {
     [DbContext(typeof(OrderManagementDbContext))]
     [Migration("20240616114431_InitialMigration")]

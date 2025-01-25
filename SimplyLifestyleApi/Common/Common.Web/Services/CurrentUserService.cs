@@ -1,5 +1,8 @@
 ﻿using System.Security.Claims;
+using Common.Application;
 using Microsoft.AspNetCore.Http;
+
+namespace Common.Web;
 
 public class CurrentUserService : ICurrentUser
 {

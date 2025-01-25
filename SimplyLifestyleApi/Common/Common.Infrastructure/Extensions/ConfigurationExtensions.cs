@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 
+namespace Common.Infrastructure;
+
 public static class ConfigurationExtensions
 {
     public static string GetSqlServerConnectionString(

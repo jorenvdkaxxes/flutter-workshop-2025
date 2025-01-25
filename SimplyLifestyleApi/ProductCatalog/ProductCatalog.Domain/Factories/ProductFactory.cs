@@ -1,3 +1,5 @@
+namespace ProductCatalog.Domain;
+
 internal class ProductFactory : IProductFactory
 {
     private string productName = default!;

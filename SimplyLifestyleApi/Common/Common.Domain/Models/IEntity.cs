@@ -1,4 +1,6 @@
-﻿public interface IEntity
+﻿namespace Common.Domain;
+
+public interface IEntity
 {
     IReadOnlyCollection<IDomainEvent> Events { get; }
 

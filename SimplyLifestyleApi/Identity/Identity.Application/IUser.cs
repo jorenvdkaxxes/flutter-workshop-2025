@@ -1,3 +1,5 @@
-﻿public interface IUser
+﻿namespace Identity.Application;
+
+public interface IUser
 {
 }

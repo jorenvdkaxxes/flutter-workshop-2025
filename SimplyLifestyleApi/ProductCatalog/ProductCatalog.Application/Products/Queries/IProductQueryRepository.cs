@@ -1,3 +1,8 @@
+using Common.Application;
+using ProductCatalog.Domain;
+
+namespace ProductCatalog.Application;
+
 public interface IProductQueryRepository : IQueryRepository<Product>
 {
     Task<IEnumerable<ProductResponse>> GetAll(CancellationToken cancellationToken = default);
