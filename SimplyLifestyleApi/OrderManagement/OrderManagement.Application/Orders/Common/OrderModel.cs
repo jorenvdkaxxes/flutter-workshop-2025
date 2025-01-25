@@ -7,7 +7,8 @@ namespace OrderManagement.Application;
 public class OrderModel : IMapFrom<Order>
 {
     public Guid CustomerId { get; set; }
-    public DateTime OrderDate { get; set; }
+    public DateTimeOffset OrderDate { get; set; }
+    public DateTimeOffset DeliveryDate { get; set; }
     public int Status { get; private set; }
     public List<OrderItemModel> OrderItems { get; set; } = new();
 

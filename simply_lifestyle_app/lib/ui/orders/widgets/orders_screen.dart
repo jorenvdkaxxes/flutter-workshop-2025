@@ -24,6 +24,13 @@ class OrdersScreen extends StatelessWidget {
                   onPressed: viewModel.load.execute,
                 );
               }
+
+              if (viewModel.orders.isEmpty) {
+                return const Center(
+                  child: Text("No orders found"),
+                );
+              }
+
               return ListView.builder(
                 itemCount: viewModel.orders.length,
                 prototypeItem: ListTile(
@@ -32,7 +39,8 @@ class OrdersScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(viewModel.orders[index].id),
-                    subtitle: Text('Status: ${viewModel.orders[index].orderStatus}'),
+                    subtitle:
+                        Text('Status: ${viewModel.orders[index].orderStatus}'),
                     onTap: () {
                       // Navigator.push(
                       //   context,

@@ -9,10 +9,10 @@ using OrderManagement.Infrastructure;
 
 #nullable disable
 
-namespace Orders.Infrastructure
+namespace Orders.Infrastructure.Migrations
 {
     [DbContext(typeof(OrderManagementDbContext))]
-    [Migration("20240616114431_InitialMigration")]
+    [Migration("20250125183834_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -20,12 +20,12 @@ namespace Orders.Infrastructure
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Order", b =>
+            modelBuilder.Entity("OrderManagement.Domain.Order", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,15 +34,18 @@ namespace Orders.Infrastructure
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTimeOffset>("DeliveryDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("OrderDate")
+                        .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
 
                     b.ToTable("Orders", (string)null);
                 });
 
-            modelBuilder.Entity("OrderItem", b =>
+            modelBuilder.Entity("OrderManagement.Domain.OrderItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -64,9 +67,9 @@ namespace Orders.Infrastructure
                     b.ToTable("OrderItems", (string)null);
                 });
 
-            modelBuilder.Entity("Order", b =>
+            modelBuilder.Entity("OrderManagement.Domain.Order", b =>
                 {
-                    b.OwnsOne("OrderStatus", "Status", b1 =>
+                    b.OwnsOne("OrderManagement.Domain.OrderStatus", "Status", b1 =>
                         {
                             b1.Property<Guid>("OrderId")
                                 .HasColumnType("uniqueidentifier");
@@ -86,16 +89,16 @@ namespace Orders.Infrastructure
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("OrderItem", b =>
+            modelBuilder.Entity("OrderManagement.Domain.OrderItem", b =>
                 {
-                    b.HasOne("Order", null)
+                    b.HasOne("OrderManagement.Domain.Order", null)
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Order", b =>
+            modelBuilder.Entity("OrderManagement.Domain.Order", b =>
                 {
                     b.Navigation("OrderItems");
                 });
