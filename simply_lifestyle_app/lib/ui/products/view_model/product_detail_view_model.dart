@@ -18,11 +18,13 @@ class ProductDetailViewModel extends ChangeNotifier {
 
   final _log = Logger('ProductDetailViewModel');
 
+  late String lastQueriedProductId;
   Product? _product;
   Product? get product => _product;
 
   Future<Result<void>> _getProductById(String id) async {
     try {
+      lastQueriedProductId = id;
       final result = await _productsRepository.getProductById(id);
       switch (result) {
         case Ok<Product>():

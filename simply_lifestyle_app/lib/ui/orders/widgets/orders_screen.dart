@@ -20,7 +20,7 @@ class OrdersScreen extends StatelessWidget {
               if (viewModel.load.error) {
                 return ErrorIndicator(
                   title: "Something went wrong.",
-                  label: "Could not get the orders.",
+                  label: "Could not get the orders, retry...",
                   onPressed: viewModel.load.execute,
                 );
               }

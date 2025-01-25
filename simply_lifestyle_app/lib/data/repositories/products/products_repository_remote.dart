@@ -29,8 +29,9 @@ class ProductsRepositoryRemote implements ProductsRepository {
   }
   
   @override
-  Future<Result<Product>> getProductById(String id) {
-    // TODO: implement getProductById
-    throw UnimplementedError();
+  Future<Result<Product>> getProductById(String id) async {
+    final result = await _apiClient.getProductById(id);
+
+    return result;
   }
 }

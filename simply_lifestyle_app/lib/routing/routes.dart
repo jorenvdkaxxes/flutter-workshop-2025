@@ -6,5 +6,6 @@ abstract final class Routes {
   static const home = '/';
   static const products = '/products';
   static const newOrder = '/new-order';
-  static String productsWithId(int id) => '$products/$id';
+  static const productDetails = '$products/:id';
+  static String productsWithId(String id) => '$products/$id';
 }

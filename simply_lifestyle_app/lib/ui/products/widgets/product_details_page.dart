@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:simply_lifestyle_app/domain/models/product/product.dart';
+import 'package:simply_lifestyle_app/routing/routes.dart';
+import 'package:simply_lifestyle_app/ui/core/ui/error_indicator.dart';
 import 'package:simply_lifestyle_app/ui/products/view_model/product_detail_view_model.dart';
 import 'package:simply_lifestyle_app/ui/products/widgets/product_details_row.dart';
 
@@ -22,22 +25,37 @@ class ProductDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final product = ModalRoute.of(context)!.settings.arguments as Product;
+    return SafeArea(
+        child: PopScope(
+            canPop: false,
+            onPopInvokedWithResult: (didPop, r) {
+              if (!didPop) context.go(Routes.home);
+            },
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text('Product details'),
+              ),
+              body: ListenableBuilder(
+                listenable: viewModel,
+                builder: (context, _) {
+                  if (viewModel.loadProduct.running) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
 
-    // return Scaffold(
-    //     appBar: AppBar(
-    //       title: Text(product.name),
-    //     ),
-    //     body: Padding(
-    //         padding: EdgeInsets.only(left: 8),
-    //         child: Column(children: getProductDetailsRows(product))));
-
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Test'),
-        ),
-        body: Padding(
-            padding: EdgeInsets.only(left: 8),
-            child: Text('Test')));
+                  if (viewModel.loadProduct.error) {
+                    return Center(
+                        child: ErrorIndicator(
+                      title: "Something went wrong.",
+                      label: "Could not get the product, retry...",
+                      onPressed: () => viewModel.loadProduct.execute(viewModel.lastQueriedProductId),
+                    ));
+                  }
+                  return Padding(
+                      padding: EdgeInsets.only(left: 8),
+                      child: Column(
+                          children: getProductDetailsRows(viewModel.product!)));
+                },
+              ),
+            )));
   }
 }
