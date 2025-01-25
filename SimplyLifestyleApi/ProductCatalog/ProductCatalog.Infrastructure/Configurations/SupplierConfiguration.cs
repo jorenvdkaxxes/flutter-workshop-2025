@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ProductCatalog.Domain;
+
+namespace ProductCatalog.Infrastructure;
 
 internal class SupplierConfiguration : IEntityTypeConfiguration<Supplier>
 {

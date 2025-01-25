@@ -1,4 +1,7 @@
-﻿using MediatR;
+﻿using Common.Application;
+using MediatR;
+
+namespace Identity.Application;
 
 public class RegisterUserCommand : UserRequestModel, IRequest<Result>
 {

@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace ProductCatalog.Domain;
+
 public class ProductData : IInitialData
 {
     public Type EntityType => typeof(Product);
@@ -8,7 +12,6 @@ public class ProductData : IInitialData
             name: "Product 1",
             description: "Description of Product 1",
             productType: ProductType.KaliSeats,
-            weight: new Weight(2.5m, "kg"),
             price: new Price(2199.99m, "EUR")
         );
 
@@ -16,7 +19,6 @@ public class ProductData : IInitialData
             name: "Product 2",
             description: "Description of Product 2",
             productType: ProductType.FabricSeats,
-            weight: new Weight(0.5m, "kg"),
             price: new Price(1099.99m, "EUR")
         );
 

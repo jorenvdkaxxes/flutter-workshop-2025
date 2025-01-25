@@ -1,7 +1,10 @@
-﻿using FluentValidation;
+﻿using Common.Application;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+
+namespace Common.Web;
 
 public static class WebConfiguration
 {

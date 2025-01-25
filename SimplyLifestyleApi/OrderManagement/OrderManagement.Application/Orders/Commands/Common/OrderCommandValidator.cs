@@ -1,4 +1,7 @@
 using FluentValidation;
+using OrderManagement.Domain;
+
+namespace OrderManagement.Application;
 
 public class OrderCommandValidator : AbstractValidator<OrderCommand>
 {

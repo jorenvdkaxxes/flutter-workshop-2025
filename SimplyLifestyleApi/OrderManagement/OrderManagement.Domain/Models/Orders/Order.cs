@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace OrderManagement.Domain;
+
 public class Order : Entity, IAggregateRoot
 {
     public HashSet<OrderItem> OrderItems { get; private set; }

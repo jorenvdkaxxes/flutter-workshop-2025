@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace Statistics.Domain;
+
 public class TotalStatisticsData : IInitialData
 {
     public Type EntityType => typeof(TotalStatistics);

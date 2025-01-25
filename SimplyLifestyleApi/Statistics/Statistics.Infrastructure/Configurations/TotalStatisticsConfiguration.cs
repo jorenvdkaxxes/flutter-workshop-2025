@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Statistics.Domain;
+
+namespace Statistics.Infrastructure;
 
 internal class TotalStatisticsConfiguration : IEntityTypeConfiguration<TotalStatistics>
 {

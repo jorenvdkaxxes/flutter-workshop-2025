@@ -1,4 +1,9 @@
-﻿public static class ApplicationBuilderExtensions
+﻿using Common.Infrastructure;
+using Common.Web;
+
+namespace ProjectStartup;
+
+public static class ApplicationBuilderExtensions
 {
     public static IApplicationBuilder UseWebService(
         this IApplicationBuilder app,

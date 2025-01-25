@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace OrderManagement.Domain;
+
 public interface IOrderDomainRepository : IDomainRepository<Order>
 {
     Task<Order> Find(Guid id, CancellationToken cancellationToken = default);

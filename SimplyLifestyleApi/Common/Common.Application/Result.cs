@@ -1,3 +1,5 @@
+namespace Common.Application;
+
 public class Result
 {
     private readonly List<string> errors;

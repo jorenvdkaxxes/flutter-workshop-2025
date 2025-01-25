@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using Common.Application;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+
+namespace Common.Web;
 
 public class ImageModelBinderProvider : IModelBinderProvider
 {

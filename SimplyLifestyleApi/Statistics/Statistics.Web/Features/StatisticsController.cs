@@ -1,3 +1,7 @@
-﻿public class StatisticsController : ApiController
+﻿using Common.Web;
+
+namespace Statistics.Web;
+
+public class StatisticsController : ApiController
 {
 }

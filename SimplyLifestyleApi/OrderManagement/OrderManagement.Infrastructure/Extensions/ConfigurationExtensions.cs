@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
+using OrderManagement.Application;
+
+namespace OrderManagement.Infrastructure;
 
 public static class ConfigurationExtensions
 {

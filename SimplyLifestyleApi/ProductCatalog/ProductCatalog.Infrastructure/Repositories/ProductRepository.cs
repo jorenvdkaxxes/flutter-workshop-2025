@@ -1,5 +1,10 @@
 ﻿using AutoMapper;
+using Common.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using ProductCatalog.Application;
+using ProductCatalog.Domain;
+
+namespace ProductCatalog.Infrastructure;
 
 internal class ProductRepository : DataRepository<ProductDbContext, Product>,
     IProductDomainRepository,
@@ -16,10 +21,15 @@ internal class ProductRepository : DataRepository<ProductDbContext, Product>,
             .Include(b => b.Suppliers)
             .FirstOrDefaultAsync(b => b.Id == id, cancellationToken);
 
+    public async Task<IEnumerable<ProductResponse>> GetAll(CancellationToken cancellationToken = default)
+        => await mapper
+            .ProjectTo<ProductResponse>(AllAsNoTracking()
+                .Include(b => b.Suppliers)).ToListAsync(cancellationToken);
+
     public async Task<ProductResponse> GetDetailsById(Guid id, CancellationToken cancellationToken = default)
         => await mapper
             .ProjectTo<ProductResponse>(AllAsNoTracking()
-                .Include(b => b.Suppliers)).FirstAsync();
+                .Include(b => b.Suppliers)).FirstAsync(cancellationToken);
     
     public async Task Delete(Guid id, CancellationToken cancellationToken = default)
     {

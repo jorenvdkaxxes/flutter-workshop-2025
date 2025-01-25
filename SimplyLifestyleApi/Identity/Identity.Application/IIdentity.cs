@@ -1,4 +1,8 @@
-﻿public interface IIdentity
+﻿using Common.Application;
+
+namespace Identity.Application;
+
+public interface IIdentity
 {
     Task<Result<IUser>> Register(UserRequestModel userRequest);
 

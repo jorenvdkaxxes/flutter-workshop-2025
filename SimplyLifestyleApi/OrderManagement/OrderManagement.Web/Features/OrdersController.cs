@@ -1,7 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Common.Web;
+using Microsoft.AspNetCore.Mvc;
+using OrderManagement.Application;
+
+namespace OrderManagement.Web;
 
 public class OrdersController : ApiController
 {
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<OrderResponse>>> Get([FromRoute] GetAllOrdersQuery query)
+        => await Send(query);
+
     [HttpGet]
     [Route(Id)]
     public async Task<ActionResult<OrderResponse>> GetById([FromRoute] OrderDetailsQuery query)
