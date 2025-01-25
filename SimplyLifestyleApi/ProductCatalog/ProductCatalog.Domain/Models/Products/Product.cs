@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace ProductCatalog.Domain;
+
 public class Product : Entity, IAggregateRoot
 {
     public HashSet<Supplier> Suppliers { get; private set; }
@@ -6,15 +10,15 @@ public class Product : Entity, IAggregateRoot
         string name,
         string description,
         ProductType productType,
-        Weight weight,
-        Price price)
+        Price price,
+        int stock = 0)
     {
         Validate(name, description);
         Name = name;
         Description = description;
         ProductType = productType;
-        Weight = weight;
         Price = price;
+        Stock = stock;
 
         Suppliers = new HashSet<Supplier>();
         
@@ -29,8 +33,8 @@ public class Product : Entity, IAggregateRoot
         Name = name;
         Description = description;
         ProductType = default!;
-        Weight = default!;
         Price = default!;
+        Stock = default;
 
         Suppliers = default!;
     }
@@ -38,8 +42,8 @@ public class Product : Entity, IAggregateRoot
     public string Name { get; private set; }
     public string Description { get; private set; }
     public ProductType ProductType { get; private set; }
-    public Weight Weight { get; private set; }
     public Price Price { get; private set; }
+    public int Stock { get; private set; }
 
     public Product UpdateName(string name)
     {
@@ -61,15 +65,15 @@ public class Product : Entity, IAggregateRoot
         return this;
     }
 
-    public Product UpdateWeight(decimal value, string unit)
-    {
-        Weight = new Weight(value, unit);
-        return this;
-    }
-
     public Product UpdatePrice(decimal amount, string currency)
     {
         Price = new Price(amount, currency);
+        return this;
+    }
+
+    public Product UpdateStock(int stock)
+    {
+        Stock = stock;
         return this;
     }
 

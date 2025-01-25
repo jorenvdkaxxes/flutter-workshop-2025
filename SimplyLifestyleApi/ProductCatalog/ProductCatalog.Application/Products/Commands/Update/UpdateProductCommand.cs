@@ -1,4 +1,9 @@
+using Common.Application;
+using Common.Domain;
 using MediatR;
+using ProductCatalog.Domain;
+
+namespace ProductCatalog.Application;
 
 public class UpdateProductCommand : ProductCommand, IRequest<Result>
 {
@@ -21,7 +26,7 @@ public class UpdateProductCommand : ProductCommand, IRequest<Result>
                 .UpdateDescription(request.Description)
                 .UpdateProductType(Enumeration.FromValue<ProductType>(request.ProductType))
                 .UpdatePrice(request.Price.Amount, request.Price.Currency)
-                .UpdateWeight(request.Weight.Value, request.Weight.Unit);
+                .UpdateStock(request.Stock);
 
             await productRepository.Save(product, cancellationToken);
 

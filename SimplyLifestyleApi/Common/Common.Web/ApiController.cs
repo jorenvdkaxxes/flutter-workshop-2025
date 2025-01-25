@@ -1,8 +1,11 @@
+using Common.Application;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Net.Http.Headers;
+
+namespace Common.Web;
 
 [ApiController]
 [Route("api/[controller]/[action]")]
@@ -10,6 +13,7 @@ public abstract class ApiController : ControllerBase
 {
     protected const string Id = "{id}";
     protected const string PathSeparator = "/";
+    protected const string GetAll = "all";
 
     private IMediator? mediator;
 

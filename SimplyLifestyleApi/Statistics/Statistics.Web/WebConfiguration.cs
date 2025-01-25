@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Common.Web;
+using Microsoft.Extensions.DependencyInjection;
+using Statistics.Application;
+
+namespace Statistics.Web;
 
 public static class WebConfiguration
 {

@@ -1,6 +1,9 @@
 ﻿using System.Reflection;
+using Common.Application;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+namespace Statistics.Application;
 
 public static class StatisticsApplicationConfiguration
 {

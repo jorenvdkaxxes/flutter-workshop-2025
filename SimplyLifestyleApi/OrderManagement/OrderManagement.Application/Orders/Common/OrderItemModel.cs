@@ -1,3 +1,5 @@
+namespace OrderManagement.Application;
+
 public class OrderItemModel
 {
     public Guid ProductId { get; set; }

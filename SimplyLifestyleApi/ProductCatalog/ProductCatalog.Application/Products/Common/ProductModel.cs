@@ -1,22 +1,23 @@
 using AutoMapper;
+using Common.Application;
+using ProductCatalog.Domain;
+
+namespace ProductCatalog.Application;
 
 public record PriceRequest(decimal Amount, string Currency);
 
-public record WeightRequest(decimal Value, string Unit);
-
 public class ProductModel : IMapFrom<Product>
 {
-    public string Name { get; set; }
-    public string Description { get; set; }
+    public string Name { get; set; } = default!;
+    public string Description { get; set; } = default!;
     public int ProductType { get; set; }
-    public PriceRequest Price { get; set; }
-    public WeightRequest Weight { get; set; }
+    public PriceRequest Price { get; set; } = default!;
+    public int Stock { get; set; }
 
     public virtual void Mapping(Profile mapper)
     {
         mapper.CreateMap<Product, ProductModel>()
             .ForMember(p => p.ProductType, opt => opt.MapFrom(src => src.ProductType.Value))
-            .ForMember(p => p.Price, opt => opt.MapFrom(src => new PriceRequest(src.Price.Amount, src.Price.Currency)))
-            .ForMember(p => p.Weight, opt => opt.MapFrom(src => new WeightRequest(src.Weight.Value, src.Weight.Unit)));
+            .ForMember(p => p.Price, opt => opt.MapFrom(src => new PriceRequest(src.Price.Amount, src.Price.Currency)));
     }
 }

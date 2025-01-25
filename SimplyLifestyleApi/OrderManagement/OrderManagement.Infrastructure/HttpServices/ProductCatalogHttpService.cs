@@ -1,4 +1,7 @@
+using OrderManagement.Application;
 using System.Net.Http.Json;
+
+namespace OrderManagement.Infrastructure;
 
 public sealed class ProductCatalogHttpService : IProductCatalogHttpService
 {

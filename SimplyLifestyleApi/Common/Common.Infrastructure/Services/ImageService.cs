@@ -1,5 +1,8 @@
-﻿using SixLabors.ImageSharp;
+﻿using Common.Application;
+using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
+
+namespace Common.Infrastructure;
 
 internal class ImageService : IImageService
 {

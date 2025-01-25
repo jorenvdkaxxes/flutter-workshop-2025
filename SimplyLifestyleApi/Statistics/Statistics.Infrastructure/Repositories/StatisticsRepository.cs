@@ -1,5 +1,10 @@
 ﻿using AutoMapper;
+using Common.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Statistics.Application;
+using Statistics.Domain;
+
+namespace Statistics.Infrastructure;
 
 internal class StatisticsRepository : DataRepository<StatisticsDbContext, TotalStatistics>,
     IStatisticsDomainRepository,

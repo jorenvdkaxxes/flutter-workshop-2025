@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Statistics.Infrastructure.Migrations
+namespace Statistics.Infrastructure
 {
     [DbContext(typeof(StatisticsDbContext))]
     partial class StatisticsDbContextModelSnapshot : ModelSnapshot

@@ -1,8 +1,12 @@
 ﻿using System.Net;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Common.Application;
+using Common.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+
+namespace Common.Web;
 
 public class ValidationExceptionHandlerMiddleware
 {

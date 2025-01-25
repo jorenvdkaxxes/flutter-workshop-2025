@@ -1,3 +1,5 @@
-﻿public class ProductAddedEvent : IDomainEvent
+﻿namespace Common.Domain;
+
+public class ProductAddedEvent : IDomainEvent
 {
 }

@@ -1,4 +1,7 @@
 using AutoMapper;
+using ProductCatalog.Domain;
+
+namespace ProductCatalog.Application;
 
 public class ProductResponse : ProductModel
 {
