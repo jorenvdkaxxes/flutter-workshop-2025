@@ -1,4 +1,8 @@
-﻿using MediatR;
+﻿using Common.Application;
+using MediatR;
+using ProductCatalog.Domain;
+
+namespace ProductCatalog.Application;
 
 public class DeleteProductCommand : EntityCommand, IRequest<Result>
 {

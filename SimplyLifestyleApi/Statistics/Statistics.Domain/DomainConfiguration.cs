@@ -1,5 +1,8 @@
 ﻿using System.Reflection;
+using Common.Domain;
 using Microsoft.Extensions.DependencyInjection;
+
+namespace Statistics.Domain;
 
 public static class DomainConfiguration
 {

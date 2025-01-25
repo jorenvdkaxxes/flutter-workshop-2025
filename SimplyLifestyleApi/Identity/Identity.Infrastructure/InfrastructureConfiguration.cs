@@ -1,7 +1,12 @@
 ﻿using System.Reflection;
+using Common.Domain;
+using Common.Infrastructure;
+using Identity.Application;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+namespace Identity.Infrastructure;
 
 public static class InfrastructureConfiguration
 {

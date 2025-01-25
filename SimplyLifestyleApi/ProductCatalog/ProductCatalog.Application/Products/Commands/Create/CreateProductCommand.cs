@@ -1,4 +1,8 @@
+using Common.Domain;
 using MediatR;
+using ProductCatalog.Domain;
+
+namespace ProductCatalog.Application;
 
 public class CreateProductCommand : ProductCommand, IRequest<CreateProductResponse>
 {

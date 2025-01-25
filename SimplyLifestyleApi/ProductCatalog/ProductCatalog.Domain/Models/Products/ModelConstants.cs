@@ -1,3 +1,5 @@
+namespace ProductCatalog.Domain;
+
 public class ProductModelConstants
 {
     public class Product

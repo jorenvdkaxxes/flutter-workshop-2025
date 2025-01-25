@@ -1,4 +1,6 @@
-﻿public interface IInitialData
+﻿namespace Common.Domain;
+
+public interface IInitialData
 {
     Type EntityType { get; }
 

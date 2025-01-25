@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace OrderManagement.Domain;
+
 public class OrderStatus : Enumeration
 {
     public static readonly OrderStatus Pending = new(1, nameof(Pending));

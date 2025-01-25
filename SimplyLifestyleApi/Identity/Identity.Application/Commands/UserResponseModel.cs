@@ -1,4 +1,6 @@
-﻿public class UserResponseModel
+﻿namespace Identity.Application;
+
+public class UserResponseModel
 {
     public UserResponseModel(string token) => Token = token;
 

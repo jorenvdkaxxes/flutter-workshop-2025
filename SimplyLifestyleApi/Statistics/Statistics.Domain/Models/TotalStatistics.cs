@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace Statistics.Domain;
+
 public class TotalStatistics : Entity, IAggregateRoot
 {
     public int TotalOrdersCreated { get; private set; }

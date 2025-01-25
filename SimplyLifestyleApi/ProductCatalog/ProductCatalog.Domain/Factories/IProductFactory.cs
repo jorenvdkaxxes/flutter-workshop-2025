@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace ProductCatalog.Domain;
+
 public interface IProductFactory : IFactory<Product>
 {
     IProductFactory WithName(string name);

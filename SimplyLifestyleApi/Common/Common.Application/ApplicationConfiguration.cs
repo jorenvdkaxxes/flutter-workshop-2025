@@ -3,6 +3,8 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+namespace Common.Application;
+
 public static class ApplicationConfiguration
 {
     public static IServiceCollection AddCommonApplication(

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Concurrent;
 using System.Reflection;
 
+namespace Common.Domain;
+
 public abstract class Enumeration : IComparable
 {
     private static readonly ConcurrentDictionary<Type, IEnumerable<object>> EnumCache = new();

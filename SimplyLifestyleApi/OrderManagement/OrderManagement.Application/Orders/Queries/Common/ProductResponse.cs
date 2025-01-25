@@ -1,4 +1,7 @@
 using AutoMapper;
+using OrderManagement.Domain;
+
+namespace OrderManagement.Application;
 
 public class OrderResponse : OrderModel
 {

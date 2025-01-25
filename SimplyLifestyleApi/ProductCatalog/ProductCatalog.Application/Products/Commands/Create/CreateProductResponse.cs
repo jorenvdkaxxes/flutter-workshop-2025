@@ -1,3 +1,5 @@
+namespace ProductCatalog.Application;
+
 public class CreateProductResponse
 {
     internal CreateProductResponse(Guid id) => Id = id;

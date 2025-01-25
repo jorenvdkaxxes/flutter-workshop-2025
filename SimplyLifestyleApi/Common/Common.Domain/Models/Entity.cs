@@ -1,4 +1,6 @@
-﻿public abstract class Entity : IEntity
+﻿namespace Common.Domain;
+
+public abstract class Entity : IEntity
 {
     private readonly ICollection<IDomainEvent> events;
 

@@ -1,5 +1,7 @@
 ﻿using FluentValidation.Results;
 
+namespace Common.Application;
+
 public class ModelValidationException : Exception
 {
     public ModelValidationException()

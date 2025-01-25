@@ -1,3 +1,5 @@
+namespace OrderManagement.Application;
+
 public class CreateOrderResponse
 {
     public CreateOrderResponse(Guid orderId)

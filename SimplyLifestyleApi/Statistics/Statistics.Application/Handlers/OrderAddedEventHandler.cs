@@ -1,4 +1,10 @@
-﻿public class OrderAddedEventHandler : IEventHandler<OrderAddedEvent>
+﻿using Common.Application;
+using Common.Domain;
+using Statistics.Domain;
+
+namespace Statistics.Application;
+
+public class OrderAddedEventHandler : IEventHandler<OrderAddedEvent>
 {
     private readonly IStatisticsDomainRepository statistics;
 
