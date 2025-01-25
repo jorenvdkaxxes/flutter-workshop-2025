@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using AutoMapper;
 
+namespace Common.Application;
+
 public class MappingProfile : Profile
 {
     public MappingProfile(Assembly assembly)

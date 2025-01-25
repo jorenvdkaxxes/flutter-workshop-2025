@@ -1,5 +1,10 @@
 ﻿using AutoMapper;
+using Common.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using OrderManagement.Application;
+using OrderManagement.Domain;
+
+namespace OrderManagement.Infrastructure;
 
 internal class OrderRepository : DataRepository<OrderManagementDbContext, Order>,
     IOrderDomainRepository,

@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Common.Application;
+using Identity.Application;
+using Microsoft.AspNetCore.Identity;
+
+namespace Identity.Infrastructure;
 
 internal class IdentityService : IIdentity
 {

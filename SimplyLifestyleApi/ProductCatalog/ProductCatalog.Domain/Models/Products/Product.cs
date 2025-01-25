@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace ProductCatalog.Domain;
+
 public class Product : Entity, IAggregateRoot
 {
     public HashSet<Supplier> Suppliers { get; private set; }

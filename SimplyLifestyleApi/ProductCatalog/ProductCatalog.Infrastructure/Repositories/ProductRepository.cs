@@ -1,5 +1,10 @@
 ﻿using AutoMapper;
+using Common.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using ProductCatalog.Application;
+using ProductCatalog.Domain;
+
+namespace ProductCatalog.Infrastructure;
 
 internal class ProductRepository : DataRepository<ProductDbContext, Product>,
     IProductDomainRepository,

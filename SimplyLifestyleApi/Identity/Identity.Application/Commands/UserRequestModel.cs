@@ -1,4 +1,6 @@
-﻿public abstract class UserRequestModel
+﻿namespace Identity.Application;
+
+public abstract class UserRequestModel
 {
     protected UserRequestModel(string email, string password)
     {

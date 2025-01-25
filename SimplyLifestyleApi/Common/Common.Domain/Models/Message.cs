@@ -1,5 +1,7 @@
 ﻿using System.Text.Json;
 
+namespace Common.Domain;
+
 public class Message
 {
     private string serializedData = default!;

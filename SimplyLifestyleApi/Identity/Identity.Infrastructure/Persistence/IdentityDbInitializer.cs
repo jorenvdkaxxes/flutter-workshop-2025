@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Common.Domain;
+using Common.Infrastructure;
+using Microsoft.AspNetCore.Identity;
+
+namespace Identity.Infrastructure;
 
 internal class IdentityDbInitializer : DbInitializer
 {

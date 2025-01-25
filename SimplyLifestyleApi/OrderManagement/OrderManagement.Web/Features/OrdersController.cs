@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Common.Web;
+using Microsoft.AspNetCore.Mvc;
+using OrderManagement.Application;
+
+namespace OrderManagement.Web;
 
 public class OrdersController : ApiController
 {

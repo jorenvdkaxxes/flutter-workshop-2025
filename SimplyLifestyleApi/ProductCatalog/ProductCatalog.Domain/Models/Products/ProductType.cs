@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace ProductCatalog.Domain;
+
 public class ProductType : Enumeration
 {
     public static ProductType KaliSeats = new(0, nameof(KaliSeats));

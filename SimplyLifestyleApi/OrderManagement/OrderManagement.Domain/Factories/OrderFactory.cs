@@ -1,3 +1,5 @@
+namespace OrderManagement.Domain;
+
 internal class OrderFactory : IOrderFactory
 {
     private Guid customerId = default!;

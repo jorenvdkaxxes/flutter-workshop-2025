@@ -1,5 +1,9 @@
 ﻿using System.Reflection;
+using Common.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Statistics.Domain;
+
+namespace Statistics.Infrastructure;
 
 internal class StatisticsDbContext : BaseDbContext<StatisticsDbContext>
 {

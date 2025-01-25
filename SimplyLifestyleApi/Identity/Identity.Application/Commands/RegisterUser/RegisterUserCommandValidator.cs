@@ -1,5 +1,8 @@
-﻿using FluentValidation;
-    
+﻿using Common.Domain;
+using FluentValidation;
+
+namespace Identity.Application;
+
 public class RegisterUserCommandValidator : AbstractValidator<RegisterUserCommand>
 {
     public RegisterUserCommandValidator()

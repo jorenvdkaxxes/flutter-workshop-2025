@@ -1,6 +1,10 @@
 ﻿using System.Reflection;
+using Common.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OrderManagement.Application;
+
+namespace OrderManagement.Infrastructure;
 
 public static class InfrastructureConfiguration
 {

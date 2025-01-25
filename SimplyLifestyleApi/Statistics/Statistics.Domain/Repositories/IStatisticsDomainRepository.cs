@@ -1,3 +1,7 @@
+using Common.Domain;
+
+namespace Statistics.Domain;
+
 public interface IStatisticsDomainRepository : IDomainRepository<TotalStatistics>
 {
     Task IncrementOrders(CancellationToken cancellationToken = default);

@@ -1,5 +1,9 @@
 ﻿using System.Reflection;
+using Common.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using OrderManagement.Domain;
+
+namespace OrderManagement.Infrastructure;
 
 internal class OrderManagementDbContext : BaseDbContext<OrderManagementDbContext>
 {

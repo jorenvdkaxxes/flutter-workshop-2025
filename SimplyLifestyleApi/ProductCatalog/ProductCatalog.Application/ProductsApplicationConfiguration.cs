@@ -1,6 +1,9 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Common.Application;
+
+namespace ProductCatalog.Application;
 
 public static class ProductsApplicationConfiguration
 {

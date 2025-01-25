@@ -1,4 +1,6 @@
-﻿public class EntityCommand
+﻿namespace Common.Application;
+
+public class EntityCommand
 {
     public Guid Id { get; set; } = default!;
 }

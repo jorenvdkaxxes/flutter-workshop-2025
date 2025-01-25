@@ -1,4 +1,7 @@
 using MediatR;
+using OrderManagement.Domain;
+
+namespace OrderManagement.Application;
 
 public class CreateOrderCommand : OrderCommand, IRequest<CreateOrderResponse>
 {
