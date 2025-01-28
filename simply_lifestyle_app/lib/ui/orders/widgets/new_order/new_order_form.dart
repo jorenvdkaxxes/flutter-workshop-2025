@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:simply_lifestyle_app/domain/models/product/product.dart';
+import 'package:simply_lifestyle_app/ui/orders/widgets/new_order/order_item_row.dart';
 
 class NewOrderForm extends StatefulWidget {
-  const NewOrderForm({super.key, required this.products});
+  const NewOrderForm(
+      {super.key, required this.products, required this.createOrder});
 
   final List<Product> products;
+
+  final Function(Map<String, dynamic>) createOrder;
 
   @override
   State<StatefulWidget> createState() => _NewOrderFormState();
@@ -28,39 +32,24 @@ class _NewOrderFormState extends State<NewOrderForm> {
   int orderItemCount = 1;
   final List<Widget> orderItems = [];
 
-  void addOrderItem() {
-    var orderItem = Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Padding(
-            padding: EdgeInsets.only(right: 4),
-            child: Text('Item $orderItemCount')),
-        Expanded(
-            child: Padding(
-          padding: EdgeInsets.only(right: 4),
-          child: FormBuilderDropdown(
-            name: 'orderItem$orderItemCount',
-            items: dropDownItems,
-            validator: FormBuilderValidators.compose([
-              FormBuilderValidators.required(errorText: 'Choose a product')
-            ]),
-          ),
-        )),
-        Expanded(
-          child: FormBuilderTextField(
-              name: 'orderItemQuantity$orderItemCount',
-               decoration: const InputDecoration(
-                    labelText: 'Quantity *',
-                  ),
-              validator: FormBuilderValidators.compose([
-                FormBuilderValidators.required(),
-                FormBuilderValidators.numeric(),
-              ])),
-        )
-      ],
-    );
+  void removeOrderItem(int index) {
     setState(() {
+      orderItems.removeAt(index - 1);
+      orderItemCount--;
+      if (orderItems.isEmpty) {
+        _formKey.currentState!.fields['orderItems']?.didChange(null);
+      }
+    });
+  }
+
+  void addOrderItem() {
+    setState(() {
+      _formKey.currentState!.fields['orderItems']!.didChange(true);
+      var orderItem = OrderItemRow(
+        count: orderItemCount,
+        dropDownItems: dropDownItems,
+        removeCallBack: removeOrderItem,
+      );
       orderItems.add(orderItem);
       orderItemCount++;
     });
@@ -106,7 +95,22 @@ class _NewOrderFormState extends State<NewOrderForm> {
                           errorText: 'Please enter delivery date')
                     ]),
                   )),
-              ...orderItems,
+              FormBuilderField(
+                  builder: (FormFieldState<dynamic> field) {
+                    return InputDecorator(
+                      decoration: InputDecoration(
+                        labelText: "Order items",
+                        contentPadding: EdgeInsets.only(top: 10.0, bottom: 0.0),
+                        border: InputBorder.none,
+                        errorText: field.errorText,
+                      ),
+                      child: Column(children: orderItems),
+                    );
+                  },
+                  name: 'orderItems',
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(errorText: 'Add order items'),
+                  ])),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: ElevatedButton(
@@ -123,6 +127,7 @@ class _NewOrderFormState extends State<NewOrderForm> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Processing Data')),
                       );
+                      widget.createOrder(_formKey.currentState!.value);
                     }
                   },
                   child: const Text('Submit'),

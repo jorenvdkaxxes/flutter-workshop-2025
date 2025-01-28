@@ -2,7 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:simply_lifestyle_app/main.dart';
 import 'package:simply_lifestyle_app/ui/orders/view_model/new_order_view_model.dart';
-import 'package:simply_lifestyle_app/ui/orders/widgets/new_order_screen.dart';
+import 'package:simply_lifestyle_app/ui/orders/widgets/new_order/new_order_screen.dart';
 import 'package:simply_lifestyle_app/ui/products/view_model/product_detail_view_model.dart';
 import 'package:simply_lifestyle_app/ui/products/widgets/product_details_page.dart';
 
