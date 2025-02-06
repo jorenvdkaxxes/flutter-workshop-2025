@@ -10,7 +10,7 @@ class NewOrderScreen extends StatelessWidget {
   final NewOrderViewModel viewModel;
 
   void createOrder(Map<String, dynamic> values) {
-    Logger('Test').fine( values.entries.first.key);
+    Logger('Test').fine(values.entries.first.value);
   }
 
   @override

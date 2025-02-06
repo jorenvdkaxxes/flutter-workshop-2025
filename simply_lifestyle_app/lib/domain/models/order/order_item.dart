@@ -15,7 +15,7 @@ class OrderItem extends Entity {
         'quantity': int quantity
       } =>
         OrderItem(id: id, productId: productId, quantity: quantity),
-      _ => throw const FormatException('Failed to load order ite,.'),
+      _ => throw const FormatException('Failed to load order item.'),
     };
   }
 }
