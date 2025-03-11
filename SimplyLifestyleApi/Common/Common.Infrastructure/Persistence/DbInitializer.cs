@@ -1,6 +1,9 @@
 ﻿using System.Reflection;
 using Common.Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Common.Infrastructure;
 
@@ -23,7 +26,12 @@ public abstract class DbInitializer : IDbInitializer
 
     public virtual void Initialize()
     {
-        db.Database.Migrate();
+        var pendingMigrations = db.Database.GetPendingMigrations();
+
+        if (pendingMigrations.Any())
+        {
+            db.Database.Migrate();
+        }
 
         foreach (var initialDataProvider in initialDataProviders)
         {

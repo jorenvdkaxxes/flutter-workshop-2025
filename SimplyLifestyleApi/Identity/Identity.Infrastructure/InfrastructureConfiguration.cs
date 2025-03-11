@@ -15,9 +15,9 @@ public static class InfrastructureConfiguration
         IConfiguration configuration)
         => services
             .AddIdentity()
-            .AddDBStorage<IdentityDbContext>(
-                configuration,
-                Assembly.GetExecutingAssembly())
+            //.AddDBStorage<IdentityDbContext>(
+            //    configuration,
+            //    Assembly.GetExecutingAssembly())
             .AddTransient<IDbInitializer, IdentityDbInitializer>();
 
     private static IServiceCollection AddIdentity(

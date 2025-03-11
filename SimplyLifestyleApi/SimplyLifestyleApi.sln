@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductCatalog", "ProductCatalog", "{D9F7A96F-B8CA-45E4-BED2-66DA2D841C27}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{93C5B223-8D19-4D2F-B217-4E3226F6E135}"
@@ -31,6 +34,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCatalog.Web", "ProductCatalog\ProductCatalog.Web\ProductCatalog.Web.csproj", "{1B44C140-AD60-4338-A5A6-C0A76BBE1D43}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCatalog.Application", "ProductCatalog\ProductCatalog.Application\ProductCatalog.Application.csproj", "{549A23A3-8B24-4339-94C3-CD5AED80BC91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCatalog.SqlServerMigrations", "ProductCatalog\ProductCatalog.SqlServerMigrations\ProductCatalog.SqlServerMigrations.csproj", "{9D14480F-6EA1-4666-8740-2201F334B8A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCatalog.SqliteMigrations", "ProductCatalog\ProductCatalog.SqliteMigrations\ProductCatalog.SqliteMigrations.csproj", "{8194255D-637F-45A3-B3A6-57C6ACB6D84F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Statistics", "Statistics", "{B5D2337F-9505-4110-96F8-FB55A5C7EAFD}"
 EndProject
@@ -136,6 +143,17 @@ Global
 		{4E0166FF-C23A-4C92-AC5E-AA47ACC94CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E0166FF-C23A-4C92-AC5E-AA47ACC94CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E0166FF-C23A-4C92-AC5E-AA47ACC94CFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D14480F-6EA1-4666-8740-2201F334B8A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D14480F-6EA1-4666-8740-2201F334B8A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D14480F-6EA1-4666-8740-2201F334B8A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D14480F-6EA1-4666-8740-2201F334B8A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8194255D-637F-45A3-B3A6-57C6ACB6D84F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8194255D-637F-45A3-B3A6-57C6ACB6D84F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8194255D-637F-45A3-B3A6-57C6ACB6D84F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8194255D-637F-45A3-B3A6-57C6ACB6D84F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{26840F2F-9538-486E-9588-71E7BED381F7} = {93C5B223-8D19-4D2F-B217-4E3226F6E135}
@@ -157,5 +175,10 @@ Global
 		{48AFFF10-C499-413C-898A-FB90E71B32CD} = {09A58560-0494-4DB7-BDBD-0154564401DC}
 		{5368E785-0528-4DE6-9C68-E5E85C319C7C} = {09A58560-0494-4DB7-BDBD-0154564401DC}
 		{4E0166FF-C23A-4C92-AC5E-AA47ACC94CFF} = {09A58560-0494-4DB7-BDBD-0154564401DC}
+		{9D14480F-6EA1-4666-8740-2201F334B8A3} = {D9F7A96F-B8CA-45E4-BED2-66DA2D841C27}
+		{8194255D-637F-45A3-B3A6-57C6ACB6D84F} = {D9F7A96F-B8CA-45E4-BED2-66DA2D841C27}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ACC302D4-B033-4541-8362-4687C2A43436}
 	EndGlobalSection
 EndGlobal

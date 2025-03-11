@@ -12,9 +12,9 @@ public static class InfrastructureConfiguration
         this IServiceCollection services,
         IConfiguration configuration)
         => services
-            .AddDBStorage<OrderManagementDbContext>(
-                configuration,
-                Assembly.GetExecutingAssembly())
+            //.AddDBStorage<OrderManagementDbContext>(
+            //    configuration,
+            //    Assembly.GetExecutingAssembly())
             .AddTransient<IDbInitializer, OrderManagementDbInitializer>()
             .AddHttpClients(configuration);
 

@@ -8,7 +8,7 @@ using ProductCatalog.Infrastructure;
 
 #nullable disable
 
-namespace Products.Infrastructure
+namespace Products.SqlServerMigrations.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
     partial class ProductDbContextModelSnapshot : ModelSnapshot
@@ -22,7 +22,7 @@ namespace Products.Infrastructure
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Product", b =>
+            modelBuilder.Entity("ProductCatalog.Domain.Product", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,22 +46,7 @@ namespace Products.Infrastructure
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("ProductSupplier", b =>
-                {
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SupplierId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ProductId", "SupplierId");
-
-                    b.HasIndex("SupplierId");
-
-                    b.ToTable("ProductSupplier");
-                });
-
-            modelBuilder.Entity("Supplier", b =>
+            modelBuilder.Entity("ProductCatalog.Domain.Supplier", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -87,9 +72,24 @@ namespace Products.Infrastructure
                     b.ToTable("Suppliers", (string)null);
                 });
 
-            modelBuilder.Entity("Product", b =>
+            modelBuilder.Entity("ProductSupplier", b =>
                 {
-                    b.OwnsOne("Price", "Price", b1 =>
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SupplierId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ProductId", "SupplierId");
+
+                    b.HasIndex("SupplierId");
+
+                    b.ToTable("ProductSupplier");
+                });
+
+            modelBuilder.Entity("ProductCatalog.Domain.Product", b =>
+                {
+                    b.OwnsOne("ProductCatalog.Domain.Price", "Price", b1 =>
                         {
                             b1.Property<Guid>("ProductId")
                                 .HasColumnType("uniqueidentifier");
@@ -113,7 +113,7 @@ namespace Products.Infrastructure
                                 .HasForeignKey("ProductId");
                         });
 
-                    b.OwnsOne("ProductType", "ProductType", b1 =>
+                    b.OwnsOne("ProductCatalog.Domain.ProductType", "ProductType", b1 =>
                         {
                             b1.Property<Guid>("ProductId")
                                 .HasColumnType("uniqueidentifier");
@@ -136,24 +136,9 @@ namespace Products.Infrastructure
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProductSupplier", b =>
+            modelBuilder.Entity("ProductCatalog.Domain.Supplier", b =>
                 {
-                    b.HasOne("Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Supplier", null)
-                        .WithMany()
-                        .HasForeignKey("SupplierId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Supplier", b =>
-                {
-                    b.OwnsOne("Address", "Address", b1 =>
+                    b.OwnsOne("ProductCatalog.Domain.Address", "Address", b1 =>
                         {
                             b1.Property<Guid>("SupplierId")
                                 .HasColumnType("uniqueidentifier");
@@ -184,6 +169,21 @@ namespace Products.Infrastructure
                         });
 
                     b.Navigation("Address")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ProductSupplier", b =>
+                {
+                    b.HasOne("ProductCatalog.Domain.Product", null)
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProductCatalog.Domain.Supplier", null)
+                        .WithMany()
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

@@ -11,8 +11,8 @@ public static class InfrastructureConfiguration
         this IServiceCollection services,
         IConfiguration configuration)
         => services
-            .AddDBStorage<StatisticsDbContext>(
-                configuration,
-                Assembly.GetExecutingAssembly())
+            //.AddDBStorage<StatisticsDbContext>(
+            //    configuration,
+            //    Assembly.GetExecutingAssembly())
             .AddTransient<IDbInitializer, StatisticsDbInitializer>();
 }

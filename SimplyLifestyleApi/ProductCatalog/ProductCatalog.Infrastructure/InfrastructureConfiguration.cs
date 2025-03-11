@@ -10,9 +10,21 @@ public static class InfrastructureConfiguration
     public static IServiceCollection AddProductCatalogInfrastructure(
         this IServiceCollection services,
         IConfiguration configuration)
-        => services
-            .AddDBStorage<ProductDbContext>(
-                configuration,
-                Assembly.GetExecutingAssembly())
-            .AddTransient<IDbInitializer, ProductDbInitializer>();
+    {
+        var useSqlServer = configuration.GetUseSqlServerOption();
+        string migrationsAssembly;
+        if (useSqlServer)
+            migrationsAssembly = "ProductCatalog.SqlServerMigrations";
+        else
+            migrationsAssembly = "ProductCatalog.SqliteMigrations";
+
+        services
+                .AddDBStorage<ProductDbContext>(
+                    configuration,
+                    Assembly.GetExecutingAssembly(),
+                    migrationsAssembly)
+                .AddTransient<IDbInitializer, ProductDbInitializer>();
+
+        return services;
+    }
 }
