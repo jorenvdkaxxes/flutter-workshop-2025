@@ -7,54 +7,54 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Common.Infrastructure;
 
 internal class EventDispatcher : IEventDispatcher
+{
+    private static readonly ConcurrentDictionary<Type, Type> HandlerTypesCache = new();
+
+    private static readonly ConcurrentDictionary<Type, Func<object, object, Task>> HandlersCache = new();
+
+    private static readonly Type HandlerType = typeof(IEventHandler<>);
+
+    private static readonly MethodInfo MakeDelegateMethod = typeof(EventDispatcher)
+        .GetMethod(nameof(MakeDelegate), BindingFlags.Static | BindingFlags.NonPublic)!;
+
+    private static readonly Type EventHandlerFuncType = typeof(Func<Func<object, object, Task>>);
+
+    private readonly IServiceProvider serviceProvider;
+
+    public EventDispatcher(IServiceProvider serviceProvider)
+        => this.serviceProvider = serviceProvider;
+
+    public async Task Dispatch(IDomainEvent domainEvent)
     {
-        private static readonly ConcurrentDictionary<Type, Type> HandlerTypesCache = new();
+        var eventType = domainEvent.GetType();
 
-        private static readonly ConcurrentDictionary<Type, Func<object, object, Task>> HandlersCache = new();
+        var handlerTypes = HandlerTypesCache.GetOrAdd(
+            eventType,
+            type => HandlerType.MakeGenericType(type));
 
-        private static readonly Type HandlerType = typeof(IEventHandler<>);
+        var eventHandlers = serviceProvider.GetServices(handlerTypes);
 
-        private static readonly MethodInfo MakeDelegateMethod = typeof(EventDispatcher)
-            .GetMethod(nameof(MakeDelegate), BindingFlags.Static | BindingFlags.NonPublic)!;
-
-        private static readonly Type EventHandlerFuncType = typeof(Func<Func<object, object, Task>>);
-
-        private readonly IServiceProvider serviceProvider;
-
-        public EventDispatcher(IServiceProvider serviceProvider)
-            => this.serviceProvider = serviceProvider;
-
-        public async Task Dispatch(IDomainEvent domainEvent)
+        foreach (var eventHandler in eventHandlers)
         {
-            var eventType = domainEvent.GetType();
+            var handlerServiceType = eventHandler.GetType();
 
-            var handlerTypes = HandlerTypesCache.GetOrAdd(
-                eventType,
-                type => HandlerType.MakeGenericType(type));
-
-            var eventHandlers = serviceProvider.GetServices(handlerTypes);
-
-            foreach (var eventHandler in eventHandlers)
+            var eventHandlerDelegate = HandlersCache.GetOrAdd(handlerServiceType, type =>
             {
-                var handlerServiceType = eventHandler.GetType();
+                var makeDelegate = MakeDelegateMethod
+                    .MakeGenericMethod(eventType, type);
 
-                var eventHandlerDelegate = HandlersCache.GetOrAdd(handlerServiceType, type =>
-                {
-                    var makeDelegate = MakeDelegateMethod
-                        .MakeGenericMethod(eventType, type);
+                return ((Func<Func<object, object, Task>>)makeDelegate
+                    .CreateDelegate(EventHandlerFuncType))
+                    .Invoke();
+            });
 
-                    return ((Func<Func<object, object, Task>>)makeDelegate
-                        .CreateDelegate(EventHandlerFuncType))
-                        .Invoke();
-                });
-
-                await eventHandlerDelegate(domainEvent, eventHandler);
-            }
+            await eventHandlerDelegate(domainEvent, eventHandler);
         }
-
-        private static Func<object, object, Task> MakeDelegate<TEvent, TEventHandler>()
-            where TEvent : IDomainEvent
-            where TEventHandler : IEventHandler<TEvent>
-            => (domainEvent, eventHandler) => 
-                ((TEventHandler)eventHandler).Handle((TEvent)domainEvent);
     }
+
+    private static Func<object, object, Task> MakeDelegate<TEvent, TEventHandler>()
+        where TEvent : IDomainEvent
+        where TEventHandler : IEventHandler<TEvent>
+        => (domainEvent, eventHandler) =>
+            ((TEventHandler)eventHandler).Handle((TEvent)domainEvent);
+}

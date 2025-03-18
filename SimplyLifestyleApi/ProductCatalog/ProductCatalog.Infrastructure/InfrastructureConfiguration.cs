@@ -2,6 +2,7 @@
 using Common.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Products.Infrastructure.Persistence.Helpers;
 
 namespace ProductCatalog.Infrastructure;
 
@@ -12,11 +13,9 @@ public static class InfrastructureConfiguration
         IConfiguration configuration)
     {
         var useSqlServer = configuration.GetUseSqlServerOption();
-        string migrationsAssembly;
-        if (useSqlServer)
-            migrationsAssembly = "ProductCatalog.SqlServerMigrations";
-        else
-            migrationsAssembly = "ProductCatalog.SqliteMigrations";
+        var migrationsAssembly = useSqlServer
+                                ? MigrationHelper.SqlServerMigrationsAssemblyName
+                                : MigrationHelper.SqliteMigrationsAssemblyName;
 
         services
                 .AddDBStorage<ProductDbContext>(

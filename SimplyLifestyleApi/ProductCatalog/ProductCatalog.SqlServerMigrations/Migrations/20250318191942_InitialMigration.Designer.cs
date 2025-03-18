@@ -9,10 +9,10 @@ using ProductCatalog.Infrastructure;
 
 #nullable disable
 
-namespace Products.SqlServerMigrations.Migrations
+namespace ProductCatalog.SqlServerMigrations.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
-    [Migration("20250311202706_InitialMigration")]
+    [Migration("20250318191942_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />

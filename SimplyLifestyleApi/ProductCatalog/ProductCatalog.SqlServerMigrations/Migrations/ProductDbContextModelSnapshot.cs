@@ -8,7 +8,7 @@ using ProductCatalog.Infrastructure;
 
 #nullable disable
 
-namespace Products.SqlServerMigrations.Migrations
+namespace ProductCatalog.SqlServerMigrations.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
     partial class ProductDbContextModelSnapshot : ModelSnapshot
