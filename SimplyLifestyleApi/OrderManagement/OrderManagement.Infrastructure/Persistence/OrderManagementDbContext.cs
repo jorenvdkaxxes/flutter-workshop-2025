@@ -5,7 +5,7 @@ using OrderManagement.Domain;
 
 namespace OrderManagement.Infrastructure;
 
-internal class OrderManagementDbContext : BaseDbContext<OrderManagementDbContext>
+public class OrderManagementDbContext : BaseDbContext<OrderManagementDbContext>
 {
     public OrderManagementDbContext(
         DbContextOptions<OrderManagementDbContext> options,

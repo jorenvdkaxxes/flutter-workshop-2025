@@ -1,6 +1,7 @@
 ﻿using Common.Domain;
 using Common.Infrastructure;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 
 namespace Identity.Infrastructure;
 
@@ -12,8 +13,9 @@ internal class IdentityDbInitializer : DbInitializer
     public IdentityDbInitializer(
         IdentityDbContext db,
         UserManager<User> userManager,
-        RoleManager<IdentityRole> roleManager)
-        : base(db)
+        RoleManager<IdentityRole> roleManager,
+        ILogger<IdentityDbInitializer> logger)
+        : base(db, logger)
     {
         this.userManager = userManager;
         this.roleManager = roleManager;

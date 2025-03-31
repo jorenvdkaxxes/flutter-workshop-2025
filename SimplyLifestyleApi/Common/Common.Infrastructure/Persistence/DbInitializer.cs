@@ -1,29 +1,54 @@
 ﻿using System.Reflection;
 using Common.Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Common.Infrastructure;
 
 public abstract class DbInitializer : IDbInitializer
 {
-    private readonly DbContext db;
+    private readonly DbContext _db;
+    private readonly ILogger<DbInitializer> _logger;
     private readonly IEnumerable<IInitialData> initialDataProviders;
 
-    protected internal DbInitializer(DbContext db)
+    protected internal DbInitializer(DbContext db, ILogger<DbInitializer> logger)
     {
-        this.db = db;
+        _db = db;
+        _logger = logger;
         initialDataProviders = new List<IInitialData>();
     }
 
     protected internal DbInitializer(
         DbContext db,
+        ILogger<DbInitializer> logger,
         IEnumerable<IInitialData> initialDataProviders)
-        : this(db)
+        : this(db, logger)
         => this.initialDataProviders = initialDataProviders;
 
     public virtual void Initialize()
     {
-        db.Database.Migrate();
+        try
+        {
+            var pendingMigrations = _db.Database.GetPendingMigrations();
+
+            if (pendingMigrations.Any())
+            {
+                _logger.LogInformation("Applying pending migrations...");
+
+                _db.Database.Migrate();
+
+                _logger.LogInformation("Migrations applied successfully");
+            }
+            else
+            {
+                _logger.LogInformation("No pending migrations to apply");
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error appling migrations");
+            throw;
+        }
 
         foreach (var initialDataProvider in initialDataProviders)
         {
@@ -33,11 +58,11 @@ public abstract class DbInitializer : IDbInitializer
             
             foreach (var entity in data)
             {
-                db.Add(entity);
+                _db.Add(entity);
             }
         }
 
-        db.SaveChanges();
+        _db.SaveChanges();
     }
 
     private bool DataSetIsEmpty(Type type)
@@ -60,5 +85,5 @@ public abstract class DbInitializer : IDbInitializer
 
     private DbSet<TEntity> GetSet<TEntity>()
         where TEntity : class
-        => db.Set<TEntity>();
+        => _db.Set<TEntity>();
 }

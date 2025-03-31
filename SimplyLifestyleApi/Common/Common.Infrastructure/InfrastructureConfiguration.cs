@@ -15,10 +15,11 @@ public static class InfrastructureConfiguration
     public static IServiceCollection AddDBStorage<TDbContext>(
         this IServiceCollection services,
         IConfiguration configuration,
-        Assembly assembly)
+        Assembly assembly,
+        string migrationsAssembly)
         where TDbContext : DbContext
         => services
-            .AddDatabase<TDbContext>(configuration)
+            .AddDatabase<TDbContext>(configuration, migrationsAssembly)
             .AddRepositories(assembly);
 
     public static IServiceCollection AddTokenAuthentication(
@@ -68,7 +69,7 @@ public static class InfrastructureConfiguration
 
     private static IServiceCollection AddDatabase<TDbContext>(
         this IServiceCollection services,
-        IConfiguration configuration)
+        IConfiguration configuration, string migrationsAssembly)
         where TDbContext : DbContext
     {
         var useSqlServer = configuration.GetUseSqlServerOption();
@@ -85,8 +86,7 @@ public static class InfrastructureConfiguration
                                 maxRetryCount: 10,
                                 maxRetryDelay: TimeSpan.FromSeconds(30),
                                 errorNumbersToAdd: null)
-                            .MigrationsAssembly(
-                                typeof(TDbContext).Assembly.FullName)));
+                            .MigrationsAssembly(migrationsAssembly)));
         }
         else
         {
@@ -96,8 +96,7 @@ public static class InfrastructureConfiguration
                     .UseSqlite(
                         configuration.GetSqliteConnectionString(),
                         sqlOptions => sqlOptions
-                            .MigrationsAssembly(
-                                typeof(TDbContext).Assembly.FullName)));
+                            .MigrationsAssembly(migrationsAssembly)));
         }
 
         return services;

@@ -5,7 +5,7 @@ using ProductCatalog.Domain;
 
 namespace ProductCatalog.Infrastructure;
 
-internal class ProductDbContext : BaseDbContext<ProductDbContext>
+public class ProductDbContext : BaseDbContext<ProductDbContext>
 {
     public ProductDbContext(
         DbContextOptions<ProductDbContext> options,

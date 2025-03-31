@@ -9,17 +9,25 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Identity\Identity.Infrastructure\Identity.Infrastructure.csproj" />
+      <ProjectReference Include="..\Identity\Identity.SqliteMigrations\Identity.SqliteMigrations.csproj" />
+      <ProjectReference Include="..\Identity\Identity.SqlServerMigrations\Identity.SqlServerMigrations.csproj" />
       <ProjectReference Include="..\Identity\Identity.Web\Identity.Web.csproj" />
       <ProjectReference Include="..\OrderManagement\OrderManagement.Infrastructure\OrderManagement.Infrastructure.csproj" />
+      <ProjectReference Include="..\OrderManagement\OrderManagement.SqliteMigrations\OrderManagement.SqliteMigrations.csproj" />
+      <ProjectReference Include="..\OrderManagement\OrderManagement.SqlServerMigrations\OrderManagement.SqlServerMigrations.csproj" />
       <ProjectReference Include="..\OrderManagement\OrderManagement.Web\OrderManagement.Web.csproj" />
       <ProjectReference Include="..\ProductCatalog\ProductCatalog.Infrastructure\ProductCatalog.Infrastructure.csproj" />
+      <ProjectReference Include="..\ProductCatalog\ProductCatalog.SqliteMigrations\ProductCatalog.SqliteMigrations.csproj" />
+      <ProjectReference Include="..\ProductCatalog\ProductCatalog.SqlServerMigrations\ProductCatalog.SqlServerMigrations.csproj" />
       <ProjectReference Include="..\ProductCatalog\ProductCatalog.Web\ProductCatalog.Web.csproj" />
       <ProjectReference Include="..\Statistics\Statistics.Infrastructure\Statistics.Infrastructure.csproj" />
+      <ProjectReference Include="..\Statistics\Statistics.SqliteMigrations\Statistics.SqliteMigrations.csproj" />
+      <ProjectReference Include="..\Statistics\Statistics.SqlServerMigrations\Statistics.SqlServerMigrations.csproj" />
       <ProjectReference Include="..\Statistics\Statistics.Web\Statistics.Web.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.3">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

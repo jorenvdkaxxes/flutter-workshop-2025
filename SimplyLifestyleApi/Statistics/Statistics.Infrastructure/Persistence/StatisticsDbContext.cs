@@ -5,7 +5,7 @@ using Statistics.Domain;
 
 namespace Statistics.Infrastructure;
 
-internal class StatisticsDbContext : BaseDbContext<StatisticsDbContext>
+public class StatisticsDbContext : BaseDbContext<StatisticsDbContext>
 {
     public StatisticsDbContext(
         DbContextOptions<StatisticsDbContext> options,

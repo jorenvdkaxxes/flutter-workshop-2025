@@ -2,6 +2,7 @@
 using Common.Domain;
 using Common.Infrastructure;
 using Identity.Application;
+using Identity.Infrastructure.Persistence.Helpers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,12 +14,23 @@ public static class InfrastructureConfiguration
     public static IServiceCollection AddIdentityInfrastructure(
         this IServiceCollection services,
         IConfiguration configuration)
-        => services
-            .AddIdentity()
-            .AddDBStorage<IdentityDbContext>(
-                configuration,
-                Assembly.GetExecutingAssembly())
-            .AddTransient<IDbInitializer, IdentityDbInitializer>();
+    {
+        services.AddIdentity();
+
+        var useSqlServer = configuration.GetUseSqlServerOption();
+        var migrationsAssembly = useSqlServer
+                                ? MigrationHelper.SqlServerMigrationsAssemblyName
+                                : MigrationHelper.SqliteMigrationsAssemblyName;
+
+        services
+                .AddDBStorage<IdentityDbContext>(
+                    configuration,
+                    Assembly.GetExecutingAssembly(),
+                    migrationsAssembly)
+                .AddTransient<IDbInitializer, IdentityDbInitializer>();
+
+        return services;
+    }
 
     private static IServiceCollection AddIdentity(
         this IServiceCollection services)

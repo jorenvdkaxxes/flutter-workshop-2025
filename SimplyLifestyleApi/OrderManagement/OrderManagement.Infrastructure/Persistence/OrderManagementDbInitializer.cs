@@ -1,13 +1,15 @@
 ﻿using Common.Domain;
 using Common.Infrastructure;
+using Microsoft.Extensions.Logging;
 
 namespace OrderManagement.Infrastructure;
 
 internal class OrderManagementDbInitializer : DbInitializer
 {
     public OrderManagementDbInitializer(
-        OrderManagementDbContext db)
-        : base(db, new List<IInitialData>())
+        OrderManagementDbContext db,
+        ILogger<OrderManagementDbInitializer> logger)
+        : base(db, logger, new List<IInitialData>())
     {
     }
 }
