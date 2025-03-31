@@ -31,11 +31,8 @@ namespace OrderManagement.SqlServerMigrations.Migrations
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTimeOffset>("DeliveryDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTimeOffset>("OrderDate")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

@@ -3,11 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-<<<<<<<< HEAD:SimplyLifestyleApi/OrderManagement/OrderManagement.SqlServerMigrations/Migrations/20250125183834_InitialMigration.cs
-namespace Orders.Infrastructure.Migrations
-========
 namespace OrderManagement.SqlServerMigrations.Migrations
->>>>>>>> feature/api:SimplyLifestyleApi/OrderManagement/OrderManagement.SqlServerMigrations/Migrations/20250331104924_InitialMigration.cs
 {
     /// <inheritdoc />
     public partial class InitialMigration : Migration
@@ -21,8 +17,7 @@ namespace OrderManagement.SqlServerMigrations.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CustomerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    OrderDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    DeliveryDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status_Value = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

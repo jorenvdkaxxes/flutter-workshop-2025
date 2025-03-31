@@ -9,17 +9,10 @@ using OrderManagement.Infrastructure;
 
 #nullable disable
 
-<<<<<<<< HEAD:SimplyLifestyleApi/OrderManagement/OrderManagement.SqlServerMigrations/Migrations/20250125183834_InitialMigration.Designer.cs
-namespace Orders.Infrastructure.Migrations
-{
-    [DbContext(typeof(OrderManagementDbContext))]
-    [Migration("20250125183834_InitialMigration")]
-========
 namespace OrderManagement.SqlServerMigrations.Migrations
 {
     [DbContext(typeof(OrderManagementDbContext))]
     [Migration("20250331104924_InitialMigration")]
->>>>>>>> feature/api:SimplyLifestyleApi/OrderManagement/OrderManagement.SqlServerMigrations/Migrations/20250331104924_InitialMigration.Designer.cs
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -27,11 +20,7 @@ namespace OrderManagement.SqlServerMigrations.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-<<<<<<<< HEAD:SimplyLifestyleApi/OrderManagement/OrderManagement.SqlServerMigrations/Migrations/20250125183834_InitialMigration.Designer.cs
-                .HasAnnotation("ProductVersion", "9.0.0")
-========
                 .HasAnnotation("ProductVersion", "9.0.3")
->>>>>>>> feature/api:SimplyLifestyleApi/OrderManagement/OrderManagement.SqlServerMigrations/Migrations/20250331104924_InitialMigration.Designer.cs
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -45,11 +34,8 @@ namespace OrderManagement.SqlServerMigrations.Migrations
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTimeOffset>("DeliveryDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTimeOffset>("OrderDate")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
