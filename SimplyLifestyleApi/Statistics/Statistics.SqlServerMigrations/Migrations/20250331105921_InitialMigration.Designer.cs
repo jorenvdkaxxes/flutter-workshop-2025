@@ -9,10 +9,10 @@ using Statistics.Infrastructure;
 
 #nullable disable
 
-namespace Statistics.SqliteMigrations.Migrations
+namespace Statistics.SqlServerMigrations.Migrations
 {
     [DbContext(typeof(StatisticsDbContext))]
-    [Migration("20250331103112_InitialMigration")]
+    [Migration("20250331105921_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />

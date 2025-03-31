@@ -15,9 +15,9 @@ namespace Statistics.SqliteMigrations.Migrations
                 name: "TotalStatistics",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TotalOrdersCreated = table.Column<int>(type: "int", nullable: false),
-                    TotalProductsCreated = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    TotalOrdersCreated = table.Column<int>(type: "INTEGER", nullable: false),
+                    TotalProductsCreated = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

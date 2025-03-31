@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Identity.SqliteMigrations.Migrations
+namespace Identity.SqlServerMigrations.Migrations
 {
     [DbContext(typeof(IdentityDbContext))]
-    [Migration("20250331100312_InitialMigration")]
+    [Migration("20250331104839_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />

@@ -20,10 +20,10 @@ public class SqliteOrderManagementDbContextFactory : OrderManagementDbContextFac
 
     protected override DbContextOptions<OrderManagementDbContext> GetDbContextOptions(IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString(DatabaseType.SqlServer);
+        var connectionString = configuration.GetConnectionString(DatabaseType.Sqlite);
 
         var optionsBuilder = new DbContextOptionsBuilder<OrderManagementDbContext>();
-        optionsBuilder.UseSqlServer(
+        optionsBuilder.UseSqlite(
                                     connectionString,
                                     x => x.MigrationsAssembly(MigrationHelper.SqliteMigrationsAssemblyName));
 

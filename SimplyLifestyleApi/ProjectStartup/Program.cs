@@ -27,25 +27,25 @@ builder
     .AddProductCatalogInfrastructure(builder.Configuration)
     .AddProductCatalogWebComponents();
 
-//builder
-//    .Services
-//    .AddOrderManagementDomain()
-//    .AddOrderManagementApplication(builder.Configuration)
-//    .AddOrderManagementInfrastructure(builder.Configuration)
-//    .AddOrderManagementWebComponents();
+builder
+    .Services
+    .AddOrderManagementDomain()
+    .AddOrderManagementApplication(builder.Configuration)
+    .AddOrderManagementInfrastructure(builder.Configuration)
+    .AddOrderManagementWebComponents();
 
-//builder
-//    .Services
-//    .AddStatisticsDomain()
-//    .AddStatisticsApplication(builder.Configuration)
-//    .AddStatisticsInfrastructure(builder.Configuration)
-//    .AddStatisticsWebComponents();
+builder
+    .Services
+    .AddStatisticsDomain()
+    .AddStatisticsApplication(builder.Configuration)
+    .AddStatisticsInfrastructure(builder.Configuration)
+    .AddStatisticsWebComponents();
 
-//builder
-//    .Services
-//    .AddIdentityApplication(builder.Configuration)
-//    .AddIdentityInfrastructure(builder.Configuration)
-//    .AddIdentityWebComponents();
+builder
+    .Services
+    .AddIdentityApplication(builder.Configuration)
+    .AddIdentityInfrastructure(builder.Configuration)
+    .AddIdentityWebComponents();
 
 builder.Services
     .AddTokenAuthentication(builder.Configuration)

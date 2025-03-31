@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Products.SqliteMigrations.Migrations
+namespace ProductCatalog.SqliteMigrations.Migrations
 {
     /// <inheritdoc />
     public partial class InitialMigration : Migration

@@ -20,10 +20,10 @@ public class SqliteIdentityDbContextFactory : IdentityDbContextFactory
 
     protected override DbContextOptions<IdentityDbContext> GetDbContextOptions(IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString(DatabaseType.SqlServer);
+        var connectionString = configuration.GetConnectionString(DatabaseType.Sqlite);
 
         var optionsBuilder = new DbContextOptionsBuilder<IdentityDbContext>();
-        optionsBuilder.UseSqlServer(
+        optionsBuilder.UseSqlite(
                                     connectionString,
                                     x => x.MigrationsAssembly(MigrationHelper.SqliteMigrationsAssemblyName));
 

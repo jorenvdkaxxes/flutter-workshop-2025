@@ -7,7 +7,7 @@ using ProductCatalog.Infrastructure;
 
 #nullable disable
 
-namespace Products.SqliteMigrations.Migrations
+namespace ProductCatalog.SqliteMigrations.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
     partial class ProductDbContextModelSnapshot : ModelSnapshot
@@ -15,7 +15,7 @@ namespace Products.SqliteMigrations.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.3");
 
             modelBuilder.Entity("ProductCatalog.Domain.Product", b =>
                 {

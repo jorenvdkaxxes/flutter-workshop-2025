@@ -20,10 +20,10 @@ public class SqliteStatisticsDbContextFactory : StatisticsDbContextFactory
 
     protected override DbContextOptions<StatisticsDbContext> GetDbContextOptions(IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString(DatabaseType.SqlServer);
+        var connectionString = configuration.GetConnectionString(DatabaseType.Sqlite);
 
         var optionsBuilder = new DbContextOptionsBuilder<StatisticsDbContext>();
-        optionsBuilder.UseSqlServer(
+        optionsBuilder.UseSqlite(
                                     connectionString,
                                     x => x.MigrationsAssembly(MigrationHelper.SqliteMigrationsAssemblyName));
 

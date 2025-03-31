@@ -12,7 +12,7 @@ using OrderManagement.Infrastructure;
 namespace OrderManagement.SqlServerMigrations.Migrations
 {
     [DbContext(typeof(OrderManagementDbContext))]
-    [Migration("20250331102256_InitialMigration")]
+    [Migration("20250331104924_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
