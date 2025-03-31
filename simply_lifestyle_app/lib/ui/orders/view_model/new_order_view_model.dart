@@ -36,4 +36,23 @@ class NewOrderViewModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future<Result<void>> createOrder(Map<String, dynamic> values) async {
+    try {
+      final order = Order(
+        customerId: values['customerId'],
+        orderDate: DateTime.now(),
+        orderStatus: OrderStatus.pending,
+        orderItems: (values['orderItems'] as List<dynamic>)
+            .map((item) => OrderItem(
+                  productId: item['productId'],
+                  quantity: item['quantity'],
+                ))
+            .toList(),
+      );
+      return await _ordersRepository.createOrder(order);
+    } on Exception catch (e) {
+      return Result.error(e);
+    }
+  }
 }

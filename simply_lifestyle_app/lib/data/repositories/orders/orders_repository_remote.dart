@@ -1,31 +1,62 @@
 import 'package:simply_lifestyle_app/data/repositories/orders/orders_repository.dart';
 import 'package:simply_lifestyle_app/data/services/api/api_client.dart';
+import 'package:simply_lifestyle_app/data/services/api/model/order/order_api_model.dart';
+import 'package:simply_lifestyle_app/data/services/api/model/order/order_item_api_model.dart';
+import 'package:simply_lifestyle_app/data/services/api/model/order/order_post_api_model.dart';
 import 'package:simply_lifestyle_app/domain/models/order/order.dart';
+import 'package:simply_lifestyle_app/domain/models/order/order_item.dart';
 import 'package:simply_lifestyle_app/utils/result.dart';
 
-class OrdersRepositoryRemote implements OrdersRepository{
+class OrdersRepositoryRemote implements OrdersRepository {
   OrdersRepositoryRemote({
     required ApiClient apiClient,
   }) : _apiClient = apiClient;
 
   final ApiClient _apiClient;
 
-  List<Order>? _cachedData;
-
   @override
   Future<Result<List<Order>>> getOrders() async {
-    if (_cachedData == null) {
-      // No cached data, request continents
+    try {
       final result = await _apiClient.getOrders();
-      if (result is Ok<List<Order>>) {
-        // Store value if result Ok
-        _cachedData = result.value;
+      switch (result) {
+        case Ok<List<OrderApiModel>>():
+          final parsedResult = result.value
+              .map((o) => Order(
+                  id: o.id!,
+                  customerId: o.customerId,
+                  orderDate: o.orderDate,
+                  orderStatus: o.orderStatus,
+                  orderItems: o.orderItems
+                      .map((oi) => OrderItem(
+                          id: oi.id!,
+                          productId: oi.productId,
+                          quantity: oi.quantity))
+                      .toList()))
+              .toList();
+
+          return Result.ok(parsedResult);
+        case Error<List<OrderApiModel>>():
+          return Result.error(result.error);
       }
-      return result;
-    } else {
-      // Return cached data if available
-      return Result.ok(_cachedData!);
+    } on Exception catch (e) {
+      return Result.error(e);
     }
   }
 
+  @override
+  Future<Result<void>> createOrder(Order order) async {
+    try {
+      final orderApiModel = OrderPostApiModel(
+          customerId: order.customerId,
+          orderDate: order.orderDate,
+          status: order.orderStatus,
+          orderItems: order.orderItems
+              .map((o) => OrderItemApiModel(
+                  productId: o.productId, quantity: o.quantity))
+              .toList());
+      return _apiClient.postOrder(orderApiModel);
+    } on Exception catch (e) {
+      return Result.error(e);
+    }
+  }
 }

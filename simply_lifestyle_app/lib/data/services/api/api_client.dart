@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:simply_lifestyle_app/domain/models/order/order.dart';
+import 'package:simply_lifestyle_app/data/services/api/model/order/order_api_model.dart';
 import 'package:simply_lifestyle_app/domain/models/product/product.dart';
 import 'package:simply_lifestyle_app/environment.dart';
 import 'package:simply_lifestyle_app/utils/result.dart';
@@ -58,7 +58,7 @@ class ApiClient {
     }
   }
 
-  Future<Result<List<Order>>> getOrders() async {
+  Future<Result<List<OrderApiModel>>> getOrders() async {
     final client = _clientFactory();
     try {
       final request = await client
@@ -69,11 +69,32 @@ class ApiClient {
         final stringData = await response.transform(utf8.decoder).join();
         final json = jsonDecode(stringData) as List<dynamic>;
         return Result.ok(
-            json.map((element) => Order.fromJson(element)).toList());
+            json.map((element) => OrderApiModel.fromJson(element)).toList());
       } else {
         return const Result.error(HttpException("Invalid response"));
       }
     } on Exception catch (error) {
+      return Result.error(error);
+    } finally {
+      client.close();
+    }
+  }
+
+  Future<Result<OrderApiModel>> postOrder(OrderApiModel order) async {
+    final client = _clientFactory();
+    try{
+      final request = await client.post(_host, _port, '/order/create');
+      request.write(jsonEncode(order));
+      final response = await request.close();
+      if (response.statusCode == 201) {
+        final stringData = await response.transform(utf8.decoder).join();
+        final order = OrderApiModel.fromJson(jsonDecode(stringData));
+        return Result.ok(order);
+      } else {
+        return const Result.error(HttpException("Invalid response"));
+      }
+    }
+    on Exception catch (error){
       return Result.error(error);
     } finally {
       client.close();
