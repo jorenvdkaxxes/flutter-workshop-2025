@@ -26,7 +26,10 @@ namespace OrderManagement.SqliteMigrations.Migrations
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("OrderDate")
+                    b.Property<DateTimeOffset>("DeliveryDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTimeOffset>("OrderDate")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

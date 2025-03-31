@@ -17,7 +17,8 @@ namespace OrderManagement.SqliteMigrations.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     CustomerId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    OrderDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    OrderDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
+                    DeliveryDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
                     Status_Value = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
