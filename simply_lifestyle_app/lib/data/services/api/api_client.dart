@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:simply_lifestyle_app/data/services/api/model/order/order_api_model.dart';
+import 'package:simply_lifestyle_app/data/services/api/model/order/order_post_api_model.dart';
 import 'package:simply_lifestyle_app/domain/models/product/product.dart';
 import 'package:simply_lifestyle_app/environment.dart';
 import 'package:simply_lifestyle_app/utils/result.dart';
@@ -80,10 +81,12 @@ class ApiClient {
     }
   }
 
-  Future<Result<OrderApiModel>> postOrder(OrderApiModel order) async {
+  Future<Result<OrderApiModel>> postOrder(OrderPostApiModel order) async {
     final client = _clientFactory();
-    try{
-      final request = await client.post(_host, _port, '/order/create');
+    try {
+      final request = await client
+          .postUrl(Uri.parse('https://$_host:$_port/api/orders/create'));
+      request.headers.contentType = ContentType.json;
       request.write(jsonEncode(order));
       final response = await request.close();
       if (response.statusCode == 201) {
@@ -93,8 +96,7 @@ class ApiClient {
       } else {
         return const Result.error(HttpException("Invalid response"));
       }
-    }
-    on Exception catch (error){
+    } on Exception catch (error) {
       return Result.error(error);
     } finally {
       client.close();

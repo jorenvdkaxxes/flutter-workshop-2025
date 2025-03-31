@@ -36,8 +36,9 @@ GoRouter router() => GoRouter(
             GoRoute(
               path: Routes.newOrder,
               builder: (context, state) {
-                final viewModel =
-                    NewOrderViewModel(productsRepository: context.read());
+                final viewModel = NewOrderViewModel(
+                    productsRepository: context.read(),
+                    ordersRepository: context.read());
                 return NewOrderScreen(viewModel: viewModel);
               },
             ),

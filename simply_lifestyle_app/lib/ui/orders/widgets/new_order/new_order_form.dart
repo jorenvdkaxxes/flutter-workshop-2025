@@ -36,15 +36,12 @@ class _NewOrderFormState extends State<NewOrderForm> {
     setState(() {
       orderItems.removeAt(index - 1);
       orderItemCount--;
-      if (orderItems.isEmpty) {
-        _formKey.currentState!.fields['orderItems']?.didChange(null);
-      }
+        _formKey.currentState!.fields['orderItems']?.didChange(0);
     });
   }
 
   void addOrderItem() {
     setState(() {
-      _formKey.currentState!.fields['orderItems']!.didChange(true);
       var orderItem = OrderItemRow(
         count: orderItemCount,
         dropDownItems: dropDownItems,
@@ -52,6 +49,7 @@ class _NewOrderFormState extends State<NewOrderForm> {
       );
       orderItems.add(orderItem);
       orderItemCount++;
+      _formKey.currentState!.fields['orderItems']!.didChange(orderItemCount);
     });
   }
 
@@ -109,7 +107,8 @@ class _NewOrderFormState extends State<NewOrderForm> {
                   },
                   name: 'orderItems',
                   validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(errorText: 'Add order items'),
+                    FormBuilderValidators.required(
+                        errorText: 'Add order items'),
                   ])),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),

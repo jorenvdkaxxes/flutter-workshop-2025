@@ -30,7 +30,7 @@ class OrderItemRow extends StatelessWidget {
             child: Padding(
           padding: EdgeInsets.only(right: 4),
           child: FormBuilderDropdown(
-            name: 'orderItem$count',
+            name: 'orderItem_$count',
             items: dropDownItems,
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(errorText: 'Choose a product')
@@ -39,7 +39,7 @@ class OrderItemRow extends StatelessWidget {
         )),
         Expanded(
           child: FormBuilderTextField(
-              name: 'orderItemQuantity$count',
+              name: 'orderItemQuantity_$count',
               decoration: const InputDecoration(
                 labelText: 'Quantity *',
               ),

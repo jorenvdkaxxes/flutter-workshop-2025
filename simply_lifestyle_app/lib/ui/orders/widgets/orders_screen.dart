@@ -34,13 +34,13 @@ class OrdersScreen extends StatelessWidget {
               return ListView.builder(
                 itemCount: viewModel.orders.length,
                 prototypeItem: ListTile(
-                  title: Text(viewModel.orders.first.id),
+                  title: Text(viewModel.orders.first.id ?? ''),
                 ),
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(viewModel.orders[index].id),
+                    title: Text(viewModel.orders[index].id ?? ''),
                     subtitle:
-                        Text('Status: ${viewModel.orders[index].orderStatus}'),
+                        Text('Status: ${viewModel.orders[index].status}'),
                     onTap: () {
                       // Navigator.push(
                       //   context,

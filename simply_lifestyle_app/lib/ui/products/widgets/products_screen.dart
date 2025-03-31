@@ -36,7 +36,7 @@ class ProductsScreen extends StatelessWidget {
                     title: Text(viewModel.products[index].name),
                     subtitle: Text('Stock: ${viewModel.products[index].stock}'),
                     onTap: () => context.go(
-                        Routes.productsWithId(viewModel.products[index].id)),
+                        Routes.productsWithId(viewModel.products[index].id ?? '')),
                   );
                 },
               );

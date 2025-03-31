@@ -4,15 +4,19 @@ import 'package:simply_lifestyle_app/domain/models/order/order_status.dart';
 
 class Order extends Entity {
   Order(
-      {required super.id,
-      required this.customerId,
+      {super.id,
+      this.customerId,
+      this.customerName,
       required this.orderDate,
-      required this.orderStatus,
+      required this.deliveryDate,
+      required this.status,
       required this.orderItems});
 
-  final String customerId;
+  final String? customerId;
+  final String? customerName;
   final DateTime orderDate;
-  final OrderStatus orderStatus;
+  final DateTime deliveryDate;
+  final OrderStatus status;
   final List<OrderItem> orderItems;
 
   factory Order.fromJson(Map<String, dynamic> json) {
@@ -20,15 +24,19 @@ class Order extends Entity {
       {
         'id': String id,
         'customerId': String customerId,
+        'customerName': String customerName,
         'orderDate': DateTime orderDate,
-        'orderStatus': OrderStatus orderStatus,
+        'deliveryDate': DateTime deliveryDate,
+        'status': OrderStatus status,
         'orderItems': List<Map<String, dynamic>> orderItems
       } =>
         Order(
             id: id,
             customerId: customerId,
+            customerName: customerName,
             orderDate: orderDate,
-            orderStatus: orderStatus,
+            deliveryDate: deliveryDate,
+            status: status,
             orderItems: orderItems.map((o) => OrderItem.fromJson(o)).toList()),
       _ => throw const FormatException('Failed to load order.'),
     };

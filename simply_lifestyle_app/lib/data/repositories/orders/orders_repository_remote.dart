@@ -25,7 +25,8 @@ class OrdersRepositoryRemote implements OrdersRepository {
                   id: o.id!,
                   customerId: o.customerId,
                   orderDate: o.orderDate,
-                  orderStatus: o.orderStatus,
+                  deliveryDate: o.deliveryDate,
+                  status: o.status,
                   orderItems: o.orderItems
                       .map((oi) => OrderItem(
                           id: oi.id!,
@@ -46,15 +47,16 @@ class OrdersRepositoryRemote implements OrdersRepository {
   @override
   Future<Result<void>> createOrder(Order order) async {
     try {
-      final orderApiModel = OrderPostApiModel(
-          customerId: order.customerId,
+      final orderPostApiModel = OrderPostApiModel(
+          customerName: order.customerName!,
           orderDate: order.orderDate,
-          status: order.orderStatus,
+          deliveryDate: order.deliveryDate,
+          status: order.status,
           orderItems: order.orderItems
               .map((o) => OrderItemApiModel(
                   productId: o.productId, quantity: o.quantity))
               .toList());
-      return _apiClient.postOrder(orderApiModel);
+      return _apiClient.postOrder(orderPostApiModel);
     } on Exception catch (e) {
       return Result.error(e);
     }

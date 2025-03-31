@@ -1,7 +1,5 @@
-class Entity{
-  final String id;
+class Entity {
+  final String? id;
 
-  Entity({
-    required this.id
-  });
+  Entity({this.id});
 }
