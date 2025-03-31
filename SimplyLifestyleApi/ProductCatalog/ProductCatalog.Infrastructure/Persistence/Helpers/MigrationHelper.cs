@@ -1,6 +1,4 @@
-﻿using Common.Infrastructure;
-
-namespace Products.Infrastructure.Persistence.Helpers;
+﻿namespace Products.Infrastructure.Persistence.Helpers;
 
 public static class MigrationHelper
 {

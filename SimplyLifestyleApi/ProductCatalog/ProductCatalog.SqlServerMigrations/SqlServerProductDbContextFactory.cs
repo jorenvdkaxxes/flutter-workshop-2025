@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Common.Infrastructure.Options;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using ProductCatalog.Infrastructure;
 using Products.Infrastructure;
-using Products.Infrastructure.Options;
 using Products.Infrastructure.Persistence.Helpers;
 
 namespace ProductCatalog.SqlServerMigrations;

@@ -1,6 +1,6 @@
 ﻿using Common.Domain;
 
-namespace Products.Infrastructure.Options;
+namespace Common.Infrastructure.Options;
 
 public class DatabaseType : Enumeration
 {
