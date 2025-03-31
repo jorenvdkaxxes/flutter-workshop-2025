@@ -1,0 +1,2 @@
+C:/Axxes/Flutter_workshop_2025/flutter-workshop-2025/simply_lifestyle_app/android/app/.cxx/Debug/59645sdj/x86_64/CMakeFiles/edit_cache.dir
+C:/Axxes/Flutter_workshop_2025/flutter-workshop-2025/simply_lifestyle_app/android/app/.cxx/Debug/59645sdj/x86_64/CMakeFiles/rebuild_cache.dir
