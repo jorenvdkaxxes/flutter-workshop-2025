@@ -6,8 +6,8 @@ namespace CustomerManagement.Web;
 
 public static class WebConfiguration
 {
-    public static IServiceCollection AddProductCatalogWebComponents(
+    public static IServiceCollection AddCustomerManagementWebComponents(
         this IServiceCollection services)
         => services.AddWebComponents(
-            typeof(CustomerApplicationConfiguration));
+            typeof(CustomerManagementApplicationConfiguration));
 }

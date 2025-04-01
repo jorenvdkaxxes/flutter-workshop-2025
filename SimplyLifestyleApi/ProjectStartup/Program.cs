@@ -16,6 +16,10 @@ using Identity.Web;
 using Common.Infrastructure;
 using Common.Web;
 using ProjectStartup;
+using CustomerManagement.Domain;
+using CustomerManagement.Application;
+using CustomerManagement.Infrastructure;
+using CustomerManagement.Web;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +37,13 @@ builder
     .AddOrderManagementApplication(builder.Configuration)
     .AddOrderManagementInfrastructure(builder.Configuration)
     .AddOrderManagementWebComponents();
+
+builder
+    .Services
+    .AddCustomerManagementDomain()
+    .AddCustomerManagementApplication(builder.Configuration)
+    .AddCustomerManagementInfrastructure(builder.Configuration)
+    .AddCustomerManagementWebComponents();
 
 builder
     .Services

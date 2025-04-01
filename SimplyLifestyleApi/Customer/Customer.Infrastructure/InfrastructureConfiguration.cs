@@ -9,7 +9,7 @@ namespace CustomerManagement.Infrastructure;
 
 public static class InfrastructureConfiguration
 {
-    public static IServiceCollection AddProductCatalogInfrastructure(
+    public static IServiceCollection AddCustomerManagementInfrastructure(
         this IServiceCollection services,
         IConfiguration configuration)
     {

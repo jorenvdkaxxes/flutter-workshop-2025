@@ -5,11 +5,11 @@ using System.Reflection;
 
 namespace CustomerManagement.Application;
 
-public static class CustomerApplicationConfiguration
+public static class CustomerManagementApplicationConfiguration
 {
     private static readonly Assembly Assembly = Assembly.GetExecutingAssembly();
 
-    public static IServiceCollection AddProductCatalogApplication(
+    public static IServiceCollection AddCustomerManagementApplication(
         this IServiceCollection services,
         IConfiguration configuration)
         => services
