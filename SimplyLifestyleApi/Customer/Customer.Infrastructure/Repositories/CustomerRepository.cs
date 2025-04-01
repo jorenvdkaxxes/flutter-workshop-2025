@@ -26,5 +26,11 @@ public class CustomerRepository : DataRepository<CustomerDbContext, Customer>,
 
     public async Task<IEnumerable<CustomerResponse>> GetAllAsync(CancellationToken cancellationToken = default)
         => await _mapper
-            .ProjectTo<CustomerResponse>(AllAsNoTracking()).ToListAsync(cancellationToken);
+            .ProjectTo<CustomerResponse>(AllAsNoTracking())
+            .ToListAsync(cancellationToken);
+
+    public async Task<CustomerResponse?> GetWithFirstAndLastNameAsync(string firstName, string lastName, CancellationToken cancellationToken = default)
+    => await _mapper
+        .ProjectTo<CustomerResponse>(AllAsNoTracking())
+        .FirstOrDefaultAsync(c => c.FirstName == firstName && c.LastName == lastName, cancellationToken);
 }
