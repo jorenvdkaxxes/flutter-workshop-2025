@@ -57,7 +57,8 @@ class NewOrderViewModel extends ChangeNotifier {
       }
 
       final order = Order(
-        customerName: values['customerName'],
+        customerFirstName: values['customerFirstName'],
+        customerLastName: values['customerLastName'],
         orderDate: DateTime.now(),
         deliveryDate: values['deliveryDate'],
         status: OrderStatus.pending,

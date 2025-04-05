@@ -3,14 +3,14 @@ import 'package:simply_lifestyle_app/domain/models/order/order_status.dart';
 
 class OrderPostApiModel {
   OrderPostApiModel(
-      {required this.customerName,
-      required this.orderDate,
+      {required this.customerFirstName,
+      required this.customerLastName,
       required this.deliveryDate,
       required this.status,
       required this.orderItems});
 
-  final String customerName;
-  final DateTime orderDate;
+  final String customerFirstName;
+  final String customerLastName;
   final DateTime deliveryDate;
   final OrderStatus status;
   final List<OrderItemApiModel> orderItems;
@@ -18,15 +18,15 @@ class OrderPostApiModel {
   factory OrderPostApiModel.fromJson(Map<String, dynamic> json) {
     return switch (json) {
       {
-        'customerName': String customerName,
-        'orderDate': DateTime orderDate,
+        'customerFirstName': String customerFirstName,
+        'customerLastName': String customerLastName,
         'deliveryDate': DateTime deliveryDate,
         'status': OrderStatus status,
         'orderItems': List<Map<String, dynamic>> orderItems
       } =>
         OrderPostApiModel(
-            customerName: customerName,
-            orderDate: orderDate,
+            customerFirstName: customerFirstName,
+            customerLastName: customerLastName,
             deliveryDate: deliveryDate,
             status: status,
             orderItems:
@@ -37,8 +37,8 @@ class OrderPostApiModel {
 
   Map<String, dynamic> toJson() {
     return {
-      'customerName': customerName,
-      'orderDate': orderDate.toIso8601String(),
+      'customerFirstName': customerFirstName,
+      'customerLastName': customerLastName,
       'deliveryDate': deliveryDate.toIso8601String(),
       'status': status.index,
       'orderItems': [...orderItems.map((o) => o.toJson())]

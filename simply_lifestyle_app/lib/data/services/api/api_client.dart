@@ -89,7 +89,7 @@ class ApiClient {
       request.headers.contentType = ContentType.json;
       request.write(jsonEncode(order));
       final response = await request.close();
-      if (response.statusCode == 201) {
+      if (response.statusCode == 200) {
         final stringData = await response.transform(utf8.decoder).join();
         final order = OrderApiModel.fromJson(jsonDecode(stringData));
         return Result.ok(order);

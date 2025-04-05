@@ -18,6 +18,6 @@ class OrderItemApiModel {
   }
 
   Map<String, dynamic> toJson() {
-    return {'id': id, 'productId': productId, 'quantity': quantity};
+    return {'productId': productId, 'quantity': quantity};
   }
 }

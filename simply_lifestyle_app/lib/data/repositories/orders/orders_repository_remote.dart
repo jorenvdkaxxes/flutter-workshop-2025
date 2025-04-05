@@ -48,8 +48,8 @@ class OrdersRepositoryRemote implements OrdersRepository {
   Future<Result<void>> createOrder(Order order) async {
     try {
       final orderPostApiModel = OrderPostApiModel(
-          customerName: order.customerName!,
-          orderDate: order.orderDate,
+          customerFirstName: order.customerFirstName!,
+          customerLastName: order.customerLastName!,
           deliveryDate: order.deliveryDate,
           status: order.status,
           orderItems: order.orderItems

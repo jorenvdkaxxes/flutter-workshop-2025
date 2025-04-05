@@ -65,16 +65,32 @@ class _NewOrderFormState extends State<NewOrderForm> {
               Padding(
                 padding: EdgeInsets.only(bottom: 8),
                 child: FormBuilderTextField(
-                  name: 'customerName',
+                  name: 'customerFirstName',
                   decoration: const InputDecoration(
                     icon: Icon(Icons.person),
                     hintText: 'Customer name',
-                    labelText: 'Name *',
+                    labelText: 'First name *',
                   ),
                   // The validator receives the text that the user has entered.
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(
-                        errorText: 'Please enter customer name')
+                        errorText: 'Please enter customer first name')
+                  ]),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 8),
+                child: FormBuilderTextField(
+                  name: 'customerLastName',
+                  decoration: const InputDecoration(
+                    icon: Icon(Icons.person),
+                    hintText: 'Customer last name',
+                    labelText: 'Last name *',
+                  ),
+                  // The validator receives the text that the user has entered.
+                  validator: FormBuilderValidators.compose([
+                    FormBuilderValidators.required(
+                        errorText: 'Please enter customer last name')
                   ]),
                 ),
               ),
