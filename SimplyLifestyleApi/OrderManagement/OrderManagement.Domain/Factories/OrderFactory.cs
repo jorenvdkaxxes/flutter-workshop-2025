@@ -3,7 +3,7 @@ namespace OrderManagement.Domain;
 internal class OrderFactory : IOrderFactory
 {
     private Guid _customerId = default!;
-    private DateTimeOffset _orderDate = default!;
+    private DateTimeOffset _deliveryDate = default!;
 
     private bool isCustomerIdSet = false;
     private bool isDeliveryDateSet = false;
@@ -18,7 +18,7 @@ internal class OrderFactory : IOrderFactory
 
     public IOrderFactory WithDeliveryDate(DateTimeOffset deliveryDate)
     {
-        _orderDate = deliveryDate;
+        _deliveryDate = deliveryDate;
         isDeliveryDateSet = true;
 
         return this;
@@ -29,6 +29,6 @@ internal class OrderFactory : IOrderFactory
         if (!isCustomerIdSet || !isDeliveryDateSet)
             throw new InvalidOperationException("Customer ID, order date must have a value.");
 
-        return new Order(_customerId, _orderDate);
+        return new Order(_customerId, _deliveryDate);
     }
 }
