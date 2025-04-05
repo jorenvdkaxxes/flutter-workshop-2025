@@ -5,7 +5,7 @@ using MediatR;
 
 namespace OrderManagement.Application.Services;
 
-internal class OrderManagementService : IOrderManagementService
+public class OrderManagementService : IOrderManagementService
 {
     private readonly ICustomerService _customerService;
     private readonly IMediator _mediator;
