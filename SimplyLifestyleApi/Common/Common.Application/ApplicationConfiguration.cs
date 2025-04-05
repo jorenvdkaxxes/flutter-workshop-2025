@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Common.Application.Contracts;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,7 @@ public static class ApplicationConfiguration
             .Configure<ApplicationSettings>(
                 configuration.GetSection(nameof(ApplicationSettings)),
                 options => options.BindNonPublicProperties = true)
+            .AddApplicationServices(assembly)
             .AddEventHandlers(assembly)
             .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly))
             .AddAutoMapperProfile(assembly)
@@ -34,6 +36,15 @@ public static class ApplicationConfiguration
                 .FromAssemblies(assembly)
                 .AddClasses(classes => classes
                     .AssignableTo(typeof(IEventHandler<>)))
+                .AsImplementedInterfaces()
+                .WithTransientLifetime());
+
+    private static IServiceCollection AddApplicationServices(this IServiceCollection services, Assembly assembly)
+        => services
+            .Scan(scan => scan
+                .FromAssemblies(assembly)
+                .AddClasses(classes => classes
+                    .AssignableTo(typeof(IApplicationService)))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
 }

@@ -1,11 +1,20 @@
 ﻿using Common.Web;
 using Microsoft.AspNetCore.Mvc;
 using OrderManagement.Application;
+using OrderManagement.Application.Services;
+using Orders.Web.Features.InputDtos;
 
 namespace OrderManagement.Web;
 
 public class OrdersController : ApiController
 {
+    private readonly IOrderManagementService _orderManagementService;
+
+    public OrdersController(IOrderManagementService orderManagementService)
+    {
+        _orderManagementService = orderManagementService;
+    }
+
     [HttpGet]
     public async Task<ActionResult<IEnumerable<OrderResponse>>> Get([FromRoute] GetAllOrdersQuery query)
         => await Send(query);
@@ -16,8 +25,10 @@ public class OrdersController : ApiController
         => await Send(query);
 
     [HttpPost]
-    public async Task<ActionResult<CreateOrderResponse>> Create(CreateOrderCommand command)
-        => await Send(command);
+    public async Task<ActionResult<CreateOrderResponse>> Create(CreateOrderInputDto inputDto)
+    {
+        return await _orderManagementService.CreateOrder(inputDto.ToCreateOrderModel());
+    }
 
     [HttpPut]
     [Route(Id)]
