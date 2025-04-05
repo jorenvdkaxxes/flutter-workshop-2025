@@ -139,6 +139,7 @@ csharp_style_prefer_local_over_anonymous_function = true
 csharp_style_prefer_null_check_over_type_check = true
 csharp_style_prefer_range_operator = true
 csharp_style_prefer_tuple_swap = true
+csharp_style_prefer_unbound_generic_type_in_nameof = true
 csharp_style_prefer_utf8_string_literals = true
 csharp_style_throw_expression = true
 csharp_style_unused_value_assignment_preference = discard_variable
@@ -242,3 +243,12 @@ dotnet_naming_style.begins_with_i.required_prefix = I
 dotnet_naming_style.begins_with_i.required_suffix = 
 dotnet_naming_style.begins_with_i.word_separator = 
 dotnet_naming_style.begins_with_i.capitalization = pascal_case
+
+dotnet_naming_rule.instance_fields_should_be_camel_case.severity = suggestion
+dotnet_naming_rule.instance_fields_should_be_camel_case.symbols = instance_fields
+dotnet_naming_rule.instance_fields_should_be_camel_case.style = instance_field_style
+
+dotnet_naming_symbols.instance_fields.applicable_kinds = field
+
+dotnet_naming_style.instance_field_style.capitalization = camel_case
+dotnet_naming_style.instance_field_style.required_prefix = _

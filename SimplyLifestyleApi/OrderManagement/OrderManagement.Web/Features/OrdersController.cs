@@ -1,19 +1,18 @@
 ﻿using Common.Web;
-using CustomerManagement.Application.Customers.Commands.Create;
-using CustomerManagement.Application.Customers.Queries;
 using Microsoft.AspNetCore.Mvc;
 using OrderManagement.Application;
+using OrderManagement.Application.Services;
 using Orders.Web.Features.InputDtos;
 
 namespace OrderManagement.Web;
 
 public class OrdersController : ApiController
 {
-    private readonly ICustomerQueryRepository _customerQueryRepository;
+    private readonly IOrderManagementService _orderManagementService;
 
-    public OrdersController(ICustomerQueryRepository customerQueryRepository)
+    public OrdersController(IOrderManagementService orderManagementService)
     {
-        _customerQueryRepository = customerQueryRepository;
+        _orderManagementService = orderManagementService;
     }
 
     [HttpGet]
@@ -28,30 +27,7 @@ public class OrdersController : ApiController
     [HttpPost]
     public async Task<ActionResult<CreateOrderResponse>> Create(CreateOrderInputDto inputDto)
     {
-        var customerId = Guid.Empty;
-        var customer = await _customerQueryRepository.GetWithFirstAndLastNameAsync(inputDto.CustomerFirstName, inputDto.CustomerLastName);
-
-        if(customer is null)
-        {
-            var createCustomerCommand = new CreateCustomerCommand
-            {
-                FirstName = inputDto.CustomerFirstName,
-                LastName = inputDto.CustomerLastName
-            };
-
-            var response = await SendCommand(createCustomerCommand);
-            customerId = response.Id;
-        }
-        else
-        {
-            customerId = customer.Id;
-        }
-
-        var createOrderCommand = inputDto.ToCommand(customerId);
-
-        var result = await Send(createOrderCommand);
-
-        return result;
+        return await _orderManagementService.CreateOrder(inputDto.ToCreateOrderModel());
     }
 
     [HttpPut]
