@@ -2,33 +2,33 @@ namespace OrderManagement.Domain;
 
 internal class OrderFactory : IOrderFactory
 {
-    private Guid customerId = default!;
-    private DateTimeOffset deliveryDate = default!;
+    private Guid _customerId = default!;
+    private DateTimeOffset _orderDate = default!;
 
     private bool isCustomerIdSet = false;
-    private bool isOrderDateSet = false;
+    private bool isDeliveryDateSet = false;
 
     public IOrderFactory WithCustomerId(Guid customerId)
     {
-        this.customerId = customerId;
+        _customerId = customerId;
         isCustomerIdSet = true;
 
         return this;
     }
 
-    public IOrderFactory WithDeliveryDate(DateTimeOffset orderDate)
+    public IOrderFactory WithDeliveryDate(DateTimeOffset deliveryDate)
     {
-        this.deliveryDate = orderDate;
-        isOrderDateSet = true;
+        _orderDate = deliveryDate;
+        isDeliveryDateSet = true;
 
         return this;
     }
 
     public Order Build()
     {
-        if (!isCustomerIdSet || !isOrderDateSet)
+        if (!isCustomerIdSet || !isDeliveryDateSet)
             throw new InvalidOperationException("Customer ID, order date must have a value.");
 
-        return new Order(customerId, deliveryDate);
+        return new Order(_customerId, _orderDate);
     }
 }

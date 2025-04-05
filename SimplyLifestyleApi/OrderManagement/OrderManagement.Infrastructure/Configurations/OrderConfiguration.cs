@@ -22,6 +22,10 @@ internal class OrderConfiguration : IEntityTypeConfiguration<Order>
             .IsRequired();
 
         builder
+            .Property(o => o.DeliveryDate)
+            .IsRequired();
+
+        builder
             .OwnsOne(o => o.Status, os =>
             {
                 os.WithOwner();

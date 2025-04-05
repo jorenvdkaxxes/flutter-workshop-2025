@@ -11,7 +11,7 @@ using OrderManagement.Infrastructure;
 namespace OrderManagement.SqliteMigrations.Migrations
 {
     [DbContext(typeof(OrderManagementDbContext))]
-    [Migration("20250331105733_InitialMigration")]
+    [Migration("20250405113237_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />

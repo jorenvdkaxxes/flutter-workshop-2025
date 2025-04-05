@@ -12,7 +12,6 @@ public class Order : Entity, IAggregateRoot
 
         CustomerId = customerId;
         OrderDate = DateTimeOffset.UtcNow;
-        DeliveryDate = deliveryDate;
         OrderItems = new HashSet<OrderItem>();
         Status = OrderStatus.Pending;
         
@@ -58,7 +57,6 @@ public class Order : Entity, IAggregateRoot
 
     public Order UpdateOrderDate(DateTimeOffset orderDate)
     {
-        ValidateOrderDate(orderDate);
         OrderDate = orderDate;
         return this;
     }
@@ -81,14 +79,6 @@ public class Order : Entity, IAggregateRoot
             orderItem.UpdateQuantity(quantity);
         }
         return this;
-    }
-
-    private void ValidateOrderDate(DateTimeOffset orderDate)
-    {
-        if (orderDate > DateTimeOffset.UtcNow)
-        {
-            throw new ArgumentException("Order date cannot be in the future.");
-        }
     }
 
     private void ValidateDeliveryDate(DateTimeOffset deliveryDate)

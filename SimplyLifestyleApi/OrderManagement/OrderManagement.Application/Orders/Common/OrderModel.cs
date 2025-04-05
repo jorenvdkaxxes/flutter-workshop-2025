@@ -9,7 +9,7 @@ public class OrderModel : IMapFrom<Order>
     public Guid CustomerId { get; set; }
     public DateTimeOffset OrderDate { get; set; }
     public DateTimeOffset DeliveryDate { get; set; }
-    public int Status { get; private set; }
+    public int Status { get; set; }
     public List<OrderItemModel> OrderItems { get; set; } = new();
 
     public virtual void Mapping(Profile mapper)

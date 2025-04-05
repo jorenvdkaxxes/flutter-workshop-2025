@@ -12,7 +12,7 @@ using OrderManagement.Infrastructure;
 namespace OrderManagement.SqlServerMigrations.Migrations
 {
     [DbContext(typeof(OrderManagementDbContext))]
-    [Migration("20250331104924_InitialMigration")]
+    [Migration("20250405113321_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -34,8 +34,11 @@ namespace OrderManagement.SqlServerMigrations.Migrations
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTimeOffset>("DeliveryDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset>("OrderDate")
+                        .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
 

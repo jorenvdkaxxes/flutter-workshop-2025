@@ -17,7 +17,8 @@ namespace OrderManagement.SqlServerMigrations.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CustomerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    OrderDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    DeliveryDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     Status_Value = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
