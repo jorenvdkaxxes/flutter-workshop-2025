@@ -3,8 +3,7 @@ import 'package:simply_lifestyle_app/domain/models/order/order_status.dart';
 
 class OrderApiModel {
   OrderApiModel(
-      {
-      this.id,
+      {this.id,
       required this.customerId,
       required this.orderDate,
       required this.deliveryDate,
@@ -23,18 +22,19 @@ class OrderApiModel {
       {
         'id': String id,
         'customerId': String customerId,
-        'orderDate': DateTime orderDate,
-        'deliveryDate': DateTime deliveryDate,
-        'status': OrderStatus status,
-        'orderItems': List<Map<String, dynamic>> orderItems
+        'orderDate': String orderDate,
+        'deliveryDate': String deliveryDate,
+        'status': int status,
+        'orderItems': List<dynamic> orderItems
       } =>
         OrderApiModel(
             id: id,
             customerId: customerId,
-            orderDate: orderDate,
-            deliveryDate: deliveryDate,
-            status: status,
-            orderItems: orderItems.map((o) => OrderItemApiModel.fromJson(o)).toList()),
+            orderDate: DateTime.parse(orderDate),
+            deliveryDate: DateTime.parse(deliveryDate),
+            status: OrderStatus.values[status],
+            orderItems:
+                orderItems.map((o) => OrderItemApiModel.fromJson(o)).toList()),
       _ => throw const FormatException('Failed to load order.'),
     };
   }

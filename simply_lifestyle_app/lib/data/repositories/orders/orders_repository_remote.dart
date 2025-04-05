@@ -29,7 +29,6 @@ class OrdersRepositoryRemote implements OrdersRepository {
                   status: o.status,
                   orderItems: o.orderItems
                       .map((oi) => OrderItem(
-                          id: oi.id!,
                           productId: oi.productId,
                           quantity: oi.quantity))
                       .toList()))
