@@ -83,9 +83,9 @@ public class Order : Entity, IAggregateRoot
 
     private void ValidateDeliveryDate(DateTimeOffset deliveryDate)
     {
-        if (deliveryDate < DateTime.UtcNow)
+        if (deliveryDate < DateTimeOffset.UtcNow)
         {
-            throw new ArgumentException("Order date cannot be in the future.");
+            throw new ArgumentException("Delivery date cannot be in the past.");
         }
     }
 
