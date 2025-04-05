@@ -23,7 +23,7 @@ public class CreateOrderCommand : OrderCommand, IRequest<CreateOrderResponse>
             CancellationToken cancellationToken)
         {
             var order = _orderFactory
-                .WithOrderDate(request.OrderDate)
+                .WithDeliveryDate(request.DeliveryDate)
                 .WithCustomerId(request.CustomerId)
                 .Build();
 

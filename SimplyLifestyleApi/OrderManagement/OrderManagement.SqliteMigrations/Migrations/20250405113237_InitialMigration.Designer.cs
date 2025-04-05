@@ -11,7 +11,7 @@ using OrderManagement.Infrastructure;
 namespace OrderManagement.SqliteMigrations.Migrations
 {
     [DbContext(typeof(OrderManagementDbContext))]
-    [Migration("20250331105733_InitialMigration")]
+    [Migration("20250405113237_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -29,7 +29,10 @@ namespace OrderManagement.SqliteMigrations.Migrations
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("OrderDate")
+                    b.Property<DateTimeOffset>("DeliveryDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTimeOffset>("OrderDate")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

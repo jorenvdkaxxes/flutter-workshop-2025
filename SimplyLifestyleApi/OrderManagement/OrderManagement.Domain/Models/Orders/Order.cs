@@ -6,12 +6,12 @@ public class Order : Entity, IAggregateRoot
 {
     public HashSet<OrderItem> OrderItems { get; private set; }
 
-    public Order(Guid customerId, DateTime orderDate)
+    public Order(Guid customerId, DateTimeOffset deliveryDate)
     {
-        ValidateOrderDate(orderDate);
+        ValidateDeliveryDate(deliveryDate);
 
         CustomerId = customerId;
-        OrderDate = orderDate;
+        OrderDate = DateTimeOffset.UtcNow;
         OrderItems = new HashSet<OrderItem>();
         Status = OrderStatus.Pending;
         
@@ -19,7 +19,8 @@ public class Order : Entity, IAggregateRoot
     }
 
     public Guid CustomerId { get; private set; }
-    public DateTime OrderDate { get; private set; }
+    public DateTimeOffset OrderDate { get; private set; }
+    public DateTimeOffset DeliveryDate { get; private set; }
     public OrderStatus Status { get; private set; }
 
     public Order AddOrderItem(Guid productId, int quantity)
@@ -54,10 +55,16 @@ public class Order : Entity, IAggregateRoot
         return this;
     }
 
-    public Order UpdateOrderDate(DateTime orderDate)
+    public Order UpdateOrderDate(DateTimeOffset orderDate)
     {
-        ValidateOrderDate(orderDate);
         OrderDate = orderDate;
+        return this;
+    }
+
+    public Order UpdateDeliveryDate(DateTimeOffset deliveryDate)
+    {
+        ValidateDeliveryDate(deliveryDate);
+        DeliveryDate = deliveryDate;
         return this;
     }
 
@@ -74,9 +81,9 @@ public class Order : Entity, IAggregateRoot
         return this;
     }
 
-    private void ValidateOrderDate(DateTime orderDate)
+    private void ValidateDeliveryDate(DateTimeOffset deliveryDate)
     {
-        if (orderDate > DateTime.Now)
+        if (deliveryDate < DateTime.UtcNow)
         {
             throw new ArgumentException("Order date cannot be in the future.");
         }
