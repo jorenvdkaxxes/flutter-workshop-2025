@@ -29,7 +29,10 @@ public static class ApplicationBuilderExtensions
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
-            app.UseSwagger();
+            app.UseSwagger(c =>
+            {
+                c.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0;
+            });
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1"));
             app.UseDeveloperExceptionPage();
         }
