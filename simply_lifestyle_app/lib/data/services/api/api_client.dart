@@ -8,6 +8,8 @@ import 'package:simply_lifestyle_app/domain/models/product/product.dart';
 import 'package:simply_lifestyle_app/environment.dart';
 import 'package:simply_lifestyle_app/utils/result.dart';
 
+typedef AuthHeaderProvider = String? Function();
+
 class ApiClient {
   ApiClient({
     HttpClient Function()? clientFactory,
@@ -17,12 +19,26 @@ class ApiClient {
   final int _port = Environment.restApiPort;
   final HttpClient Function() _clientFactory;
 
+  AuthHeaderProvider? _authHeaderProvider;
+
+  set authHeaderProvider(AuthHeaderProvider authHeaderProvider) {
+    _authHeaderProvider = authHeaderProvider;
+  }
+
+  Future<void> _authHeader(HttpHeaders headers) async {
+    final header = _authHeaderProvider?.call();
+    if (header != null) {
+      headers.add(HttpHeaders.authorizationHeader, header);
+    }
+  }
+
   Future<Result<List<Product>>> getProducts() async {
     final client = _clientFactory();
     try {
       final request = await client
           .getUrl(Uri.parse('https://$_host:$_port/api/Products/Get'));
       // final request = await client.get(_host, _port, '/continent'); // When using HTTP
+      await _authHeader(request.headers);
       final response = await request.close();
       if (response.statusCode == 200) {
         final stringData = await response.transform(utf8.decoder).join();

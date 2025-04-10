@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:simply_lifestyle_app/routing/router.dart';
 import 'package:simply_lifestyle_app/routing/routes.dart';
+import 'package:simply_lifestyle_app/ui/core/localization/applocalization.dart';
 import 'package:simply_lifestyle_app/ui/orders/view_model/orders_view_model.dart';
 
 import 'main_staging.dart' as staging;
@@ -20,12 +22,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      localizationsDelegates: [
+        GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        AppLocalizationDelegate(),
+      ],
       title: 'Simply Lifestyle App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
-      routerConfig: router(),
+      routerConfig: router(context.read()),
     );
   }
 }
