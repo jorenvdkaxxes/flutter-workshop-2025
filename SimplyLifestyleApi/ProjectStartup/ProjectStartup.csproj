@@ -1,45 +1,48 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-    <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>SimplyLifestyle</RootNamespace>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>SimplyLifestyle</RootNamespace>
+		<UserSecretsId>45bddef7-1c13-408a-a5fb-c05aa0a71d81</UserSecretsId>
+	</PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Customer\Customer.Application\CustomerManagement.Application.csproj" />
-      <ProjectReference Include="..\Customer\Customer.Domain\CustomerManagement.Domain.csproj" />
-      <ProjectReference Include="..\Customer\Customer.Infrastructure\CustomerManagement.Infrastructure.csproj" />
-      <ProjectReference Include="..\Customer\Customer.SqliteMigrations\CustomerManagement.SqliteMigrations.csproj" />
-      <ProjectReference Include="..\Customer\Customer.Web\CustomerManagement.Web.csproj" />
-      <ProjectReference Include="..\Customer\CustomerManagement.SqlServerMigrations\CustomerManagement.SqlServerMigrations.csproj" />
-      <ProjectReference Include="..\Identity\Identity.Infrastructure\Identity.Infrastructure.csproj" />
-      <ProjectReference Include="..\Identity\Identity.SqliteMigrations\Identity.SqliteMigrations.csproj" />
-      <ProjectReference Include="..\Identity\Identity.SqlServerMigrations\Identity.SqlServerMigrations.csproj" />
-      <ProjectReference Include="..\Identity\Identity.Web\Identity.Web.csproj" />
-      <ProjectReference Include="..\OrderManagement\OrderManagement.Infrastructure\OrderManagement.Infrastructure.csproj" />
-      <ProjectReference Include="..\OrderManagement\OrderManagement.SqliteMigrations\OrderManagement.SqliteMigrations.csproj" />
-      <ProjectReference Include="..\OrderManagement\OrderManagement.SqlServerMigrations\OrderManagement.SqlServerMigrations.csproj" />
-      <ProjectReference Include="..\OrderManagement\OrderManagement.Web\OrderManagement.Web.csproj" />
-      <ProjectReference Include="..\ProductCatalog\ProductCatalog.Infrastructure\ProductCatalog.Infrastructure.csproj" />
-      <ProjectReference Include="..\ProductCatalog\ProductCatalog.SqliteMigrations\ProductCatalog.SqliteMigrations.csproj" />
-      <ProjectReference Include="..\ProductCatalog\ProductCatalog.SqlServerMigrations\ProductCatalog.SqlServerMigrations.csproj" />
-      <ProjectReference Include="..\ProductCatalog\ProductCatalog.Web\ProductCatalog.Web.csproj" />
-      <ProjectReference Include="..\Statistics\Statistics.Infrastructure\Statistics.Infrastructure.csproj" />
-      <ProjectReference Include="..\Statistics\Statistics.SqliteMigrations\Statistics.SqliteMigrations.csproj" />
-      <ProjectReference Include="..\Statistics\Statistics.SqlServerMigrations\Statistics.SqlServerMigrations.csproj" />
-      <ProjectReference Include="..\Statistics\Statistics.Web\Statistics.Web.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Customer\Customer.Application\CustomerManagement.Application.csproj" />
+		<ProjectReference Include="..\Customer\Customer.Domain\CustomerManagement.Domain.csproj" />
+		<ProjectReference Include="..\Customer\Customer.Infrastructure\CustomerManagement.Infrastructure.csproj" />
+		<ProjectReference Include="..\Customer\Customer.SqliteMigrations\CustomerManagement.SqliteMigrations.csproj" />
+		<ProjectReference Include="..\Customer\Customer.Web\CustomerManagement.Web.csproj" />
+		<ProjectReference Include="..\Customer\CustomerManagement.SqlServerMigrations\CustomerManagement.SqlServerMigrations.csproj" />
+		<ProjectReference Include="..\Identity\Identity.Infrastructure\Identity.Infrastructure.csproj" />
+		<ProjectReference Include="..\Identity\Identity.SqliteMigrations\Identity.SqliteMigrations.csproj" />
+		<ProjectReference Include="..\Identity\Identity.SqlServerMigrations\Identity.SqlServerMigrations.csproj" />
+		<ProjectReference Include="..\Identity\Identity.Web\Identity.Web.csproj" />
+		<ProjectReference Include="..\OrderManagement\OrderManagement.Infrastructure\OrderManagement.Infrastructure.csproj" />
+		<ProjectReference Include="..\OrderManagement\OrderManagement.SqliteMigrations\OrderManagement.SqliteMigrations.csproj" />
+		<ProjectReference Include="..\OrderManagement\OrderManagement.SqlServerMigrations\OrderManagement.SqlServerMigrations.csproj" />
+		<ProjectReference Include="..\OrderManagement\OrderManagement.Web\OrderManagement.Web.csproj" />
+		<ProjectReference Include="..\ProductCatalog\ProductCatalog.Infrastructure\ProductCatalog.Infrastructure.csproj" />
+		<ProjectReference Include="..\ProductCatalog\ProductCatalog.SqliteMigrations\ProductCatalog.SqliteMigrations.csproj" />
+		<ProjectReference Include="..\ProductCatalog\ProductCatalog.SqlServerMigrations\ProductCatalog.SqlServerMigrations.csproj" />
+		<ProjectReference Include="..\ProductCatalog\ProductCatalog.Web\ProductCatalog.Web.csproj" />
+		<ProjectReference Include="..\Statistics\Statistics.Infrastructure\Statistics.Infrastructure.csproj" />
+		<ProjectReference Include="..\Statistics\Statistics.SqliteMigrations\Statistics.SqliteMigrations.csproj" />
+		<ProjectReference Include="..\Statistics\Statistics.SqlServerMigrations\Statistics.SqlServerMigrations.csproj" />
+		<ProjectReference Include="..\Statistics\Statistics.Web\Statistics.Web.csproj" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.3">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.3">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />
+		<PackageReference Include="Scalar.AspNetCore" Version="2.1.11" />
+	</ItemGroup>
 </Project>

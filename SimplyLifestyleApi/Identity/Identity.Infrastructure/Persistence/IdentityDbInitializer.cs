@@ -1,24 +1,28 @@
 ﻿using Common.Domain;
 using Common.Infrastructure;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace Identity.Infrastructure;
 
 internal class IdentityDbInitializer : DbInitializer
 {
-    private readonly UserManager<User> userManager;
-    private readonly RoleManager<IdentityRole> roleManager;
+    private readonly UserManager<User> _userManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly IConfiguration _config;
 
     public IdentityDbInitializer(
         IdentityDbContext db,
         UserManager<User> userManager,
         RoleManager<IdentityRole> roleManager,
+        IConfiguration config,
         ILogger<IdentityDbInitializer> logger)
         : base(db, logger)
     {
-        this.userManager = userManager;
-        this.roleManager = roleManager;
+        _userManager = userManager;
+        _roleManager = roleManager;
+        _config = config;
     }
 
     public override void Initialize()
@@ -32,21 +36,27 @@ internal class IdentityDbInitializer : DbInitializer
         => Task
             .Run(async () =>
             {
-                var existingRole = await roleManager.FindByNameAsync(CommonModelConstants.Common.AdministratorRoleName);
+                var existingRole = await _roleManager.FindByNameAsync(CommonModelConstants.Common.AdministratorRoleName);
 
-                if (existingRole != null)
-                {
-                    return;
-                }
+                if (existingRole != null) return;
 
                 var adminRole = new IdentityRole(CommonModelConstants.Common.AdministratorRoleName);
 
-                await roleManager.CreateAsync(adminRole);
+                await _roleManager.CreateAsync(adminRole);
 
-                var adminUser = new User("admin@store.com");
+                // Get admin account from secrets
+                var email = _config["AdminUser:Email"];
+                if (string.IsNullOrEmpty(email))
+                    email = "admin@simply-lifestyle.be";
 
-                await userManager.CreateAsync(adminUser, "Secret.1");
-                await userManager.AddToRoleAsync(adminUser, CommonModelConstants.Common.AdministratorRoleName);
+                var password = _config["AdminUser:Password"];
+                if (string.IsNullOrEmpty(password))
+                    password = "Admin123!";
+
+                var adminUser = new User(email);
+
+                await _userManager.CreateAsync(adminUser, password);
+                await _userManager.AddToRoleAsync(adminUser, CommonModelConstants.Common.AdministratorRoleName);
             })
             .GetAwaiter()
             .GetResult();
