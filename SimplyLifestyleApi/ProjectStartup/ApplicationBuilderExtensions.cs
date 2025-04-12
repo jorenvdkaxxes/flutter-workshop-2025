@@ -1,5 +1,6 @@
 ﻿using Common.Infrastructure;
 using Common.Web;
+using Scalar.AspNetCore;
 
 namespace ProjectStartup;
 
@@ -29,12 +30,17 @@ public static class ApplicationBuilderExtensions
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
-            app.UseSwagger(c =>
-            {
-                c.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0;
-            });
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1"));
-            app.UseDeveloperExceptionPage();
+        }
+
+        return app;
+    }
+
+    public static IApplicationBuilder UseOpenApi(this WebApplication app)
+    {
+        if (app.Environment.IsDevelopment())
+        {
+            app.MapOpenApi();
+            app.MapScalarApiReference();
         }
 
         return app;
