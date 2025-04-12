@@ -62,15 +62,13 @@ builder.Services
     .AddTokenAuthentication(builder.Configuration)
     .AddEventSourcing()
     .AddModelBinders()
-    .AddSwaggerGen(c =>
-    {
-        c.SwaggerDoc("v1", new() { Title = "Web API", Version = "v1" });
-    })
+    .AddOpenApi()
     .AddHttpClient();
 
 var app = builder.Build();
 
 app
+    .UseOpenApi()
     .UseWebService(app.Environment)
     .Initialize();
 
