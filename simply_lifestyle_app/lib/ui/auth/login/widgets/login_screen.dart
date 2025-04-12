@@ -25,9 +25,9 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _email =
-      TextEditingController(text: 'email@example.com');
+      TextEditingController();
   final TextEditingController _password =
-      TextEditingController(text: 'password');
+      TextEditingController();
 
   @override
   void initState() {
@@ -63,10 +63,12 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 TextField(
                   controller: _email,
+                  decoration: InputDecoration(hintText: 'email@example.com'),
                 ),
                 const SizedBox(height: Dimens.paddingVertical),
                 TextField(
                   controller: _password,
+                  decoration: InputDecoration(hintText: 'password'),
                   obscureText: true,
                 ),
                 const SizedBox(height: Dimens.paddingVertical),
