@@ -9,7 +9,7 @@ class OrdersViewModel extends ChangeNotifier {
   OrdersViewModel({
     required OrdersRepository ordersRepository,
   }) : _ordersRepository = ordersRepository {
-    load = Command0(_load)..execute();
+    load = Command0(_load)..execute(); // using cascade notation to make a sequence of operations on the same object
   }
 
   final OrdersRepository _ordersRepository;
