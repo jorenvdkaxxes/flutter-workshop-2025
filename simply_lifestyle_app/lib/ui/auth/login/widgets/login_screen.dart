@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void _onResult() {
     if (widget.viewModel.login.completed) {
       widget.viewModel.login.clearResult();
-      context.go(Routes.home);
+      context.go(Routes.products);
     }
 
     if (widget.viewModel.login.error) {

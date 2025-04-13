@@ -4,7 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:simply_lifestyle_app/data/repositories/auth/auth_repository.dart';
 import 'package:simply_lifestyle_app/ui/auth/login/view_models/login_viewmodel.dart';
 import 'package:simply_lifestyle_app/ui/auth/login/widgets/login_screen.dart';
-import 'package:simply_lifestyle_app/ui/products/view_model/products_view_model.dart';
+import 'package:simply_lifestyle_app/ui/orders/widgets/orders_screen.dart';
+import 'package:simply_lifestyle_app/ui/products/view_model/product_detail_view_model.dart';
+import 'package:simply_lifestyle_app/ui/products/widgets/product_details_page.dart';
 import 'package:simply_lifestyle_app/ui/products/widgets/products_screen.dart';
 
 import 'routes.dart';
@@ -29,7 +31,24 @@ GoRouter router(
         ),
         GoRoute(
             path: Routes.products,
-            builder: (context, state) => ProductsScreen(viewModel: ProductsViewModel(productsRepository: context.read())))
+            builder: (context, state) => ProductsScreen(),
+            routes: [
+              GoRoute(
+                path: Routes.productDetails,
+                builder: (context, state) {
+                  final id = state.pathParameters['id']!;
+                  final viewModel = ProductDetailViewModel(
+                      productsRepository: context.read());
+
+                  // When opening the product details screen with an existing id
+                  // load and display that product.
+                  viewModel.loadProduct.execute(id);
+                  return ProductDetailsPage(viewModel: viewModel);
+                },
+              )
+            ]),
+        GoRoute(
+            path: Routes.orders, builder: (context, state) => OrdersScreen())
         // GoRoute(
         //   path: Routes.home,
         //   builder: (context, state) {

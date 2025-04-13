@@ -43,30 +43,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _selectedIndex = 0;
-
   final List<String> titles = ['Products', 'Orders'];
 
-  late List<Widget> _widgetOptions;
 
   @override
   void initState() {
     super.initState();
-    _widgetOptions = <Widget>[
-      ProductsScreen(),
-      OrdersScreen()
-    ];
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
   }
 
   Widget? _getWidget() {
-    if (_selectedIndex != 1) return null;
-
     return FloatingActionButton(
       onPressed: () => context.go(Routes.newOrder),
       tooltip: 'Add',
@@ -79,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(titles[_selectedIndex]),
+        title: Text('Test'),
         leading: Builder(
           builder: (context) {
             return IconButton(
@@ -92,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       body: Center(
-        child: _widgetOptions[_selectedIndex],
+        child: ProductsScreen(),
       ),
       drawer: Drawer(
         child: ListView(
@@ -106,18 +91,16 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ListTile(
               title: const Text('Products'),
-              selected: _selectedIndex == 0,
               onTap: () {
                 Navigator.pop(context);
-                _onItemTapped(0);
+                context.go(Routes.products);
               },
             ),
             ListTile(
               title: const Text('Orders'),
-              selected: _selectedIndex == 1,
               onTap: () {
                 Navigator.pop(context);
-                _onItemTapped(1);
+                context.go(Routes.orders);
               },
             ),
           ],
