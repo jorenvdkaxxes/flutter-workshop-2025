@@ -1,4 +1,3 @@
-
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:simply_lifestyle_app/data/repositories/orders/orders_repository.dart';
@@ -7,6 +6,8 @@ import 'package:simply_lifestyle_app/data/repositories/products/products_reposit
 import 'package:simply_lifestyle_app/data/repositories/products/products_repository_local.dart';
 import 'package:simply_lifestyle_app/data/repositories/products/products_repository_remote.dart';
 import 'package:simply_lifestyle_app/data/services/local/local_data_service.dart';
+import 'package:simply_lifestyle_app/ui/orders/view_model/orders_view_model.dart';
+import 'package:simply_lifestyle_app/ui/products/view_model/products_view_model.dart';
 
 import '../data/services/api/api_client.dart';
 
@@ -22,11 +23,16 @@ List<SingleChildWidget> get providersRemote {
         apiClient: context.read(),
       ) as ProductsRepository,
     ),
-     Provider(
+    Provider(
       create: (context) => OrdersRepositoryRemote(
         apiClient: context.read(),
       ) as OrdersRepository,
-    )
+    ),
+    Provider(
+        create: (context) =>
+            ProductsViewModel(productsRepository: context.read())),
+    ChangeNotifierProvider(
+        create: (context) => OrdersViewModel(ordersRepository: context.read())),
   ];
 }
 

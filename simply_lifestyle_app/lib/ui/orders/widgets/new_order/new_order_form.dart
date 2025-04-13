@@ -139,9 +139,6 @@ class _NewOrderFormState extends State<NewOrderForm> {
                   onPressed: () {
                     if (_formKey.currentState!
                         .saveAndValidate(focusOnInvalid: false)) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Processing Data')),
-                      );
                       widget.createOrder(_formKey.currentState!.value);
                     }
                   },

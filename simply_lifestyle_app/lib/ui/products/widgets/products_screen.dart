@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:simply_lifestyle_app/routing/routes.dart';
 import 'package:simply_lifestyle_app/ui/core/ui/error_indicator.dart';
 import 'package:simply_lifestyle_app/ui/products/view_model/products_view_model.dart';
 
 class ProductsScreen extends StatelessWidget {
-  const ProductsScreen({super.key, required this.viewModel});
-
-  final ProductsViewModel viewModel;
+  const ProductsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    ProductsViewModel viewModel = context.read();
+
     return SafeArea(
         child: ListenableBuilder(
             listenable: viewModel,

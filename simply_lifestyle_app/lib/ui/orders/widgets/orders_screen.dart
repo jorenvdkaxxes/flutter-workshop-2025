@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:simply_lifestyle_app/ui/core/ui/error_indicator.dart';
 import 'package:simply_lifestyle_app/ui/orders/view_model/orders_view_model.dart';
 
 class OrdersScreen extends StatelessWidget {
-  const OrdersScreen({super.key, required this.viewModel});
-
-  final OrdersViewModel viewModel;
+  const OrdersScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    OrdersViewModel viewModel = context.read();
+
     return SafeArea(
         child: ListenableBuilder(
             listenable: viewModel,

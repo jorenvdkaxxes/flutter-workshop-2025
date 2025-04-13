@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 import 'package:simply_lifestyle_app/routing/router.dart';
 import 'package:simply_lifestyle_app/routing/routes.dart';
-import 'package:simply_lifestyle_app/ui/orders/view_model/orders_view_model.dart';
 
 import 'main_staging.dart' as staging;
 import 'package:simply_lifestyle_app/ui/orders/widgets/orders_screen.dart';
-import 'package:simply_lifestyle_app/ui/products/view_model/products_view_model.dart';
 import 'package:simply_lifestyle_app/ui/products/widgets/products_screen.dart';
 
 void main() {
@@ -47,12 +44,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    final productsViewModel =
-        ProductsViewModel(productsRepository: context.read());
-    final ordersViewModel = OrdersViewModel(ordersRepository: context.read());
     _widgetOptions = <Widget>[
-      ProductsScreen(viewModel: productsViewModel),
-      OrdersScreen(viewModel: ordersViewModel)
+      ProductsScreen(),
+      OrdersScreen()
     ];
   }
 
