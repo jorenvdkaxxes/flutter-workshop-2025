@@ -30,10 +30,8 @@ GoRouter router(
           },
         ),
         GoRoute(
-          path: Routes.home,
-          builder: (context, state) {
-            return MyHomePage();
-          },
+        path: Routes.home,
+        builder: (context, state) => HomePage(),
           routes: [
             // Product Details
             GoRoute(

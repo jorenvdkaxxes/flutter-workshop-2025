@@ -46,7 +46,7 @@ List<SingleChildWidget> get providersRemote {
         apiClient: context.read(),
       ) as OrdersRepository,
     ),
-    Provider(
+    ChangeNotifierProvider(
         create: (context) =>
             ProductsViewModel(productsRepository: context.read())),
     ChangeNotifierProvider(
