@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:simply_lifestyle_app/routing/routes.dart';
+import 'package:simply_lifestyle_app/ui/core/ui/base_screen.dart';
 import 'package:simply_lifestyle_app/ui/core/ui/error_indicator.dart';
 import 'package:simply_lifestyle_app/ui/orders/view_model/orders_view_model.dart';
 
-class OrdersScreen extends StatelessWidget {
+class OrdersScreen extends BaseScreen {
   const OrdersScreen({super.key});
+
+  @override
+  Widget? getFloatingActionButton(BuildContext context) =>
+      FloatingActionButton(
+        onPressed: () => context.go(Routes.newOrder),
+        tooltip: 'Add',
+        child: const Icon(Icons.add),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +51,7 @@ class OrdersScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(viewModel.orders[index].id ?? ''),
-                    subtitle:
-                        Text('Status: ${viewModel.orders[index].status}'),
+                    subtitle: Text('Status: ${viewModel.orders[index].status}'),
                     onTap: () {
                       // Navigator.push(
                       //   context,
