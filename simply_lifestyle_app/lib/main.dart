@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:simply_lifestyle_app/routing/router.dart';
+import 'package:simply_lifestyle_app/ui/core/localization/applocalization.dart';
 import 'package:simply_lifestyle_app/ui/core/ui/app_scaffold.dart';
 import 'package:simply_lifestyle_app/ui/core/ui/base_screen.dart';
 
