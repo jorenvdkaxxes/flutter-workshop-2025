@@ -1,4 +1,5 @@
 ﻿using Common.Web;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OrderManagement.Application;
 using OrderManagement.Application.Services;
@@ -6,6 +7,7 @@ using Orders.Web.Features.InputDtos;
 
 namespace OrderManagement.Web;
 
+[Authorize]
 public class OrdersController : ApiController
 {
     private readonly IOrderManagementService _orderManagementService;
