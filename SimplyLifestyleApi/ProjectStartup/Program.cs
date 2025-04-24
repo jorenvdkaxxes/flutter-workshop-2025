@@ -69,7 +69,8 @@ var app = builder.Build();
 
 app
     .UseOpenApi()
-    .UseWebService(app.Environment)
-    .Initialize();
+    .UseWebService(app.Environment);
+
+await app.Initialize();
 
 app.Run();

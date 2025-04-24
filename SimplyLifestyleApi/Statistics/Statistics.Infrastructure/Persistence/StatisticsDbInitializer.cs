@@ -7,9 +7,10 @@ namespace Statistics.Infrastructure;
 
 internal class StatisticsDbInitializer : DbInitializer
 {
-    public StatisticsDbInitializer(
-        StatisticsDbContext db, ILogger<StatisticsDbInitializer> logger)
+    public StatisticsDbInitializer(StatisticsDbContext db, ILogger<StatisticsDbInitializer> logger)
         : base(db, logger, new List<IInitialData> { new TotalStatisticsData() })
     {
     }
+
+    public override int Index => 2;
 }

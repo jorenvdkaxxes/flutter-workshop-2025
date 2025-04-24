@@ -8,4 +8,6 @@ public class CustomerDbInitializer : DbInitializer
 {
     public CustomerDbInitializer(CustomerDbContext db, ILogger<CustomerDbInitializer> logger)
         : base(db, logger, new List<IInitialData>()) { }
+
+    public override int Index => 1;
 }
