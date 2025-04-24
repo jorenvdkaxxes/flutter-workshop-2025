@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:simply_lifestyle_app/ui/auth/logout/widgets/logout_button.dart';
 
 class AppScaffold extends StatelessWidget {
   const AppScaffold(
@@ -41,11 +43,16 @@ class AppScaffold extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+            DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.greenAccent,
               ),
-              child: Text('Simply Lifestyle'),
+              child: Column(
+                children: [
+                  Text('Simply Lifestyle'),
+                  LogoutButton(viewModel: context.read())
+                ],
+              ),
             ),
             ListTile(
               title: const Text('Products'),

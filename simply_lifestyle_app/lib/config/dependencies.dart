@@ -10,6 +10,7 @@ import 'package:simply_lifestyle_app/data/repositories/products/products_reposit
 import 'package:simply_lifestyle_app/data/repositories/products/products_repository_remote.dart';
 import 'package:simply_lifestyle_app/data/services/api/auth_api_client.dart';
 import 'package:simply_lifestyle_app/data/services/local/local_data_service.dart';
+import 'package:simply_lifestyle_app/ui/auth/logout/view_models/logout_viewmodel.dart';
 import 'package:simply_lifestyle_app/ui/orders/view_model/orders_view_model.dart';
 import 'package:simply_lifestyle_app/ui/products/view_model/products_view_model.dart';
 import 'package:simply_lifestyle_app/data/services/shared_preferences_service.dart';
@@ -51,6 +52,9 @@ List<SingleChildWidget> get providersRemote {
             ProductsViewModel(productsRepository: context.read())),
     ChangeNotifierProvider(
         create: (context) => OrdersViewModel(ordersRepository: context.read())),
+    Provider(
+      create: (context) => LogoutViewModel(authRepository: context.read()),
+    )
   ];
 }
 
