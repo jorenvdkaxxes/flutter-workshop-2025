@@ -8,5 +8,8 @@ namespace ProductCatalog.Infrastructure;
 internal class ProductDbInitializer : DbInitializer
 {
     public ProductDbInitializer(ProductDbContext db, ILogger<ProductDbInitializer> logger) 
-        : base(db, logger, new List<IInitialData> { new ProductData() }) {}
+        : base(db, logger, new List<IInitialData> { new ProductData() })
+    {
+    }
+    public override int Index => 3;
 }
