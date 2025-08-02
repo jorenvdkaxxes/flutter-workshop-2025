@@ -18,6 +18,8 @@ public abstract class DbInitializer : IDbInitializer
         initialDataProviders = new List<IInitialData>();
     }
 
+    public abstract int Index { get; }
+
     protected internal DbInitializer(
         DbContext db,
         ILogger<DbInitializer> logger,
@@ -25,17 +27,17 @@ public abstract class DbInitializer : IDbInitializer
         : this(db, logger)
         => this.initialDataProviders = initialDataProviders;
 
-    public virtual void Initialize()
+    public async virtual Task InitializeAsync()
     {
         try
         {
-            var pendingMigrations = _db.Database.GetPendingMigrations();
+            var pendingMigrations = await _db.Database.GetPendingMigrationsAsync();
 
             if (pendingMigrations.Any())
             {
                 _logger.LogInformation("Applying pending migrations...");
 
-                _db.Database.Migrate();
+                await _db.Database.MigrateAsync();
 
                 _logger.LogInformation("Migrations applied successfully");
             }
@@ -62,7 +64,7 @@ public abstract class DbInitializer : IDbInitializer
             }
         }
 
-        _db.SaveChanges();
+        await _db.SaveChangesAsync();
     }
 
     private bool DataSetIsEmpty(Type type)

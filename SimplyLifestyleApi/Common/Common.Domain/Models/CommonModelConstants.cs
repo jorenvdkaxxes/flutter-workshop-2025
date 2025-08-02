@@ -9,6 +9,7 @@ public class CommonModelConstants
         public const int MaxNameLength = 50;
         public const int MaxUrlLength = 2048;
         public const string AdministratorRoleName = "Administrator";
+        public const string TestUserRoleName = "TestUser";
     }
     
     public class Identity

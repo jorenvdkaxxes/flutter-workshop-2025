@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:simply_lifestyle_app/routing/routes.dart';
+import 'package:simply_lifestyle_app/ui/core/ui/base_screen.dart';
 import 'package:simply_lifestyle_app/ui/core/ui/error_indicator.dart';
 import 'package:simply_lifestyle_app/ui/products/view_model/products_view_model.dart';
 
-class ProductsScreen extends StatelessWidget {
+class ProductsScreen extends BaseScreen {
   const ProductsScreen({super.key});
+
+  @override
+  Widget? getFloatingActionButton(BuildContext context) => null;
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +40,8 @@ class ProductsScreen extends StatelessWidget {
                   return ListTile(
                     title: Text(viewModel.products[index].name),
                     subtitle: Text('Stock: ${viewModel.products[index].stock}'),
-                    onTap: () => context.go(
-                        Routes.productsWithId(viewModel.products[index].id ?? '')),
+                    onTap: () => context.go(Routes.productsWithId(
+                        viewModel.products[index].id ?? '')),
                   );
                 },
               );

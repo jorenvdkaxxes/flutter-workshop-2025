@@ -46,15 +46,17 @@ public static class ApplicationBuilderExtensions
         return app;
     }
 
-    public static IApplicationBuilder Initialize(this IApplicationBuilder app)
+    public static async Task<IApplicationBuilder> Initialize(this IApplicationBuilder app)
     {
         using var serviceScope = app.ApplicationServices.CreateScope();
 
-        var initializers = serviceScope.ServiceProvider.GetServices<IDbInitializer>();
+        var initializers = serviceScope.ServiceProvider
+                                        .GetServices<IDbInitializer>()
+                                        .OrderBy(i => i.Index);
 
         foreach (var initializer in initializers)
         {
-            initializer.Initialize();
+            await initializer.InitializeAsync();
         }
 
         return app;

@@ -12,4 +12,5 @@ internal class OrderManagementDbInitializer : DbInitializer
         : base(db, logger, new List<IInitialData>())
     {
     }
+    public override int Index => 4;
 }

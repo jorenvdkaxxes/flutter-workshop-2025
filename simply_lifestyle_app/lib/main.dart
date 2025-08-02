@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:simply_lifestyle_app/routing/router.dart';
-import 'package:simply_lifestyle_app/routing/routes.dart';
 import 'package:simply_lifestyle_app/ui/core/localization/applocalization.dart';
+import 'package:simply_lifestyle_app/ui/core/ui/app_scaffold.dart';
+import 'package:simply_lifestyle_app/ui/core/ui/base_screen.dart';
 
 import 'main_staging.dart' as staging;
 import 'package:simply_lifestyle_app/ui/orders/widgets/orders_screen.dart';
@@ -35,78 +35,40 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
+  int selectedIndex = 0;
+
   final List<String> titles = ['Products', 'Orders'];
 
+  late List<BaseScreen> widgetOptions;
 
   @override
   void initState() {
     super.initState();
+    widgetOptions = <BaseScreen>[ProductsScreen(), OrdersScreen()];
   }
 
-  Widget? _getWidget() {
-    return FloatingActionButton(
-      onPressed: () => context.go(Routes.newOrder),
-      tooltip: 'Add',
-      child: const Icon(Icons.add),
-    );
+  void onItemTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Test'),
-        leading: Builder(
-          builder: (context) {
-            return IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            );
-          },
-        ),
-      ),
-      body: Center(
-        child: ProductsScreen(),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.greenAccent,
-              ),
-              child: Text('Simply Lifestyle'),
-            ),
-            ListTile(
-              title: const Text('Products'),
-              onTap: () {
-                Navigator.pop(context);
-                context.go(Routes.products);
-              },
-            ),
-            ListTile(
-              title: const Text('Orders'),
-              onTap: () {
-                Navigator.pop(context);
-                context.go(Routes.orders);
-              },
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: _getWidget(),
-    );
+    return AppScaffold(
+        title: titles[selectedIndex],
+        selectedIndex: selectedIndex,
+        onItemTapped: onItemTapped,
+        floatingActionButton:
+            widgetOptions[selectedIndex].getFloatingActionButton(context),
+        child: widgetOptions[selectedIndex]);
   }
 }

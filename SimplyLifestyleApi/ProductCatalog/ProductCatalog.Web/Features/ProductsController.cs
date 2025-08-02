@@ -1,9 +1,11 @@
 ﻿using Common.Web;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProductCatalog.Application;
 
 namespace ProductCatalog.Web;
 
+[Authorize]
 public class ProductsController : ApiController
 {
     [HttpGet]

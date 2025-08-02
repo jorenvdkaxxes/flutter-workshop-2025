@@ -3,6 +3,8 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:simply_lifestyle_app/routing/routes.dart';
 
 import '../../../core/localization/applocalization.dart';
 import '../../../core/themes/colors.dart';
@@ -53,8 +55,11 @@ class _LogoutButtonState extends State<LogoutButton> {
         ),
         child: InkResponse(
           borderRadius: BorderRadius.circular(8.0),
-          onTap: () {
-            widget.viewModel.logout.execute();
+          onTap: () async {
+            await widget.viewModel.logout.execute();
+            if(context.mounted){
+              context.go(Routes.login);
+            }
           },
           child: Center(
             child: Icon(
